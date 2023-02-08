@@ -1,0 +1,49 @@
+/*Presets for offical Tema Tema colours*/
+:root{
+  --TTPurple: #8403fc;
+  --TTHoverGray: #696969;
+  --TTActiveGray: #3b3b3b;
+}
+/*Style the navbar*/
+ul.nav{
+  list-style-type: none;
+  overflow:hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--TTPurple);
+
+}
+
+ul.nav li{
+  float: left;
+
+}
+
+ul.nav a, ul.nav p, ul.nav input{
+  display: block;
+  padding: 13px;
+  margin: 0px;
+  color: black;
+  text-decoration: none;
+}
+
+
+/*Button transitions to this colour in one second when hovered over*/
+ul.nav a:hover:not(.NavActive){
+  transition: 1s;
+  background-color:var(--TTHoverGray);
+}
+
+ul.nav p.Logout:hover{
+  transition: 1.5s;
+  color:white;
+}
+
+ul.nav .NavActive{
+  background-color:var(--TTActiveGray);
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
