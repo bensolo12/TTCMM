@@ -5,6 +5,13 @@
   --TTActiveGray: #3b3b3b;
   --TTSecondary: #a69da8;
 }
+/* is applied when the user scrolls to keep navbar at the top */
+nav{
+  position:fixed;
+  top: 0;
+  width:100%;
+
+}
 /*Style the navbar*/
 ul.nav{
   list-style-type: none;
@@ -35,16 +42,29 @@ ul.nav a:hover:not(.NavActive){
   background-color:var(--TTHoverGray);
 }
 
-ul.nav p.Logout:hover{
-  transition: 1.5s;
-  color:white;
-}
 
 ul.nav .NavActive{
   background-color:var(--TTActiveGray);
 }
 
+
+
 body{
   margin: 0;
   padding: 0;
+}
+
+.Content{
+  padding-top: 60px
+}
+
+footer{
+  height:50px;
+  background-color: black;
+  color: white;
+}
+footer div{
+
+  float:left;
+  text-align: center;
 }
