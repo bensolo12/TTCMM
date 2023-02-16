@@ -5,6 +5,6 @@
     <title>Information</title>
 </head>
 <body>
-
+    <h1>I hate php</h1>
 </body>
 </html>
