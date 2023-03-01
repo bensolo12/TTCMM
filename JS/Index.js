@@ -12,4 +12,5 @@ $.ajax({
     if(dataJson['Status'] == "Stolen"){
       $('#report').prop("disabled");
     }
+  }
 });
