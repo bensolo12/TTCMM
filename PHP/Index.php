@@ -13,7 +13,7 @@ function fetch(){
   $inc = $_POST['inc'];
   include"../include/config.php";
 // fetches and returns news title date and body
-  $sql = "SELECT 'Title','news_date','body' from `news_table` ORDER BY 'news_id' DESC LIMIT 1 OFFSET $inc;";
+  $sql = "SELECT `Title`,`news_date`,`body` from `news_table` ORDER BY 'news_id' DESC LIMIT 1 OFFSET $inc;";
   $result = mysqli_query($connection, $sql);
   $num_row = mysqli_num_rows($result);
   // $row = mysqli_fetch_assoc($result);
