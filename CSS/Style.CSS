@@ -86,19 +86,16 @@ ul.nav a, ul.nav p, ul.nav input{
   text-decoration: none;
 }
 
-
 /*Button transitions to this colour in one second when hovered over*/
 ul.nav a:hover:not(.NavActive):not(.reportFormTab){
   transition: 1s;
   background-color:var(--TTHoverGray);
 }
 
-
 ul.nav .NavActive:not(.reportForm){
   background-color:var(--TTActiveGray);
+  color:white;
 }
-
-
 
 body{
   margin: 0;

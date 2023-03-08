@@ -222,7 +222,6 @@
     <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
 
     <script>
-    // Define function to add marker at given lat & lng
     function addMarker(latLng) {
       let marker = new google.maps.Marker({
         map: map,
@@ -230,18 +229,14 @@
         draggable: true
       });
 
-      // Set the hidden input field values to the marker coordinates
       document.getElementById('lat').value = marker.getPosition().lat();
       document.getElementById('lng').value = marker.getPosition().lng();
 
-      // Store the marker object drawn on map in global array
       markersArray.push(marker);
 
-      // Remove the listener to prevent adding more markers
       google.maps.event.removeListener(listener);
     }
 
-    //Defining map
     var map;
     var latLng = new google.maps.LatLng(51.8994, -2.0783);
 
@@ -253,7 +248,6 @@
 
     map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-    // Add a listener to allow the user to add one marker
     var listener = map.addListener('click', function(e) {
       console.log(e);
       addMarker(e.latLng);
@@ -261,40 +255,32 @@
     </script>
 
     <script>
-        // get form elements
         const form = document.getElementById('formCreateReport');
         const stages = document.getElementsByClassName('form-stage');
         const tabs = document.getElementsByClassName('form-tab');
         const nextButtons = document.getElementsByClassName('next-button');
         const prevButtons = document.getElementsByClassName('prev-button');
 
-        // initialize form state
         let currentStage = 0;
         tabs[currentStage].classList.add('active');
         stages[currentStage].classList.add('active');
 
-        // add event listeners to next buttons
         for (let i = 0; i < nextButtons.length; i++) {
         nextButtons[i].addEventListener('click', () => {
-            // hide current stage
             stages[currentStage].classList.remove('active');
             tabs[currentStage].classList.remove('active');
 
-            // show next stage
             currentStage++;
             stages[currentStage].classList.add('active');
             tabs[currentStage].classList.add('active');
         });
         }
 
-        // add event listeners to prev buttons
         for (let i = 0; i < prevButtons.length; i++) {
         prevButtons[i].addEventListener('click', () => {
-            // hide current stage
             stages[currentStage].classList.remove('active');
             tabs[currentStage].classList.remove('active');
 
-            // show previous stage
             currentStage--;
             stages[currentStage].classList.add('active');
             tabs[currentStage].classList.add('active');

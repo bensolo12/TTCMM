@@ -30,6 +30,9 @@ if($_POST['phpFunction'] == 'create')
         }
         //Create an insert for the images table, linking the report_id with each image submitted
 
+        //$sql = "INSERT INTO `images_table`()"."values".
+            //"()";
+
         if(mysqli_query($connection, $sql)) {
             echo "Successfully registered.";
         } else {
