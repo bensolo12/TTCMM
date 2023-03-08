@@ -12,7 +12,6 @@ ul.nav:not(.reportForm){
   margin: 0;
   padding: 0;
   background-color: var(--TTPurple);
-
 }
 
 ul.nav li:not(.reportForm){
@@ -105,17 +104,6 @@ body{
   margin: 0;
   padding: 0;
 }
-
-.bodyWrapper{
-  text-align:center;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
-}
-
-.contentWrapper{
-   flex:1;
- }
 
 .Content{
   padding-top: 60px
