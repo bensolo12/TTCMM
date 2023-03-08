@@ -15,7 +15,7 @@ function fetch(inc){
         $('#NewsTitle'+(inc)).text(dataJson['Title']);
         $('#NewsDate'+(inc)).text(dataJson['news_date']);
         $('#NewsSummary'+(inc)).text(dataJson['body']);
-        $('#NewsBox'+(inc)).css("background-image", ("url(https://s4005098-ct4009.uogs.co.uk/Images/"+dataJson['image']+")"))
+
         if (inc == 3){
           return("End")
         }

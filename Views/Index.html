@@ -8,12 +8,13 @@
     display: -ms-flex;
     display: -webkit-flex;
     flex-wrap:wrap;
+    text-align: left;
   }
   .NewsBox{
     padding:10px;
     color: black;
     margin:15px;
-    margin-top: 5px;
+    margin-top: 20px;
     border: 3px;
     border-color: black;
     border-style: double;
@@ -22,7 +23,13 @@
     -webkit-flex: 28%;
     background-color: var(--TTSecondary);
     height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background size:cover ;
+    background-attachment: fixed;
+    position:relative;
   }
+
   @media (max-width:1100px) {
   .NewsBox{
     flex:100%;
@@ -35,12 +42,16 @@
 </style>
   <head>
     <meta charset="utf-8">
-      <link href="../CSS/Style.css" rel="stylesheet" type="text/css">
+      <link href="../CSS/Style.CSS" rel="stylesheet" type="text/css">
       <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Cheltenham Town Council Maintance System</title>
   </head>
+
   <body>
-    <nav>
+    <header>
+      <h1   style="padding-top: 140px; color:white;">Cheltenham Council Maintiance Report System</h1>
+    </header>
+    <nav id="navbar">
 <!-- space and framework left to make navbar collapsable if needed -->
       <div class="">
         <ul class="nav">
@@ -56,6 +67,7 @@
 
 
     <div class="Content">
+
 
 
     <div class="NewsStories">
@@ -78,10 +90,15 @@
       </div>
 
     </div>
+    <div class="" style="align-self: center; background-color:var(--TTActiveGray); padding: 50px; text-align: center;">
+      <a href="#" class="ButtonLink">Report An Issue</a><br>
+      <p style="margin-top:30px;">Report any maintiance issues you may have found to the Cheltenham council and we will fix it as quickly as possible</p>
 
 
     </div>
+
     </div>
+
 
 
     <footer>
@@ -99,5 +116,6 @@
 
     </footer>
     <script src="../JS/Index.js"></script>
+    <script src="../JS/Common.js"></script>
   </body>
 </html>
