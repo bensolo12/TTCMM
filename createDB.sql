@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS user_table (
   last_name varchar(30),
   email varchar(30),
   date_of_birth date,
-  user_password varchar(30),
+  user_password varchar(250),
   role text(10),
   PRIMARY KEY (user_id),
   FOREIGN KEY (contractor_id) REFERENCES contractor_table(contractor_id)
