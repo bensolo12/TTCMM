@@ -20,7 +20,7 @@ if($_POST['phpFunction'] == 'create')
         $debug = $rows['user_password'];
 
         if(password_verify($pass, $rows['user_password'])){
-            $sql2 = ("SELECT `user_id` FROM `user_table` WHERE `email` = '".$email."'");
+            $sql2 = ("SELECT `user_id`, `role` FROM `user_table` WHERE `email` = '".$email."'");
             $result2 = mysqli_query($connection, $sql2);
             $rows2=mysqli_fetch_assoc($result2);
 
