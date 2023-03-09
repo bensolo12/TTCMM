@@ -94,10 +94,8 @@
   </nav>
 
     <div id="page-container">
-        <div class="container" style="padding-bottom: 4rem; width:30%;"">
-            <!--Add any stuff for outside the form here-->
+        <div class="container" style="padding-bottom: 4rem; width:30%;">
             <form id="formCreateUser" method="POST">
-                  <!--Add the html for creating a user here-->
                   <h2 class="mt-3" style="text-align: center;">Sign Up</h2>
 
                   <label class="form-field" for="firstName">First Name:</label>
@@ -142,6 +140,10 @@
 
             </form>
             <script src="../JS/createUser.js"></script>
+
+            <div id="success-message" style="display: none;">
+              <h1 class="mt-5">Thank you for signing up!</h1>
+            </div>
         </div>
 
         <footer id="footer">
@@ -170,6 +172,24 @@
           optionalFields.style.display = "none";
         }
       }
+    </script>
+
+    <script>
+      function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Get a reference to the form and the success message
+        const form = document.getElementById('formCreateUser');
+        const successMessage = document.getElementById('success-message');
+
+        // Hide the form and show the success message
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+      }
+
+      // Add an event listener to the form submit event
+      const form = document.getElementById('formCreateUser');
+      form.addEventListener('submit', handleFormSubmission);
     </script>
 
  </body>
