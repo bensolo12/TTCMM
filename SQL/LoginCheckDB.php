@@ -18,10 +18,13 @@ if($_POST['phpFunction'] == 'create')
 
         $debug = password_hash($password, PASSWORD_DEFAULT);
         $debug2 = $rows['user_password'];
-        echo("<script>console.log('PHP: " . $debug . "');</script>");
-        echo("<script>console.log('PHP: " . $debug2 . "');</script>");
-
-        if(password_hash($password, PASSWORD_DEFAULT) == $rows['user_password']){
+        echo("INPUT RESULT=" . $debug . "');</script>");
+        echo("DB RESULT=" . $debug2 . "');</script>");
+       
+        if(password_verify($password, $rows['user_password'])){
+            echo '{"result":"false2"}';
+        };
+        if(password_verify($password, $rows['user_password'])){
             $sql2 = ("SELECT `user_id` FROM `user_table` WHERE `email` = '".$email."'"); 
             $result2 = mysqli_query($connection, $sql2);
             $rows2=mysqli_fetch_assoc($result2);
