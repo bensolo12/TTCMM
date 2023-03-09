@@ -158,18 +158,20 @@
         <div class="form-tab">Further Details</div>
       </div>
 
-      <?php 
-      try{
-        $userID = $_SESSION['user_id'];
-        echo $userID;
-      }
-      catch(Exception $e){
-        echo $userID;
-        echo "You must be logged in to create a report.";
-      }
-      
-      if($userID != null):
-      ?>
+        <?php 
+        try{
+          error_reporting(E_ERROR | E_PARSE);
+          $userID = $_SESSION['user_id'];
+          if(is_null($userID)){
+            $errorMessage = 'You must be logged in to create a report';
+            echo "<h2 class='mt-5' style='margin:auto; text-align: center;'> $errorMessage </h2>";
+          }
+        }
+        catch(Exception $e){
+        }
+        
+        if($userID != null):
+        ?>
       <form id="formCreateReport" method="POST">
 
         <div class="form-stage">
@@ -252,8 +254,8 @@
         <h1 class="mt-5">Thank you for bringing this issue to our attention!</h1>
       </div>
     </div>
-
-    <?php endif?>
+    <?php endif;
+    ?>
     
     <footer id="footer">
       <div class="" style="width:45%;">
