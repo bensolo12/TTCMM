@@ -34,7 +34,8 @@
 
     #page-container {
       position: relative;
-      min-height: 86vh;
+      min-height: 92.5vh;
+      padding-top: 5em;
     }
 
     .nav {
@@ -68,7 +69,6 @@
         background-color: #8403fc; 
         color: white;
     }
-
 </style>
 
 <head>
@@ -96,20 +96,20 @@
     <div id="page-container">
         <div class="container" style="padding-bottom: 4rem; width:30%;"">
             <!--Add any stuff for outside the form here-->
-            <form id="formLogin" method="POST">
+            <form id="formLoginUser" method="POST">
                 <!--Add the html for creating a user here-->
-                <h2 class="mt-3" style="text-align: center;">Log In</h2>
+                <h2 class="mt-5" style="text-align: center;">Log In</h2>
 
                 <label class="form-field" for="email">Email:</label>
-                <input class="form-field mb-3" type="email" id="email" name="email" required>
+                <input class="form-field mb-4" type="email" id="email" name="email" required>
 
                 <label class="form-field" for="password">Password:</label>
-                <input class="form-field mb-3" type="password" id="password" name="password" required>
+                <input class="form-field mb-4" type="password" id="password" name="password" required>
 
-                <input class="submit-button form-field mb-3" type="submit" value="Log In">
+                <input class="submit-button form-field mb-4" type="submit" value="Log In">
 
-                <a class="mb-2" style="text-align: center;" href="registration.html">Don't have an account? Sign up here</a>
-                <a class="mb-2" style="text-align: center;" href="resetPassword.html">Reset my password</a>
+                <a class="mb-3" style="text-align: center;" href="registration.html">Don't have an account? Sign up here</a>
+                <a class="mb-3" style="text-align: center;" href="resetPassword.html">Reset my password</a>
 
           </form>
             <script src="../JS/Login.js"></script>
