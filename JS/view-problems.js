@@ -45,7 +45,7 @@ function displayFullReport(reportId) {
 
     $.ajax({
         type: "POST",
-        url: "getreport.php",
+        url: "../PHP/getreport.php",
         data:"report_id="+reportId,
         datatype: "json",
         success: function(msg){
@@ -88,7 +88,7 @@ function renderReports(filters) {
     scrollContainer.innerHTML = "";
     $.ajax({
         type: "POST",
-        url: "getreports.php",
+        url: "../PHP/getreports.php",
         data: "filters="+filters,
         datatype: "json",
         success: function(msg){
@@ -172,35 +172,51 @@ function displayReportPanel(scrollContainer, dateReported, id, type, address, st
     heartElement.classList.add("heart");
     heartElement.innerHTML = "&#10084;";
 
-    // TEMPORARY - for testing, MUST CHANGE THIS TO CHECK THE ACTUAL CURRENTLY LOGGED IN USER
-    userId = 1;
-
-    isFavourited(id, userId, function(result) {
-        if (result) {
-            heartElement.classList.add("active");
-        }
-    });
-
-    heartElement.addEventListener('click', function() {
+    getCurrentUserId(function(userId) {
+        // If a user ID is returned then add the ability to favourite reports
+        if (userId !== "none") {
+            isFavourited(id, userId, function(result) {
+                if (result) {
+                    heartElement.classList.add("active");
+                }
+            });
         
-        this.classList.toggle('active');
-        if (this.classList.contains('active')) {
-            favourite(id, userId);
+            heartElement.addEventListener('click', function() {
+                
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    favourite(id, userId);
+                } else {
+                    unfavourite(id, userId);
+                }
+                
+            });
+            newPanel.append(heartElement);
         } else {
-            unfavourite(id, userId);
+            console.log("Something has gone wrong - could not get the currently logged in user ID");
         }
-        
     });
-    newPanel.append(heartElement);
 
     scrollContainer.appendChild(newPanel)
+}
+
+function getCurrentUserId(callback) {
+    // Make an AJAX request to the getUserId PHP file to get the user ID
+    $.ajax({
+        url: "../PHP/getUserId.php",
+        datatype: "json",
+        success: function(userId) {
+          // Call the callback function with the user ID
+          callback(userId);
+        }
+    });
 }
 
 function favourite(reportId, currentUserId) {
     //Call PHP code to add report ID and currentUserID to the favourites table
     $.ajax({
         type: "POST",
-        url: "addremovefavourites.php",
+        url: "../PHP/addremovefavourites.php",
         data: "user_id="+currentUserId+"&report_id="+reportId+"&command=Favourite",
         datatype: "json",
         success: function(msg){
@@ -218,7 +234,7 @@ function unfavourite(reportId, currentUserId) {
     //Same as favourite but pass the command variable as "Unfavourite" to show that it should be removed
     $.ajax({
         type: "POST",
-        url: "addremovefavourites.php",
+        url: "../PHP/addremovefavourites.php",
         data: "user_id="+currentUserId+"&report_id="+reportId+"&command=Unfavourite",
         datatype: "json",
         success: function(msg){
@@ -236,7 +252,7 @@ function isFavourited(reportId, currentUserId, callback) {
     //Call PHP getFavourites, if result is "none" then return false, otherwise return true
     $.ajax({
         type: "POST",
-        url: "getfavourite.php",
+        url: "../PHP/getfavourite.php",
         data: "user_id="+currentUserId+"&report_id="+reportId,
         datatype: "json",
         success: function(msg){
