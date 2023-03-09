@@ -6,25 +6,28 @@ if($_POST['phpFunction'] == 'create')
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
 
-		$userID = 4;
-        $contractorID = 1;
         $firstName = $_POST['firstName'];
         $lastName = $_POST['lastName'];
         $dateOfBirth = $_POST['DoB'];
         $email = $_POST['email'];
         $password = $_POST['password'];
-        //$role = $_POST['role'];
+        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+
+        $companyName = $_POST['companyName'];
+        $phoneNumber = $_POST['phoneNumber'];
+        $companyDescription = $_POST['companyDescription'];
+        $companyAddress = $_POST['companyAddress'];
 
 		include "../dbConfig.php";
 
-        //NEED TO ADD
-        //Submit the user info
-        //Get user and contractor ID's auto incrementing
-        //Figure out the contractor signup stuff
-        //Add password hashing
-        $sql = "INSERT INTO `user_table`(user_id, contractor_id, first_name, last_name, email, date_of_birth, 
+        $sql = "INSERT INTO `user_table`(first_name, last_name, email, date_of_birth, 
                                         user_password)"."values".
-		"($userID, '$contractorID', '$firstName', '$lastName', '$email', '$dateOfBirth', '$password')";
+		"('$firstName', '$lastName', '$email', '$dateOfBirth', '$hashedPassword')";
+
+        if(!empty($companyName) and !empty($phoneNumber) and !empty($companyDescription) and !empty($companyAddress)){
+            $sql = "INSERT INTO `contractor_table`(company_name, phone_number, company_description, company_address)"."values".
+		            "('$companyName', '$phoneNumber', '$companyDescription', '$companyAddress')";
+        }
 
         if(mysqli_query($connection, $sql)) {
             echo "Successfully registered.";
