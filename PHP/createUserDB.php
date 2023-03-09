@@ -21,8 +21,8 @@ if($_POST['phpFunction'] == 'create')
 		include "dbConfig.php";
 
         $sql = "INSERT INTO `user_table`(first_name, last_name, email, date_of_birth,
-                                        user_password)"."values".
-		"('$firstName', '$lastName', '$email', '$dateOfBirth', '$hashedPassword')";
+                                        user_password, role)"."values".
+		"('$firstName', '$lastName', '$email', '$dateOfBirth', '$hashedPassword', 'Citizen')";
 
         if(!empty($companyName) and !empty($phoneNumber) and !empty($companyDescription) and !empty($companyAddress)){
             $sql = "INSERT INTO `contractor_table`(company_name, phone_number, company_description, company_address)"."values".
