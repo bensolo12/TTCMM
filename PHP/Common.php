@@ -22,8 +22,8 @@ function logout () {
 //checks if the user is logged in
 function checkLogin() {
 	session_start();
-	$un = $_SESSION['un'];
-	$role = $_SESSION['role'];
+	$un = $_SESSION['user_id'];
+	$role = $_SESSION['user_role'];
 	if( isset( $un ) ) {
 		echo $role;
 	} else {

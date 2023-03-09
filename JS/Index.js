@@ -39,9 +39,9 @@ $.ajax({
 			// dependend on user role page contents are modified
       if(msg == "Citizen"){
         CitizenNav();
-      }if else (msg == "Contractor"){
+      }else if (msg == "Contractor"){
         ContractorNav();
-      }if else msg == "Employee"{
+      }else if msg == "Employee"{
         EmployeeNav();
       }
     }
