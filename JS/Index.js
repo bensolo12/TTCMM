@@ -40,7 +40,7 @@ $.ajax({
         CitizenNav();
       }else if (msg == "Contractor"){
         ContractorNav();
-      }else if msg == "Employee"{
+      }else if (msg == "Employee"){
         EmployeeNav();
       }
 
