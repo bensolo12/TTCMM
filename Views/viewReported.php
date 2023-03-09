@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>User Reports</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.CSS">
 
 </head>
 <body>
-    
+
     <style>
 
     table,th,td{
@@ -15,7 +15,7 @@
     .sortBy{
       position: absolute;
       right: 150px;
-  
+
     }
     .viewReported{
       width: 50%;
@@ -31,7 +31,7 @@
       width: 100%;
       background-color: black;
       color: white;
-      
+
     }
 
     </style>
@@ -47,7 +47,7 @@
           <li><a href="contractors.html">Contractors</a></li>
           <li style="float:right"><p>Account</p></li>
           <li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
-          
+
         </ul>
       </div>
     </nav>
@@ -80,20 +80,20 @@
       </tr>
       <?php while($rows=mysqli_fetch_assoc($result)):?>
         <tr>
-          <td><?php echo $rows['type']; ?></td> 
-          <td><?php echo $rows['favourites']; ?></td> 
+          <td><?php echo $rows['type']; ?></td>
+          <td><?php echo $rows['favourites']; ?></td>
           <td><?php echo $rows['date_reported']; ?></td>
           <td><button id=<?php echo $rows['report_id'] ?> onclick=" window.open('viewReport.php','_blank')">Show full report</button></td>
           <?php
           session_start();
           $reportID = $rows['report_id'];
-          $_SESSION['reportID'] = $reportID;          
-          ?>         
+          $_SESSION['reportID'] = $reportID;
+          ?>
 
         </tr>
       <?php endwhile; ?>
-      
-    </table>      
+
+    </table>
     <div class="footer">
       <a href="ContactUs.html">Contact Us</a><br>
       Report a bug: CheltBugReport@email.com
