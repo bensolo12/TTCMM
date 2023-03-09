@@ -35,7 +35,6 @@ $.ajax({
   url: "../PHP/Common.php",
   data: "phpFunction=checkLogin",
   success: function(msg){
-    if(msg == "Officer" || msg == "Admin"){
 			// dependend on user role page contents are modified
       if(msg == "Citizen"){
         CitizenNav();
@@ -44,7 +43,7 @@ $.ajax({
       }else if msg == "Employee"{
         EmployeeNav();
       }
-    }
+
   },
   error: function(msg){
     console.log(msg);
