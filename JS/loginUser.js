@@ -10,7 +10,7 @@ $('#formLoginUser').submit(function(event){
 			console.log(msg)
 			dataJson = JSON.parse(msg)
             if(dataJson['result'] =='false') {
-                $("#divMessage").html("Wrong username or password");
+                $("#msg").html("Wrong username or password");
             } else {
 				window.location = "../Views/Index.html";
 	    	}
