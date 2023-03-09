@@ -201,6 +201,9 @@
       </form>
       <script src="../JS/submitReport.js"></script>
 
+      <div id="success-message" style="display: none;">
+        <h1 class="mt-5">Thank you for bringing this issue to our attention!</h1>
+      </div>
     </div>
 
     <footer id="footer">
@@ -286,6 +289,24 @@
             tabs[currentStage].classList.add('active');
         });
         }
+    </script>
+
+    <script>
+      function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Get a reference to the form and the success message
+        const form = document.getElementById('formCreateReport');
+        const successMessage = document.getElementById('success-message');
+
+        // Hide the form and show the success message
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+      }
+
+      // Add an event listener to the form submit event
+      const form2 = document.getElementById('formCreateReport');
+      form.addEventListener('submit', handleFormSubmission);
     </script>
  </body>
 </html>
