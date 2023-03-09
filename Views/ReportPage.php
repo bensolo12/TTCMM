@@ -290,6 +290,9 @@
     </script>
 
     <script>
+      let latInput = document.getElementById('lat');
+      let lngInput = document.getElementById('lng');
+
       var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
       var mapOptions={
         zoom: 18,
@@ -307,7 +310,7 @@
       });
       var contentString = '<h1>Issue Location</h1>' + 'Please place this marker the location of the issue';
 
-        marker.addListener('click', function(){
+      marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
     
@@ -315,10 +318,17 @@
         content:contentString
       });
 
-      google.maps.event.addListener(marker, 'dragend', function(){
-        console.log(marker.getPosition().lat());
-        console.log(marker.getPosition().lng());
-      });
+      google.maps.event.addListener(marker, 'dragend', function(event){     
+        console.log('New latitude: ' + event.latLng.lat());
+        console.log('New longitude: ' + event.latLng.lng());
+
+        var newLat = event.latLng.lat();
+        var newLng = event.latLng.lng();
+        marker.setPosition(event.latLng);
+        latInput.value = newLat;
+        lngInput.value = newLng;
+        }
+      );
     </script>
 
     <script>
