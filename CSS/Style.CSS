@@ -83,12 +83,5 @@ footer div{
 
   float:left;
   text-align: center;
-  vertical-align: middle;
-}
 
-.ButtonLink{
-  background-color: var(--TTPurple);
-  padding: 20px;
-  color: black;
-  text-decoration: none;
 }
