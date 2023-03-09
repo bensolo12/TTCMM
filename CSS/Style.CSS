@@ -1,5 +1,5 @@
-/*Presets for offical Tema Tema colours*/
-:root{
+ /*Presets for offical Tema Tema colours*/
+ :root{
   --TTPurple: #8403fc;
   --TTHoverGray: #696969;
   --TTActiveGray: #3b3b3b;
@@ -7,10 +7,18 @@
 }
 /* is applied when the user scrolls to keep navbar at the top */
 nav{
+  z-index: 100;
+  width:100%;
+
+}
+.sticky{
   position:fixed;
   top: 0;
   width:100%;
+}
 
+.sticky + .Content{
+  padding-top: 60px;
 }
 /*Style the navbar*/
 ul.nav{
@@ -45,9 +53,8 @@ ul.nav a:hover:not(.NavActive){
 
 ul.nav .NavActive{
   background-color:var(--TTActiveGray);
+  color:white;
 }
-
-
 
 body{
   margin: 0;
@@ -55,10 +62,19 @@ body{
 }
 
 .Content{
-  padding-top: 60px
+ align-items: center;
+ width: 100%;
+ text-align: center;
+}
+
+header{
+  text-align: center;
+  height: 300px;
+  background-image: url(../Images/CheltHeader.png);
 }
 
 footer{
+  margin-top: 50px;
   height:50px;
   background-color: black;
   color: white;
@@ -67,4 +83,5 @@ footer div{
 
   float:left;
   text-align: center;
+
 }

@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        background-color:#E8E8E8;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    .form-field {
+      width:80%;
+      margin:auto;
+    }
+
+    .form-text-box {
+      height: 150px;
+    }
+
+    .form-field-optional {
+      width:100%;
+      margin:auto;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3.3rem;            /* Footer height */
+    }
+
+    #page-container {
+      position: relative;
+      min-height: 92.5vh;
+      padding-top: 5em;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav li:nth-child(4){
+      margin-left: auto;
+    }
+
+    .nav li {
+      display: flex;
+      align-items: center;
+    } */
+
+    @media (max-width: 767px) {
+        .container {
+            margin-top: 100px;
+        }
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .submit-button {
+        background-color: #8403fc;
+        color: white;
+    }
+</style>
+
+<head>
+    <title>Council Maintance Login</title>
+    <link rel="icon" type="image/x-icon" href="../Images/cheltenham-council.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+</head>
+
+<body>
+  <nav id="navbar">
+<!-- space and framework left to make navbar collapsable if needed -->
+    <div class="">
+      <ul id="NavList"class="nav">
+        <li id="NavHome"><a href="Index.html">Home</a></li>
+        <li id="NavReport"><a href="Report.html">Report Issue</a></li>
+        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
+        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+      </ul>
+    </div>
+  </nav>
+
+    <div id="page-container">
+        <div class="container" style="padding-bottom: 4rem; width:30%;">
+            <!--Add any stuff for outside the form here-->
+            <form id="formLoginUser" method="POST">
+                <!--Add the html for creating a user here-->
+                <h2 class="mt-5" style="text-align: center;">Log In</h2>
+
+                <label class="form-field" for="email">Email:</label>
+                <input class="form-field mb-4" type="email" id="email" name="email" required>
+
+                <label class="form-field" for="password">Password:</label>
+                <input class="form-field mb-4" type="password" id="password" name="password" required>
+
+                <input class="submit-button form-field mb-4" type="submit" value="Log In">
+
+                <p style="color: red; text-align: center; font-weight: bold;;" id="msg"></p>
+
+                <a class="mb-3" style="text-align: center;" href="registration.html">Don't have an account? Sign up here</a>
+                <a class="mb-3" style="text-align: center;" href="resetPassword.html">Reset my password</a>
+
+          </form>
+        </div>
+
+        <footer id="footer">
+        <div class="" style="width:45%;">
+            <a href="ContactUs.html">Contact Us</a><br>
+            Report a bug: CheltBugReport@email.com
+        </div>
+        <div class="" style="width:45%;">
+        Made by TEMA TEMA inc
+        </div>
+        <div class="" style="width:10%;">
+            <img src="../Images/tematemalogo.png" height="40px" width="40px">
+        </div>
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/loginUser.js"></script>
+ </body>
+</html>
