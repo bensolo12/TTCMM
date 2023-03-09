@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS contractor_table (
 );
 CREATE TABLE IF NOT EXISTS user_table (
   user_id int(5) not null AUTO_INCREMENT,
-  contractor_id int(5) not null,
+  contractor_id int(5),
   first_name varchar(15),
   last_name varchar(30),
   email varchar(30),
