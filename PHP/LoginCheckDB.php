@@ -27,6 +27,7 @@ if($_POST['phpFunction'] == 'create')
             session_start();
             echo json_encode($rows2);
             $_SESSION['user_id'] = $rows2['user_id'];
+	    $_SESSION['user_role'] = $rows2['role'];
         }
         else{
             echo '{"result":"false"}';

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create News Page</title>
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript">
+      
+    function setFileNameCookie() {
+      const fileInput = document.getElementById("newsImage");
+      const file = fileInput.files[0];
+      const fileName = file.name;
+      session.start();
+      sessionStorage.setItem(fileName,fileName);
+}
+
+// Call the function when the form is submitted
+    //document.getElementById("formCreateNews ").addEventListener("submit", function(event) {
+    
+  // Other form submission code...
+//});
+
+/*       const fileInput = document.getElementById("newsImage");
+      //fileInput.addEventListener("change", function() {
+      const file = this.files[0];
+      const fileName = file.name;
+      const filePath = this.value; // contains the full path in Chrome
+      const realPath = filePath.replace("C:\\fakepath\\", ""); // remove the fake path prefix in Chrome
+      document.cookie = "realPath=" + realPath;
+      console.log("Selected file name:", realPath);
+
+    //}); */
+  </script>
+
+</head>
+
+
+<body>
+    
+    <style>
+    .TitleClass{
+      width: 100%;
+      height: 50px;
+      padding: 10px;
+      text-align: left;
+      border: 5px solid black;
+      background-color: lightgray;
+      margin: 0;
+    }
+    .MainClass{
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      border: 5px solid black;
+      margin: 0;
+    }
+
+    img {
+      height: 150px;
+      width: 150px;
+    }
+    .AddImages{
+      width: 100%;
+      height: 200px;
+      padding: 10px;
+      border: 5px solid black;
+      margin: 0;
+    }
+    .CreateNews {
+  margin-bottom: 70px; /* Adjust this value as needed */
+}
+    
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: black;
+      color: white;
+    }
+
+    </style>
+    <nav>
+<!-- space and framework left to make navbar collapsable if needed -->
+      <div class="">
+        <ul class="nav">
+          <li><a href="Index.html">Home</a></li>
+          <li><a href="Report.html">Report</a></li>
+          <li><a href="viewReported.php">User Reports</a></li>
+          <li><a class="NavActive" href="createNews.html">News</a></li>
+          <li><a href="stats.html">Statistics</a></li>
+          <li><a href="contractors.html">Contractors</a></li>
+          <li style="float:right"><p>Account</p></li>
+          <li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+        </ul>
+      </div>
+    </nav>
+    <br>
+    <br>
+    <br>
+    <form method = "post" action="formCreateNews" id = "formCreateNews">
+        <div class = 'CreateNews'>
+            <div class="TitleClass">
+                Enter News Title Here:   <input type = "text" name="NewsTitle" size="50" required>
+            </div>
+            <div class="MainClass">
+                Enter News Body Here:<br><textarea name="newsBody" cols="100" rows="10" required></textarea>
+            </div>
+            <div class="AddImages">
+              Add New Image   <input type="file" id="newsImage" name="newsImage" accept = "image/png">
+              <!--<script src="../JS/showImage.js"></script> -->                   
+            </div>
+            <div style="clear: both;"></div>
+            <button type="submit" onclick=setFileNameCookie(); >Submit News</button>        
+        </div>
+    </form>
+    <script src="../JS/createNews.js"></script>
+    
+    <div class="footer">
+      <a href="ContactUs.html">Contact Us</a><br>
+      Report a bug: CheltBugReport@email.com
+      Made by TEMA TEMA inc
+      <!--<img src="../Images/tematemalogo.png" height="40px" width="40px"> -->
+    </div>
+      
+</body>
+</html>
