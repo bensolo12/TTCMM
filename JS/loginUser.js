@@ -3,10 +3,10 @@ $('#formLoginUser').submit(function(event){
 
 	$.ajax({
 		type: "POST",
-		url: "../SQL/LoginCheckDB.php",
+		url: "../PHP/LoginCheckDB.php",
 		data: formData+"&phpFunction=create",
 		datatype: 'json',
-	    success: function(msg){ 
+	    success: function(msg){
 			console.log(msg)
 			dataJson = JSON.parse(msg)
             if(dataJson['result'] =='false') {
@@ -15,7 +15,7 @@ $('#formLoginUser').submit(function(event){
 				window.location = "../Views/Index.html";
 	    	}
 		},
-		error: function(msg){ 
+		error: function(msg){
 			console.log(msg);
 	    }
 	});

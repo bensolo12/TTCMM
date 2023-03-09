@@ -1,5 +1,5 @@
 <?php
-if($_POST['phpFunction'] == 'create') 
+if($_POST['phpFunction'] == 'create')
 		create();
     function create(){
         ini_set('display_errors', 1);
@@ -18,9 +18,9 @@ if($_POST['phpFunction'] == 'create')
         $companyDescription = $_POST['companyDescription'];
         $companyAddress = $_POST['companyAddress'];
 
-		include "../dbConfig.php";
+		include "dbConfig.php";
 
-        $sql = "INSERT INTO `user_table`(first_name, last_name, email, date_of_birth, 
+        $sql = "INSERT INTO `user_table`(first_name, last_name, email, date_of_birth,
                                         user_password)"."values".
 		"('$firstName', '$lastName', '$email', '$dateOfBirth', '$hashedPassword')";
 
@@ -34,7 +34,7 @@ if($_POST['phpFunction'] == 'create')
         } else {
             echo mysqli_error($connection);
             return;
-        }	
+        }
         mysqli_close($connection);
     }
 ?>

@@ -4,13 +4,13 @@ $('#formCreateUser').submit(function(event){
 
 	$.ajax({
 		type: "POST",
-		url: "../SQL/createUserDB.php",
+		url: "../PHP/createUserDB.php",
 		data: formData+"&phpFunction=create",
-	    success: function(msg){ 
-			$("#divMessage").html(msg);	
+	    success: function(msg){
+			$("#divMessage").html(msg);
 			alert(msg);
 	    },
-		error: function(msg){ 
+		error: function(msg){
 			console.log(msg);
 	    }
 	});

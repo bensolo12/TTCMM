@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html>
+<html lang="en" dir="ltr">
 
 <style>
     form {
@@ -65,16 +65,17 @@
     }
 
     .submit-button {
-        background-color: #8403fc; 
+        background-color: #8403fc;
         color: white;
     }
 
 </style>
 
 <head>
-    <title>Council Report Page</title>
+    <title>Register User</title>
+    <link rel="icon" type="image/x-icon" href="../Images/cheltenham-council.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/style.CSS">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
@@ -84,9 +85,9 @@
           <div class="">
             <ul class="nav">
               <li><a href="Index.html">Home</a></li>
-              <li><a class="NavActive" href="ReportPage.php">Report Issue</a></li>
+              <li><a href="ReportPage.php">Report Issue</a></li>
               <li><a href="ContactUs.html">Contact Us</a></li>
-              <li class="mr-2" style="float:right;display: flex; justify-content: flex-end;"><a href="Index.html" id="NavSignIn">Sign In</a></li>
+              <li class="mr-2" style="float:right;display: flex; justify-content: flex-end;"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
               <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
               <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value="" placeholder="Search"></li>
             </ul>
@@ -118,7 +119,7 @@
 
                   <button class="mb-3" type="button" onclick="toggleOptionalFields()">Contractor information (optional)
                     <span id="arrow">&#9660;</span></button>
-  
+
                   <div class="form-field" id="optional-fields" style="display:none;">
 
                     <label class="form-field" for="companyName">Company Name:</label>
@@ -139,7 +140,6 @@
                   <a class="mb-2" style="text-align: center;" href="Login.html">Already got an account? Log in here</a>
 
             </form>
-            <script src="../JS/createUser.js"></script>
 
             <div id="success-message" style="display: none;">
               <h1 class="mt-5">Thank you for signing up!</h1>
@@ -159,7 +159,8 @@
         </div>
         </footer>
     </div>
-  
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/createUser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 

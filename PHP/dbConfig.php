@@ -1,13 +1,12 @@
 <?php
-// connection to the sql database
-  $servername = "localhost";
-  $username = "CT4034BTUser";
-  $password = "E6@g9xx9";
-  $dbname = "s4005098_CT4034DB";
+    $servername = "localhost";
+    $username = "CT503823Grp1";
+    $password = "4t8r8X0l$";
+    $dbname = "ttcmm";
 
-  $connection = new mysqli($servername, $username, $password, $dbname);
+    $connection = new mysqli($servername, $username, $password, $dbname);
 
-  if($connection->connect_error){
-    echo $connection->connect_error;
-  }
- ?>
+    if($connection->connect_error) {
+        echo $connection->connect_error;
+    }
+?>

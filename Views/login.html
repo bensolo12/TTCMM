@@ -50,7 +50,7 @@
     .nav li {
       display: flex;
       align-items: center;
-    }
+    } */
 
     @media (max-width: 767px) {
         .container {
@@ -66,35 +66,35 @@
     }
 
     .submit-button {
-        background-color: #8403fc; 
+        background-color: #8403fc;
         color: white;
     }
 </style>
 
 <head>
-    <title>Council Report Page</title>
+    <title>Council Maintance Login</title>
+    <link rel="icon" type="image/x-icon" href="../Images/cheltenham-council.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/style.CSS">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
-  <nav style="position:sticky;z-index: 1100;">
-    <!-- space and framework left to make navbar collapsable if needed -->
-          <div class="">
-            <ul class="nav">
-              <li><a href="Index.html">Home</a></li>
-              <li><a href="ReportPage.php">Report Issue</a></li>
-              <li><a href="ContactUs.html">Contact Us</a></li>
-              <li style="float:right;display: flex; justify-content: flex-end;"><a class="NavActive" href="Index.html" id="NavSignIn">Sign In</a></li>
-              <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
-              <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value="" placeholder="Search"></li>
-            </ul>
-          </div>
+  <nav id="navbar">
+<!-- space and framework left to make navbar collapsable if needed -->
+    <div class="">
+      <ul id="NavList"class="nav">
+        <li id="NavHome"><a href="Index.html">Home</a></li>
+        <li id="NavReport"><a href="Report.html">Report Issue</a></li>
+        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
+        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+      </ul>
+    </div>
   </nav>
 
     <div id="page-container">
-        <div class="container" style="padding-bottom: 4rem; width:30%;"">
+        <div class="container" style="padding-bottom: 4rem; width:30%;">
             <!--Add any stuff for outside the form here-->
             <form id="formLoginUser" method="POST">
                 <!--Add the html for creating a user here-->
@@ -114,7 +114,6 @@
                 <a class="mb-3" style="text-align: center;" href="resetPassword.html">Reset my password</a>
 
           </form>
-            <script src="../JS/LoginUser.js"></script>
         </div>
 
         <footer id="footer">
@@ -130,9 +129,10 @@
         </div>
         </footer>
     </div>
-  
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/loginUser.js"></script>
  </body>
 </html>
