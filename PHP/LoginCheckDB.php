@@ -11,7 +11,7 @@ if($_POST['phpFunction'] == 'create')
 
 		include "dbConfig.php";
 
-        $sql = ("SELECT `user_password` FROM `user_table` WHERE `email` = '".$email."'");
+        $sql = ("SELECT `user_password`, `role` FROM `user_table` WHERE `email` = '".$email."'");
 
         $result = mysqli_query($connection, $sql);
 
