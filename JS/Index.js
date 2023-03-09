@@ -50,19 +50,7 @@ $.ajax({
     console.log(msg);
   }
 });
-var user_role = '<%=session.getAttribute("user_role")%>';
-if(user_role == "citizen"){
-  ClearBar();
-  CitizenNav();
-}
-else if(user_role == "contractor"){
-  ClearBar();
-  ContractorNav();
-}
-else if(user_role == "employee"){
-  ClearBar();
-  EmployeeNav();
-}
+
 //clears the navbar to allow a new navbar to take its place
 function ClearBar(){
   $("#NavHome").remove()
