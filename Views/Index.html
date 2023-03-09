@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en" dir="ltr">
 <style>
   .NewsStories{
@@ -8,12 +8,13 @@
     display: -ms-flex;
     display: -webkit-flex;
     flex-wrap:wrap;
+    text-align: left;
   }
   .NewsBox{
     padding:10px;
     color: black;
     margin:15px;
-    margin-top: 5px;
+    margin-top: 20px;
     border: 3px;
     border-color: black;
     border-style: double;
@@ -22,7 +23,13 @@
     -webkit-flex: 28%;
     background-color: var(--TTSecondary);
     height: 300px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background size:cover ;
+    background-attachment: fixed;
+    position:relative;
   }
+
   @media (max-width:1100px) {
   .NewsBox{
     flex:100%;
@@ -35,64 +42,64 @@
 </style>
   <head>
     <meta charset="utf-8">
-      <link href="../CSS/Style.css" rel="stylesheet" type="text/css">
+      <link href="../CSS/Style.CSS" rel="stylesheet" type="text/css">
+      <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <title>Cheltenham Town Council Maintance System</title>
+    <link rel="icon" type="image/x-icon" href="../Images/cheltenham-council.png">
   </head>
+
   <body>
-    <nav>
+    <header>
+      <h1   style="padding-top: 140px; color:white;">Cheltenham Council Maintiance Report System</h1>
+    </header>
+    <nav id="navbar">
 <!-- space and framework left to make navbar collapsable if needed -->
       <div class="">
-        <ul class="nav">
-          <li><a class="NavActive" href="Index.html">Home</a></li>
-          <li><a href="Report.html">Report Issue</a></li>
-          <li><a href="ContactUs.html">Contact Us</a></li>
-          <li style="float:right"><a href="Index.html" id="NavSignIn">Sign In</a></li>
-          <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
-          <li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+        <ul id="NavList"class="nav">
+          <li id="NavHome"><a class="NavActive" href="Index.html">Home</a></li>
+          <li id="NavReport"><a href="Report.html">Report Issue</a></li>
+          <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+          <li id="NavSignIn" style="float:right"><a href="Index.html" id="NavSignIn">Sign In</a></li>
+          <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
         </ul>
       </div>
     </nav>
 
 
+
     <div class="Content">
 
 
-    <div class="NewsStories">
-      <div class="NewsBox">
-        <h1 id="NewsTitle1">News Story 1</h1><br>
-        <p id="NewsSummary1">Ben did stuff this week, I am proud of him</p>
-      </div>
-
-      <div class="NewsBox">
-        <h1 id="NewsTitle2">News Story 2</h1>
-        <p id="NewsSummary2"></p>
-      </div>
-
-      <div class="NewsBox">
-        <h1 id="NewsTitle3">News Story 3</h1>
-        <p id="NewsSummary3"></p>
-      </div>
-
-    </div>
 
     <div class="NewsStories">
-      <div class="NewsBox">
-        <h1 id="NewsTitle1">News Story 1</h1><br>
-        <p id="NewsSummary1">Ben did stuff this week, I am proud of him</p>
+      <div class="NewsBox" id="NewsBox1">
+        <h1 id="NewsTitle1">No News Found</h1>
+        <small id="NewsDate1">No Date Found</small>
+        <p id="NewsSummary1">No News has been found from our database to put here</p>
       </div>
 
-      <div class="NewsBox">
-        <h1 id="NewsTitle2">News Story 2</h1>
-        <p id="NewsSummary2"></p>
+      <div class="NewsBox" id="NewsBox2">
+        <h1 id="NewsTitle2">No News Found</h1>
+        <small id="NewsDate2">No Date Found</small>
+        <p id="NewsSummary2">No News has been found from our database to put here</p>
       </div>
 
-      <div class="NewsBox">
-        <h1 id="NewsTitle3">News Story 3</h1>
-        <p id="NewsSummary3"></p>
+      <div class="NewsBox" id="NewsBox3">
+        <h1 id="NewsTitle3">No News Found</h1>
+        <small id="NewsDate3">No Date Found</small>
+        <p id="NewsSummary3">No News has been found from our database to put here</p>
       </div>
 
     </div>
+    <div id="ReportPrompt" class="" style="align-self: center; background-color:var(--TTActiveGray); padding: 50px; text-align: center;">
+      <a id="ReportLink" href="Report.html" class="ButtonLink">Report An Issue</a><br>
+      <p id="ReportText"style="margin-top:30px;">Report any maintiance issues you may have found to the Cheltenham council and we will fix it as quickly as possible</p>
+
+
     </div>
+
+    </div>
+
 
 
     <footer>
@@ -109,5 +116,7 @@
 
 
     </footer>
+    <script src="../JS/Index.js"></script>
+    <script src="../JS/Common.js"></script>
   </body>
 </html>
