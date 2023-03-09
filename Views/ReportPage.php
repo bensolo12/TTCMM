@@ -80,6 +80,39 @@
         }
     }
 
+    .upload-label {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100px;
+      width: 50%;
+      border: 2px dashed #ccc;
+      font-size: 18px
+    }
+
+    .upload-label span {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    #image-upload {
+      display: none;
+    }
+
+    .upload-label:hover {
+      cursor: pointer;
+      border-color: #aaa;
+    }
+
+    .upload-label:hover span {
+      color: #aaa;
+    }
+
+    .upload-label:focus-within {
+      outline: 2px dotted #aaa;
+    }
+
 </style>
 
 <head>
@@ -87,6 +120,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <?php session_start();?>
 </head>
 
 <body>
@@ -124,6 +158,18 @@
         <div class="form-tab">Further Details</div>
       </div>
 
+      <?php 
+      try{
+        $userID = $_SESSION['user_id'];
+        echo $userID;
+      }
+      catch(Exception $e){
+        echo $userID;
+        echo "You must be logged in to create a report.";
+      }
+      
+      if($userID != null):
+      ?>
       <form id="formCreateReport" method="POST">
 
         <div class="form-stage">
@@ -186,8 +232,11 @@
               <textarea name="problemDescription" class="form-control" style="width:50%" id="problemDescription" rows="3" required></textarea>
           </div>
           <div class="form-group">
-              <label for="imageUpload">Upload Image</label>
-              <input type="file" class="form-control-file" id="imageUpload">
+            <label for="image-upload" class="upload-label">
+              <span><b>Upload photographic evidence here</b></span>
+              <input id="image-upload" type="file" name="image-upload" multiple accept="image/*">
+              <ul id="file-list"></ul>
+            </label>
           </div>
 
           <div class="mt-3 nav-buttons">
@@ -204,6 +253,8 @@
       </div>
     </div>
 
+    <?php endif?>
+    
     <footer id="footer">
       <div class="" style="width:45%;">
         <a href="ContactUs.html">Contact Us</a><br>
@@ -223,38 +274,49 @@
     <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
 
     <script>
-    
+      const input = document.querySelector('#image-upload');
+      const fileList = document.querySelector('#file-list');
 
-		var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);//longitude and lattittude the map opens at
-		var mapOptions={
-			zoom: 18,
-			center: mapCenter,
-			mapTypeId: google.maps.MapTypeId.HYBRID//allows map options such as Hybrid, Roadmap and Satalite
-		};
-		var container=document.getElementById('map-canvas');
-		var map=new google.maps.Map(container, mapOptions);
-		// Showing a marker in the google map
-		var marker=new google.maps.Marker({
-			position: mapCenter,
-			map:map,
-			title: 'Issue Location',//shows when you hover over the marker
-			//icon: 'unknown.png'//allows for a custom marker icon
-			draggable: true
-		});
-		var contentString = '<h1>Issue Location</h1>' + 'Please place this marker the location of the issue';//content string for the infowindow
-		//determines where the infowindow should be
-			marker.addListener('click', function(){
-			infoWindow.open(map, marker);//adds an event listener to the marker
-		});
-		//this creates the info window and fetches the text from the var
-		var infoWindow= new google.maps.InfoWindow({
-			content:contentString
-		});
-		//allows you to fetch the lattitude and longitude of the marker while moving it
-		google.maps.event.addListener(marker, 'dragend', function(){
-			console.log(marker.getPosition().lat());
-			console.log(marker.getPosition().lng());
-		});
+      input.addEventListener('change', () => {
+        fileList.innerHTML = ''; // clear the previous file list
+        for (const file of input.files) {
+          const listItem = document.createElement('li');
+          listItem.textContent = file.name;
+          fileList.appendChild(listItem);
+        }
+      });
+    </script>
+
+    <script>
+      var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
+      var mapOptions={
+        zoom: 18,
+        center: mapCenter,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+      };
+      var container=document.getElementById('map-canvas');
+      var map=new google.maps.Map(container, mapOptions);
+
+      var marker=new google.maps.Marker({
+        position: mapCenter,
+        map:map,
+        title: 'Issue Location',
+        draggable: true
+      });
+      var contentString = '<h1>Issue Location</h1>' + 'Please place this marker the location of the issue';
+
+        marker.addListener('click', function(){
+        infoWindow.open(map, marker);
+      });
+    
+      var infoWindow= new google.maps.InfoWindow({
+        content:contentString
+      });
+
+      google.maps.event.addListener(marker, 'dragend', function(){
+        console.log(marker.getPosition().lat());
+        console.log(marker.getPosition().lng());
+      });
     </script>
 
     <script>
@@ -293,18 +355,15 @@
 
     <script>
       function handleFormSubmission(event) {
-        event.preventDefault(); // Prevent the form from submitting
+        event.preventDefault();
 
-        // Get a reference to the form and the success message
         const form = document.getElementById('formCreateReport');
         const successMessage = document.getElementById('success-message');
 
-        // Hide the form and show the success message
         form.style.display = 'none';
         successMessage.style.display = 'block';
       }
 
-      // Add an event listener to the form submit event
       const form2 = document.getElementById('formCreateReport');
       form.addEventListener('submit', handleFormSubmission);
     </script>

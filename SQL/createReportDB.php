@@ -13,19 +13,21 @@ if($_POST['phpFunction'] == 'create')
         $problemDescription = $_POST['problemDescription'];
         $reportStatus = "Awaiting";
         $dateReported = date('d/m/Y H:i:s');
+        // $image = $_POST['image-upload'];
+        // $imageName = $_FILES['image-upload']['name'];
+        // $imageType = $_FILES['image-upload']['type'];
+        // $imageError = $_FILES['image-upload']['error'];
+        // $imageTemp = $_FILES['image-upload']['tmp_name'];
+        // $imagePath = "../Images";
+
+        // if(!is_null($imageTemp)) {
+        //     move_uploaded_file($imageTemp, $imagePath . $imageName);
+        // }
 
 		include "../dbConfig.php";
 
-        //NEED TO ADD
-        //Fet current user ID (once log in is working)
-        //Get lat/long from the alternate address field
-        $sql = "INSERT INTO `report_table`(user_id, type, long, lat, description, report_status, date_reported)"."values".
-			"($userID, '$issueType', '$long', '$lat', '$problemDescription', '$reportStatus', '$dateReported')";
-
-        //Create an insert for the images table, linking the report_id with each image submitted
-
-        //$sql = "INSERT INTO `images_table`()"."values".
-            //"()";
+        $sql = "INSERT INTO `report_table`(user_id, type, description, report_status, date_reported)"."values".
+			"($userID, '$issueType', '$problemDescription', '$reportStatus', '$dateReported')";
 
         if(mysqli_query($connection, $sql)) {
             echo "Successfully registered.";
