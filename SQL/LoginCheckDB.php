@@ -7,24 +7,19 @@ if($_POST['phpFunction'] == 'create')
         error_reporting(E_ALL);
 
 		$email = $_POST['email'];
-        $password = $_POST['password'];;
+        $pass = $_POST['password'];;
 
 		include "../dbConfig.php";
 
         $sql = ("SELECT `user_password` FROM `user_table` WHERE `email` = '".$email."'");
+
         $result = mysqli_query($connection, $sql);
 
         $rows=mysqli_fetch_assoc($result);
 
-        $debug = password_hash($password, PASSWORD_DEFAULT);
-        $debug2 = $rows['user_password'];
-        echo("INPUT RESULT=" . $debug . "');</script>");
-        echo("DB RESULT=" . $debug2 . "');</script>");
+        $debug = $rows['user_password'];
        
-        if(password_verify($password, $rows['user_password'])){
-            echo '{"result":"false2"}';
-        };
-        if(password_verify($password, $rows['user_password'])){
+        if(password_verify($pass, $rows['user_password'])){
             $sql2 = ("SELECT `user_id` FROM `user_table` WHERE `email` = '".$email."'"); 
             $result2 = mysqli_query($connection, $sql2);
             $rows2=mysqli_fetch_assoc($result2);

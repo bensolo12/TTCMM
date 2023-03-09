@@ -12,7 +12,7 @@ $('#formLoginUser').submit(function(event){
             if(dataJson['result'] =='false') {
                 $("#divMessage").html("Wrong username or password");
             } else {
-				window.location("../Views/Index.html");
+				window.location = "../Views/Index.html";
 	    	}
 		},
 		error: function(msg){ 
