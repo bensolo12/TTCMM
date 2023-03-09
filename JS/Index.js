@@ -27,6 +27,29 @@ function fetch(inc){
 
   });
 }
+
+
+//Checks what the user is logged in as
+$.ajax({
+  type: "POST",
+  url: "../PHP/Common.php",
+  data: "phpFunction=checkLogin",
+  success: function(msg){
+    if(msg == "Officer" || msg == "Admin"){
+			// dependend on user role page contents are modified
+      if(msg == "Citizen"){
+        CitizenNav();
+      }if else (msg == "Contractor"){
+        ContractorNav();
+      }if else msg == "Employee"{
+        EmployeeNav();
+      }
+    }
+  },
+  error: function(msg){
+    console.log(msg);
+  }
+});
 var user_role = '<%=session.getAttribute("user_role")%>';
 if(user_role == "citizen"){
   ClearBar();
