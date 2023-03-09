@@ -16,24 +16,23 @@ if($_POST['phpFunction'] == 'create')
 
         $rows=mysqli_fetch_assoc($result);
 
+        $debug = password_hash($password, PASSWORD_DEFAULT);
+        $debug2 = $rows['user_password'];
+        echo("<script>console.log('PHP: " . $debug . "');</script>");
+        echo("<script>console.log('PHP: " . $debug2 . "');</script>");
+
         if(password_hash($password, PASSWORD_DEFAULT) == $rows['user_password']){
             $sql2 = ("SELECT `user_id` FROM `user_table` WHERE `email` = '".$email."'"); 
             $result2 = mysqli_query($connection, $sql2);
             $rows2=mysqli_fetch_assoc($result2);
 
             session_start(); 
+            echo json_encode($rows2);
             $_SESSION['user_id'] = $rows2['user_id'];
-            $newURL = "Index.html";
-            header('Locaton: '.$newURL);
+        }
+        else{
+            echo '{"result":"false"}';
         }
 
-
-        if(mysqli_query($connection, $sql)) {
-            echo "Successfully registered.";
-        } else {
-            echo mysqli_error($connection);
-            return;
-        }	
-        mysqli_close($connection);
     }
 ?>
