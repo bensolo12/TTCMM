@@ -1,97 +1,94 @@
-/*Presets for offical Tema Tema colours*/
-:root{
-    --TTPurple: #8403fc;
-    --TTHoverGray: #696969;
-    --TTActiveGray: #3b3b3b;
-    --TTSecondary: #a69da8;
-  }
-  /* is applied when the user scrolls to keep navbar at the top */
-  nav{
-    position:fixed;
-    top: 0;
-    width:100%;
-  
-  }
-  /*Style the navbar*/
-  ul.nav{
-    list-style-type: none;
-    overflow:hidden;
-    margin: 0;
-    padding: 0;
-    background-color: var(--TTPurple);
-  
-  }
-  
-  ul.nav li{
-    float: left;
-  
-  }
-  
-  ul.nav a, ul.nav p, ul.nav input{
-    display: block;
-    padding: 13px;
-    margin: 0px;
-    color: black;
-    text-decoration: none;
-  }
-  
-  
-  /*Button transitions to this colour in one second when hovered over*/
-  ul.nav a:hover:not(.NavActive){
-    transition: 1s;
-    background-color:var(--TTHoverGray);
-  }
-  
-  
-  ul.nav .NavActive{
-    background-color:var(--TTActiveGray);
-  }
-  
-  
-  
-  body{
-    margin: 0;
-    padding: 0;
-  }
-  
-  .Content{
-    padding-top: 60px
-  }
-  
-  footer{
-    height:50px;
-    background-color: black;
-    color: white;
-  }
-  footer div{
-  
-    float:left;
-    text-align: center;
-  }
+ /*Presets for offical Tema Tema colours*/
+ :root{
+  --TTPurple: #8403fc;
+  --TTHoverGray: #696969;
+  --TTActiveGray: #3b3b3b;
+  --TTSecondary: #a69da8;
+}
+/* is applied when the user scrolls to keep navbar at the top */
+nav{
+  z-index: 100;
+  width:100%;
 
-  .report-panel{
-    background-color: #f0ecec;
-    border: 2px solid #747474;
-    padding-left: 16px;
-    margin: 8px;
-  }
+}
+.sticky{
+  position:fixed;
+  top: 0;
+  width:100%;
+}
 
-  .filter-panel{
-    background-color: #f0ecec;
-    border: 2px solid #747474;
-  }
+.sticky + .Content{
+  padding-top: 60px;
+}
+/*Style the navbar*/
+ul.nav{
+  list-style-type: none;
+  overflow:hidden;
+  margin: 0;
+  padding: 0;
+  background-color: var(--TTPurple);
 
-  .full-report-panel{
-    background-color: #f0ecec;
-    border: 2px solid #747474;
-  }
+}
 
-  .heart {
-    cursor: pointer;
-    color: #ccc;
-    transition: color 0.3s ease-in-out;
-  }
+ul.nav li{
+  float: left;
 
-  .heart.active {
-    color: red;
-  }
+}
+
+ul.nav a, ul.nav p, ul.nav input{
+  display: block;
+  padding: 13px;
+  margin: 0px;
+  color: black;
+  text-decoration: none;
+}
+
+
+/*Button transitions to this colour in one second when hovered over*/
+ul.nav a:hover:not(.NavActive){
+  transition: 1s;
+  background-color:var(--TTHoverGray);
+}
+
+
+ul.nav .NavActive{
+  background-color:var(--TTActiveGray);
+  color:white;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.Content{
+ align-items: center;
+ width: 100%;
+ text-align: center;
+}
+
+header{
+  text-align: center;
+  height: 300px;
+  background-image: url(../Images/CheltHeader.png);
+}
+
+footer{
+  margin-top: 50px;
+  height:50px;
+  background-color: black;
+  color: white;
+}
+footer div{
+
+  float:left;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.ButtonLink{
+  background-color: var(--TTPurple);
+  padding: 20px;
+  color: black;
+  text-decoration: none;
+}
