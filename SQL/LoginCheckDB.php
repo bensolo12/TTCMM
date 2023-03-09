@@ -11,9 +11,22 @@ if($_POST['phpFunction'] == 'create')
 
 		include "../dbConfig.php";
 
-        $sql = "INSERT INTO `user_table`(user_id, contractor_id, first_name, last_name, email, date_of_birth, 
-                                        user_password)"."values".
-		"($email, '$password')";
+        $sql = ("SELECT `user_password` FROM `user_table` WHERE `email` = '".$email."'");
+        $result = mysqli_query($connection, $sql);
+
+        $rows=mysqli_fetch_assoc($result);
+
+        if(password_hash($password, PASSWORD_DEFAULT) == $rows['user_password']){
+            $sql2 = ("SELECT `user_id` FROM `user_table` WHERE `email` = '".$email."'"); 
+            $result2 = mysqli_query($connection, $sql2);
+            $rows2=mysqli_fetch_assoc($result2);
+
+            session_start(); 
+            $_SESSION['user_id'] = $rows2['user_id'];
+            $newURL = "Index.html";
+            header('Locaton: '.$newURL);
+        }
+
 
         if(mysqli_query($connection, $sql)) {
             echo "Successfully registered.";
