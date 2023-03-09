@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>User Reports</title>
-    <link rel="stylesheet" type="text/css" href="Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
 
 </head>
 <body>
@@ -67,7 +67,7 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 0);
     error_reporting(E_ALL);
-    include "dbConfig.php";
+    include "../PHP/dbConfig.php";
     $sql = ("SELECT * FROM `report_table`");
 		$result=mysqli_query($connection,$sql);
     ?>
@@ -83,7 +83,13 @@
           <td><?php echo $rows['type']; ?></td> 
           <td><?php echo $rows['favourites']; ?></td> 
           <td><?php echo $rows['date_reported']; ?></td>
-          <td><button onclick=" window.open('createNews.html','_blank')">Show full report</button></td>
+          <td><button id=<?php echo $rows['report_id'] ?> onclick=" window.open('viewReport.php','_blank')">Show full report</button></td>
+          <?php
+          session_start();
+          $reportID = $rows['report_id'];
+          $_SESSION['reportID'] = $reportID;          
+          ?>         
+
         </tr>
       <?php endwhile; ?>
       
