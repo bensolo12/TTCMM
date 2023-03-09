@@ -55,18 +55,26 @@ var user = "NL"
 //creates navbar for the contractors
 function ContractorNav(){
   nav=$("#NavList")
+  prompt=$("#ReportPrompt")
   ClearBar();
+  $("#ReportLink").remove()
+  $("#ReportText").remove()
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
   nav.append('<li><a href="Jobs.html">Jobs</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
   nav.append('<li style="float:right"><a href="Index.html" id="NavSignIn">Sign Out</a></li>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
+  prompt.append('<a href="Jobs.html" class="ButtonLink">View your Jobs</a><br>');
+  prompt.append('<p style="margin-top:30px;">View your accepted jobs and any jobs that are availiable for you to accept</p>');
 }
 //creates navbar for the employees
 function EmployeeNav(){
   nav=$("#NavList")
+  prompt=$("#ReportPrompt")
   ClearBar();
+  $("#ReportLink").remove()
+  $("#ReportText").remove()
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
   nav.append('<li><a href="Report.html">Report Issue</a></li>');
   nav.append('<li><a href="UserReports.html">User Reports</a></li>');
@@ -76,4 +84,5 @@ function EmployeeNav(){
   nav.append('<li style="float:right"><a href="Index.html" id="NavSignIn">Sign Out</a></li>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
+  prompt.append('<a href="UserReports.html" class="ButtonLink">View User Reports</a><br>');
 }
