@@ -53,6 +53,7 @@ ul.nav a:hover:not(.NavActive){
 
 ul.nav .NavActive{
   background-color:var(--TTActiveGray);
+  color:white;
 }
 
 
