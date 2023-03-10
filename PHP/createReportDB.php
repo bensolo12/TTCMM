@@ -14,7 +14,7 @@ if($_POST['phpFunction'] == 'create')
         $reportStatus = "Awaiting";
         $dateReported = date('d/m/Y H:i:s');
 
-		include "../dbConfig.php";
+		include "../PHP/dbConfig.php";
 
         $sql = "INSERT INTO `report_table`(user_id, type, longitude, latitude, description, report_status, date_reported)"."values".
 			"($userID, '$issueType', '$long', '$lat', '$problemDescription', '$reportStatus', '$dateReported')";

@@ -4,7 +4,7 @@ $('#formCreateReport').submit(function(event){
 
 	$.ajax({
 		type: "POST",
-		url: "../SQL/createReportDB.php",
+		url: "../PHP/createReportDB.php",
 		data: formData+"&phpFunction=create",
 	    success: function(msg){ 
 			$("#divMessage").html(msg);	
