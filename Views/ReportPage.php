@@ -318,23 +318,11 @@
         content:contentString
       });
 
-      google.maps.event.addListener(marker, 'dragend', function(event){   
-        console.log(event)  
-        console.log('New latitude: ' + event.latLng.lat());
-        console.log('New longitude: ' + event.latLng.lng());
-
+      marker.addListener('dragend', function(event){  
         var newLat = event.latLng.lat();
         var newLng = event.latLng.lng();
-        marker.setPosition(event.latLng);
-        try {
-          latInput.value = newLat;
-          lngInput.value = newLng;
-        } catch (e) {
-          console.error(e);
-        }
-
-        console.log('latInput: ' + latInput);
-        console.log('lngInput: ' + lngInput);
+        latInput.value = newLat;
+        lngInput.value = newLng;
         }
       );
     </script>
