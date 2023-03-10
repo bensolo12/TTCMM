@@ -45,7 +45,7 @@ function displayFullReport(reportId) {
 
     $.ajax({
         type: "POST",
-        url: "getreport.php",
+        url: "../PHP/getreport.php",
         data:"report_id="+reportId,
         datatype: "json",
         success: function(msg){
@@ -88,7 +88,7 @@ function renderReports(filters) {
     scrollContainer.innerHTML = "";
     $.ajax({
         type: "POST",
-        url: "getreports.php",
+        url: "../PHP/getreports.php",
         data: "filters="+filters,
         datatype: "json",
         success: function(msg){
@@ -200,7 +200,7 @@ function favourite(reportId, currentUserId) {
     //Call PHP code to add report ID and currentUserID to the favourites table
     $.ajax({
         type: "POST",
-        url: "addremovefavourites.php",
+        url: "../PHP/addremovefavourites.php",
         data: "user_id="+currentUserId+"&report_id="+reportId+"&command=Favourite",
         datatype: "json",
         success: function(msg){
@@ -218,7 +218,7 @@ function unfavourite(reportId, currentUserId) {
     //Same as favourite but pass the command variable as "Unfavourite" to show that it should be removed
     $.ajax({
         type: "POST",
-        url: "addremovefavourites.php",
+        url: "../PHP/addremovefavourites.php",
         data: "user_id="+currentUserId+"&report_id="+reportId+"&command=Unfavourite",
         datatype: "json",
         success: function(msg){
@@ -236,7 +236,7 @@ function isFavourited(reportId, currentUserId, callback) {
     //Call PHP getFavourites, if result is "none" then return false, otherwise return true
     $.ajax({
         type: "POST",
-        url: "getfavourite.php",
+        url: "../PHP/getfavourite.php",
         data: "user_id="+currentUserId+"&report_id="+reportId,
         datatype: "json",
         success: function(msg){
