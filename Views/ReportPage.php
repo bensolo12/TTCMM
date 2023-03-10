@@ -1,6 +1,10 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+  <title>Create Report</title>
+  <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+</head>
 
 <style>
     #form-tabs {
