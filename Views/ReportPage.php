@@ -329,6 +329,10 @@
         lngInput.value = newLng;
         }
       );
+
+      google.maps.event.addListener(marker, 'dragend', function(event){
+        updateMarkerPosition(this.position, true, true);
+      });
     </script>
 
     <script>
