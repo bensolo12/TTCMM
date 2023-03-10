@@ -1,11 +1,27 @@
 /*Presets for offical Tema Tema colours*/
 :root{
-  --TTPurple: #8403fc;
-  --TTHoverGray: #696969;
-  --TTActiveGray: #3b3b3b;
-  --TTSecondary: #a69da8;
+ --TTPurple: #8403fc;
+ --TTHoverGray: #696969;
+ --TTActiveGray: #3b3b3b;
+ --TTSecondary: #a69da8;
+}
+/* is applied when the user scrolls to keep navbar at the top */
+nav{
+ z-index: 100;
+ width:100%;
+
+}
+.sticky{
+ position:fixed;
+ top: 0;
+ width:100%;
+}
+
+.sticky + .Content{
+ padding-top: 60px;
 }
 /*Style the navbar*/
+
 ul.nav:not(.reportForm){
   list-style-type: none;
   overflow:hidden;
@@ -16,14 +32,26 @@ ul.nav:not(.reportForm){
 
 ul.nav li:not(.reportForm){
   float: left;
+
+ul.nav{
+ list-style-type: none;
+ overflow:hidden;
+ margin: 0;
+ padding: 0;
+ background-color: var(--TTPurple);
+
+}
+
+ul.nav li{
+ float: left;
 }
 
 ul.nav a, ul.nav p, ul.nav input{
-  display: block;
-  padding: 13px;
-  margin: 0px;
-  color: black;
-  text-decoration: none;
+ display: block;
+ padding: 13px;
+ margin: 0px;
+ color: black;
+ text-decoration: none;
 }
 
 
@@ -31,11 +59,11 @@ ul.nav a, ul.nav p, ul.nav input{
 ul.nav a:hover:not(.NavActive):not(.reportFormTab){
   transition: 1s;
   background-color:var(--TTHoverGray);
-}
 
-ul.nav p.Logout:hover{
-  transition: 1.5s;
-  color:white;
+ul.nav a:hover:not(.NavActive){
+ transition: 1s;
+ background-color:var(--TTHoverGray);
+
 }
 
 ul.nav .NavActive:not(.reportForm){
@@ -95,11 +123,29 @@ ul.nav a:hover:not(.NavActive):not(.reportFormTab){
 ul.nav .NavActive:not(.reportForm){
   background-color:var(--TTActiveGray);
   color:white;
+  
+ul.nav .NavActive{
+ background-color:var(--TTActiveGray);
+ color:white;
+
 }
 
 body{
-  margin: 0;
-  padding: 0;
+ margin: 0;
+ padding: 0;
+}
+
+.Content{
+align-items: center;
+width: 100%;
+text-align: center;
+padding-top: 60px
+}
+
+header{
+ text-align: center;
+ height: 300px;
+ background-image: url(../Images/CheltHeader.png);
 }
 
 .Content{
@@ -118,3 +164,49 @@ footer div{
 }
 
 
+
+footer{
+ margin-top: 50px;
+ height:50px;
+ background-color: black;
+ color: white;
+}
+footer div{
+
+ float:left;
+ text-align: center;
+ vertical-align: middle;
+}
+
+.ButtonLink{
+ background-color: var(--TTPurple);
+ padding: 20px;
+ color: black;
+ text-decoration: none;
+}
+.report-panel{
+   background-color: #f0ecec;
+   border: 2px solid #747474;
+   padding-left: 16px;
+   margin: 8px;
+ }
+
+ .filter-panel{
+   background-color: #f0ecec;
+   border: 2px solid #747474;
+ }
+
+ .full-report-panel{
+   background-color: #f0ecec;
+   border: 2px solid #747474;
+ }
+
+ .heart {
+   cursor: pointer;
+   color: #ccc;
+   transition: color 0.3s ease-in-out;
+ }
+
+ .heart.active {
+   color: red;
+ }
