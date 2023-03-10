@@ -21,7 +21,7 @@ nav{
  padding-top: 60px;
 }
 /*Style the navbar*/
-ul.nav{
+ul.nav:not(.reportForm){
  list-style-type: none;
  overflow:hidden;
  margin: 0;
@@ -30,7 +30,7 @@ ul.nav{
 
 }
 
-ul.nav li{
+ul.nav li:not(.reportForm){
  float: left;
 
 }
