@@ -66,7 +66,7 @@ function CitizenNav(){
   nav=$("#NavList")
   ClearBar();
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
-  nav.append('<li><a href="Report.html">Report Issue</a></li>');
+  nav.append('<li><a href="ReportPage.php">Report Issue</a></li>');
   nav.append('<li id="NavView"><a href="view-problems.html">Report Issue</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
   nav.append('<li style="float:right"><a href="Index.html" id="NavSignIn">Sign Out</a></li>');
