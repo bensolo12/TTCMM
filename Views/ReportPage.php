@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>Create Report</title>
-  <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/Style.CSS">
 </head>
 
 <style>
