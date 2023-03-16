@@ -3,7 +3,7 @@
 <html>
 <head>
   <title>Create Report</title>
-  <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+  <link rel="stylesheet" type="text/css" href="../CSS/Style.CSS">
 </head>
 
 <style>
@@ -322,16 +322,11 @@
         content:contentString
       });
 
-      marker.addListener('dragend', function(event){  
-        var newLat = event.latLng.lat();
-        var newLng = event.latLng.lng();
-        latInput.value = newLat;
-        lngInput.value = newLng;
-        }
-      );
-
       google.maps.event.addListener(marker, 'dragend', function(event){
-        updateMarkerPosition(this.get_position(), true, true);
+        var latLng = marker.latLng;
+        console.print(marker);
+        latInput.innerHTML = latLng.lat();
+        lngInput.innerHTML = latLng.lng();
       });
     </script>
 
