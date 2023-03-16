@@ -61,6 +61,20 @@ function ClearBar(){
 
 }
 
+function logout(){
+  $.ajax({
+    type: "POST",
+    url: "../PHP/Common.php",
+    data: "phpFunction=logout",
+    success: function(msg){
+      window.location = "../Views/Index.html";
+    },
+    error: function(msg){
+      console.log(msg);
+    }
+  });
+}
+
 //adds the new navbar for citizen
 function CitizenNav(){
   nav=$("#NavList")
@@ -69,7 +83,7 @@ function CitizenNav(){
   nav.append('<li><a href="ReportPage.php">Report Issue</a></li>');
   nav.append('<li id="NavView"><a href="view-problems.html">Report Issue</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
-  nav.append('<li style="float:right"><a href="Index.html" id="NavSignIn">Sign Out</a></li>');
+  nav.append('<button onclick="logout()" style="float:right">Sign Out</button>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
 }

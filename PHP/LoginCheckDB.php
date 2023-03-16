@@ -9,7 +9,7 @@ if($_POST['phpFunction'] == 'create')
 		$email = $_POST['email'];
         $pass = $_POST['password'];;
 
-		include "dbConfig.php";
+		include "../PHP/dbConfig.php";
 
         $sql = ("SELECT `user_password`, `role` FROM `user_table` WHERE `email` = '".$email."'");
 

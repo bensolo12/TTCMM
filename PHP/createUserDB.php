@@ -18,7 +18,7 @@ if($_POST['phpFunction'] == 'create')
         $companyDescription = $_POST['companyDescription'];
         $companyAddress = $_POST['companyAddress'];
 
-		include "dbConfig.php";
+		include "../PHP/dbConfig.php";
 
         $sql = "INSERT INTO `user_table`(first_name, last_name, email, date_of_birth,
                                         user_password, role)"."values".

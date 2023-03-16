@@ -11,7 +11,7 @@ function fetch(){
 
 
   $inc = $_POST['inc'];
-  include"dbConfig.php";
+  include"../PHP/dbConfig.php";
 // fetches and returns news title date and body
   $sql = "SELECT `Title`,`news_date`,`body` from `news_table` ORDER BY `news_id` DESC LIMIT 1 OFFSET $inc;";
   $result = mysqli_query($connection, $sql);
