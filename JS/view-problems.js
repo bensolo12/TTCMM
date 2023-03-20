@@ -54,8 +54,8 @@ function displayFullReport(reportId) {
             } else {
                 reportObj = JSON.parse(msg);
 
-                container.classList.remove("hidden");
-                
+                // container.classList.remove("hidden");
+
                 reportId = reportObj["report_id"];
                 reportType = reportObj["type"];
                 reportAddress = reportObj["address"];
@@ -71,18 +71,19 @@ function displayFullReport(reportId) {
                 document.getElementById("reportDescription").textContent = reportDesc;
 
                 clearMarkers();
-                
+                // var markerURL = ("../Images/",reportType,"Pin.png")
                 map.setCenter({ lat: lat, lng: lng });
                 var marker = new google.maps.Marker({
                     position: { lat: lat, lng: lng },
                     map: map,
+                    // icon: {markerURL},
                 });
                 markersArray.push(marker);
             }
         }
     })
 }
-    
+
 
 function renderReports(filters) {
     scrollContainer.innerHTML = "";
@@ -182,14 +183,14 @@ function displayReportPanel(scrollContainer, dateReported, id, type, address, st
     });
 
     heartElement.addEventListener('click', function() {
-        
+
         this.classList.toggle('active');
         if (this.classList.contains('active')) {
             favourite(id, userId);
         } else {
             unfavourite(id, userId);
         }
-        
+
     });
     newPanel.append(heartElement);
 
