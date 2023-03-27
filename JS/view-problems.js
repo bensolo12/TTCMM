@@ -70,15 +70,15 @@ function displayFullReport(reportId) {
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
 
-                clearMarkers();
-                // var markerURL = ("../Images/",reportType,"Pin.png")
-                map.setCenter({ lat: lat, lng: lng });
-                var marker = new google.maps.Marker({
-                    position: { lat: lat, lng: lng },
-                    map: map,
-                    // icon: {markerURL},
-                });
-                markersArray.push(marker);
+                // clearMarkers();
+                // // var markerURL = ("../Images/",reportType,"Pin.png")
+                // map.setCenter({ lat: lat, lng: lng });
+                // var marker = new google.maps.Marker({
+                //     position: { lat: lat, lng: lng },
+                //     map: map,
+                //     // icon: {markerURL},
+                // });
+                // markersArray.push(marker);
             }
         }
     })
@@ -87,6 +87,7 @@ function displayFullReport(reportId) {
 
 function renderReports(filters) {
     scrollContainer.innerHTML = "";
+    container = document.getElementById("fullReportContainer");
     $.ajax({
         type: "POST",
         url: "../PHP/getreports.php",
@@ -106,8 +107,23 @@ function renderReports(filters) {
                     reportAddress = reportObj["address"];
                     reportStatus = reportObj["report_status"];
                     reportDate = reportObj["date_reported"];
+                    lat =  parseFloat(reportObj["latitude"]);
+                    lng =  parseFloat(reportObj["longitude"]);
+                    console.log(lat);
+                    console.log(lng);
 
                     displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+
+                    //moved marker addition to here
+                    var markerURL = ("../Images/PotholePin.png")
+                    // map.setCenter({ lat: lat, lng: lng });
+                    var marker = new google.maps.Marker({
+                        position: { lat: lat, lng: lng },
+                        map: map,
+                        // icon: {markerURL},
+                    });
+                    markersArray.push(marker);
+
                 }
             }
         }
