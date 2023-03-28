@@ -81,7 +81,7 @@ function CitizenNav(){
   ClearBar();
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
   nav.append('<li><a href="ReportPage.php">Report Issue</a></li>');
-  nav.append('<li id="NavView"><a href="view-problems.html">Report Issue</a></li>');
+  nav.append('<li id="NavView"><a href="view-problems.html">View Problems</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
   nav.append('<button onclick="logout()" style="float:right">Sign Out</button>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
