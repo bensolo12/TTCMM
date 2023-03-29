@@ -28,7 +28,7 @@
     
 
     // Get access to the code in the config.php file to access the database
-    include "dbConfig.php";
+    include "../PHP/dbConfig.php";
     // Get the result from executing the sql query
     $res = mysqli_query($connection, $sql);
     // Create an array to store the rows from the query

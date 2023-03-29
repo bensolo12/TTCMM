@@ -9,7 +9,7 @@ if($_POST['phpFunction'] == 'create')
         $date = date("d/m/Y");
         $userID = 2;
         
-		include "dbConfig.php";
+		include "../PHP/dbConfig.php";
 		$sql = "INSERT INTO `news_table`(user_id, Title, news_date, body)".
 			   " values".
 			   "('$userID', '$newsTitle', '$date' , '$newsBody')";

@@ -1,39 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<style>
-  .nav-buttons{
-      margin-top: 3em;
-      margin-bottom: 5em;
-    }
-
-    #footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      height: 3.3rem;            /* Footer height */
-    }
-
-    #page-container {
-      position: relative;
-      min-height: 86vh;
-    }
-
-    .nav {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .nav li:nth-child(4){
-      margin-left: auto;
-    }
-
-    .nav li {
-      display: flex;
-      align-items: center;
-    }
-</style>
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,20 +8,31 @@
     <link rel="stylesheet" href="../CSS/Style.CSS" type="text/css">
 </head>
 <body>
-    <nav style="position:sticky;z-index: 1100;">
-      <!-- space and framework left to make navbar collapsable if needed -->
-            <div class="">
-              <ul class="nav">
-                <li><a href="Index.html">Home</a></li>
-                <li><a class="NavActive" href="ReportPage.php">Report Issue</a></li>
-                <li><a href="ContactUs.html">Contact Us</a></li>
-                <li class="mr-2" style="float:right;display: flex; justify-content: flex-end;"><a href="Index.html" id="NavSignIn">Sign In</a></li>
-                <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
-                <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value="" placeholder="Search"></li>
-              </ul>
-            </div>
-    </nav>
-    <div class="row" style="padding-top: 8px;">
+  <style>
+  .footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+    color: white;
+  
+  }
+</style>
+  <nav id="navbar">
+    <!-- space and framework left to make navbar collapsable if needed -->
+          <div class="">
+            <ul id="NavList"class="nav">
+              <li id="NavHome"><a  href="Index.html">Home</a></li>
+              <li id="NavReport"><a href="Report.html">Report Issue</a></li>
+              <li id="NavView"><a class="NavActive" href="view-problems.html">Report Issue</a></li>
+              <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+              <li id="NavSignIn" style="float:right"><a href="login.html" id="NavSignIn">Sign In</a></li>
+              <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+            </ul>
+          </div>
+        </nav>
+    <div class="row">
         <div class="col-lg-1"></div>
         <div id="filterContainer" class="col-lg-2 filter-panel">
             <h3>Filter By:</h3>
@@ -115,10 +92,6 @@
             <input type="radio" name="issue" onchange="filtersChanged()" value="Not Fixed">
             Not Fixed
             </label><br>
-            <label>
-              <input type="radio" name="issue" onchange="filtersChanged()" value="In Progress">
-              In Progress
-              </label><br>
           </div>
         <div class="scroll__container col-lg-4" id="viewReportsContainer"></div>
         <div id="fullReportContainer" class="hidden col-lg-4 full-report-panel">
@@ -132,20 +105,6 @@
         </div>
         <div class="col-lg-1"></div>
     </div>
-
-    <footer id="footer">
-      <div class="" style="width:45%;">
-        <a href="ContactUs.html">Contact Us</a><br>
-        Report a bug: CheltBugReport@email.com
-      </div>
-      <div class="" style="width:45%;">
-      Made by TEMA TEMA inc
-      </div>
-      <div class="" style="width:10%;">
-        <img src="../Images/tematemalogo.png" height="40px" width="40px">
-      </div>
-    </footer>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -169,6 +128,12 @@
     </script>
 
     <!-- Link the javascript file to this page -->
-    <script src="./view-problems.js"></script>
+    <script src="../JS/view-problems.js"></script>
+    <div class="footer">
+      <a href="ContactUs.html">Contact Us</a><br>
+      Report a bug: CheltBugReport@email.com
+      Made by TEMA TEMA inc
+      <!--<img src="../Images/tematemalogo.png" height="40px" width="40px"> -->
+    </div>
 </body>
 </html>

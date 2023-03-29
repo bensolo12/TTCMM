@@ -6,7 +6,7 @@
     $sql = "SELECT * FROM `report_table` WHERE report_id='".$id."'";
 
     //Get access to the code in the config.php file (used to access the database)
-    include "dbConfig.php";
+    include "../PHP/dbConfig.php";
 
     //Get the result of the sql query being executed
     $res = mysqli_query($connection, $sql);

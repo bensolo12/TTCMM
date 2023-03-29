@@ -20,10 +20,10 @@ function json(){
 <html>
 <head>
     <title>User Reports</title>
-    <link rel="stylesheet" type="text/css" href="../CSS/Style.css">
+    <link rel="stylesheet" type="text/css" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script type = "text/javascript" src = "../JS/showMap.js" > </script>
-    
+
 
 </head>
 <body>
@@ -37,7 +37,7 @@ function json(){
     .sortBy{
       position: absolute;
       right: 150px;
-  
+
     }
     .viewReported{
       width: 75%;
@@ -56,7 +56,7 @@ function json(){
       width: 100%;
       background-color: black;
       color: white;
-      
+
     }
 
     </style>
@@ -72,7 +72,7 @@ function json(){
           <li><a href="contractors.html">Contractors</a></li>
           <li style="float:right"><p>Account</p></li>
           <li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
-          
+
         </ul>
       </div>
     </nav>
@@ -99,17 +99,17 @@ function json(){
         <th>Latitude</th>
         <th>Report Status</th>
       </tr>
-      
+
         <?php
-        
+
         while($rows = mysqli_fetch_assoc($result)):
-        
+
 
 
         ?>
         <tr>
-          <td><?php echo $rows['type']; ?></td> 
-          <td><?php echo $rows['favourites']; ?></td> 
+          <td><?php echo $rows['type']; ?></td>
+          <td><?php echo $rows['favourites']; ?></td>
           <td><?php echo $rows['date_reported']; ?></td>
           <td><?php echo $rows['longitude']; ?></td>
           <td><?php echo $rows['latitude']; ?></td>
@@ -117,17 +117,17 @@ function json(){
 
         </tr>
 
-      
-    </table> 
+
+    </table>
     User description: <?php echo $rows['description']; ?>
-     
+
       <?php endwhile; ?>
 
     <div class ="buttons">
         <button id = "contractor" type = "submit" >Assign to contractor</button>
         <button id = "fake" type = "submit" >Class as fake</button>
     </div>
-        
+
 
     <div class="footer">
       <a href="ContactUs.html">Contact Us</a><br>

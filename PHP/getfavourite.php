@@ -7,7 +7,7 @@
     $sql = "SELECT * FROM `favourites_table` WHERE report_id='".$report_id."' AND user_id='".$user_id."'";
 
     //Get access to the code in the config.php file (used to access the database)
-    include "dbConfig.php";
+    include "../PHP/dbConfig.php";
 
     //Get the result of the sql query being executed
     $res = mysqli_query($connection, $sql);

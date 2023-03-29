@@ -27,19 +27,29 @@ function fetch(inc){
 
   });
 }
-var user_role = '<%=session.getAttribute("user_role")%>';
-if(user_role == "citizen"){
-  ClearBar();
-  CitizenNav();
-}
-else if(user_role == "contractor"){
-  ClearBar();
-  ContractorNav();
-}
-else if(user_role == "employee"){
-  ClearBar();
-  EmployeeNav();
-}
+
+
+//Checks what the user is logged in as
+$.ajax({
+  type: "POST",
+  url: "../PHP/Common.php",
+  data: "phpFunction=checkLogin",
+  success: function(msg){
+			// dependend on user role page contents are modified
+      if(msg == "Citizen"){
+        CitizenNav();
+      }else if (msg == "Contractor"){
+        ContractorNav();
+      }else if (msg == "Employee"){
+        EmployeeNav();
+      }
+
+  },
+  error: function(msg){
+    console.log(msg);
+  }
+});
+
 //clears the navbar to allow a new navbar to take its place
 function ClearBar(){
   $("#NavHome").remove()
@@ -47,6 +57,22 @@ function ClearBar(){
   $("#NavContact").remove()
   $("#NavSearch").remove()
   $("#NavSignIn").remove()
+  $('#NavView').remove()
+
+}
+
+function logout(){
+  $.ajax({
+    type: "POST",
+    url: "../PHP/Common.php",
+    data: "phpFunction=logout",
+    success: function(msg){
+      window.location = "../Views/Index.html";
+    },
+    error: function(msg){
+      console.log(msg);
+    }
+  });
 }
 
 //adds the new navbar for citizen
@@ -54,9 +80,10 @@ function CitizenNav(){
   nav=$("#NavList")
   ClearBar();
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
-  nav.append('<li><a href="Report.html">Report Issue</a></li>');
+  nav.append('<li><a href="ReportPage.php">Report Issue</a></li>');
+  nav.append('<li id="NavView"><a href="view-problems.html">View Problems</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
-  nav.append('<li style="float:right"><a href="Index.html" id="NavSignIn">Sign Out</a></li>');
+  nav.append('<button onclick="logout()" style="float:right">Sign Out</button>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
 }
@@ -89,10 +116,9 @@ function EmployeeNav(){
   $("#ReportLink").remove()
   $("#ReportText").remove()
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
-  nav.append('<li><a href="Report.html">Report Issue</a></li>');
-  nav.append('<li><a href="UserReports.html">User Reports</a></li>');
-  nav.append('<li><a href="News.html">News</a></li>');
-  nav.append('<li><a href="Statistics.html">Statistics</a></li>');
+  nav.append('<li><a href="viewReported.php">User Reports</a></li>');
+  nav.append('<li><a href="createNews.html">News</a></li>');
+  nav.append('<li><a href="stats.html">Statistics</a></li>');
   nav.append('<li><a href="Contractors.html">Contractors</a></li>');
   nav.append('<li style="float:right"><a href="Index.html" id="NavSignIn">Sign Out</a></li>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');

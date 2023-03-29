@@ -23,7 +23,7 @@
     }
 
     // Get access to the code in the config.php file to access the database
-    include "dbConfig.php";
+    include "../PHP/dbConfig.php";
 
     // If the query is executed successfully then echo back "Success"
     if(mysqli_query($connection, $sql)) {
