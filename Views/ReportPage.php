@@ -195,13 +195,16 @@
           <h1>Issue Type</h1>
           <label for="issueSelect">Dropdown List</label>
           <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
-              <option>Littering</option>
-              <option>Graffiti</option>
-              <option>Pothole</option>
+              <option>Broken traffic lights</option>
+              <option>Burst pipe</option>
+              <option>Blocked drain</option>
+              <option>Broken streetlight</option>
+              <option>Exposed cables</option>
               <option>Flooding</option>
+              <option>Graffiti</option>
+              <option>Litter</option>
+              <option>Pothole</option>
               <option>Wrecked car</option>
-              <option>Live wire</option>
-              <option>Broken Streetlight</option>
           </select>
           <div class="mt-3">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
