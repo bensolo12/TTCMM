@@ -120,7 +120,7 @@ function renderReports(filters) {
                     var marker = new google.maps.Marker({
                         position: { lat: lat, lng: lng },
                         map: map,
-                        // icon: {markerURL},
+                        icon: "../Images/"+reportType+"Pin.png",
                     });
                     markersArray.push(marker);
 
