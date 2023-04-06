@@ -301,6 +301,17 @@
       let lngInput = document.getElementById('lng');
 
       var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
+
+      // If user location is available
+      if (window.navigator.geolocation) {
+        window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
+
+        const successfulLookup = (position) => {
+          {userLat, userLng} = position.coords;
+          mapCenter = new google.maps.LatLng(userLat, userLng);
+        }
+      }
+      
       var mapOptions={
         zoom: 18,
         center: mapCenter,

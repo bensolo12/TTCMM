@@ -1,5 +1,7 @@
 window.initMap = initMap;
 var markersArray = [];
+let userLat;
+let userLng;
 
 document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
@@ -7,8 +9,23 @@ document.addEventListener("DOMContentLoaded", () => {
     filterContainer = document.getElementById("filterContainer");
     if (scrollContainer) {
         renderReports("");
+
+        // If user location is available
+        if (window.navigator.geolocation) {
+            window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
+        }
     }
 });
+
+const successCallback = (position) => {
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude;
+    document.getElementById("distance").classList.remove("hidden");
+}
+
+const failureCallback = (error) => {
+    console.log(error);
+}
 
 function clearMarkers() {
     for (var i = 0; i < markersArray.length; i++ ) {
@@ -82,6 +99,30 @@ function displayFullReport(reportId) {
         }
     })
 }
+
+// Calculate if a location is within the radius of another location
+// using the Haversine formula
+function isWithinRadius(lat1, lng1, lat2, lng2, radius) {
+    const earthRadiusKM = 6371;
+
+    const lat1Radians = toRadians(lat1);
+    const lat2Radians = toRadians(lat2);
+    const lng1Radians = toRadians(lng1);
+    const lng2Radians = toRadians(lng2);
+
+    const deltaLat = lat2Radians - lat1Radians;
+    const deltaLng = lng2Radians - lng1Radians;
+
+    const a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+              Math.cos(lat1Radians) * Math.cos(lat2Radians) *
+              Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+    
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = earthRadiusKM * c;
+
+    return distance <= radius;
+}
     
 
 function renderReports(filters) {
@@ -105,8 +146,20 @@ function renderReports(filters) {
                     reportAddress = reportObj["address"];
                     reportStatus = reportObj["report_status"];
                     reportDate = reportObj["date_reported"];
+                    reportLat = reportObj["latitude"];
+                    reportLng = reportObj["longitude"];
 
-                    displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+                    const distanceFilter = document.getElementById("distance");
+                    const selectedRadius = distanceFilter.options[distanceFilter.selectedIndex].value;
+
+                    if (!distanceFilter.classList.contains("hidden") && selectedRadius !== "" && selectedRadius !== "Any") {
+                        const kilometerRadius = parseFloat(selectedRadius);
+                        if (isWithinRadius(userLat, userLng, reportLat, reportLng, kilometerRadius)) {
+                            displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+                        }
+                    } else {
+                        displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+                    }
                 }
             }
         }
