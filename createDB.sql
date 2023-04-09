@@ -83,6 +83,6 @@ CREATE TABLE IF NOT EXISTS comments_table(
   report_id int(4) not null,
   comment_text varchar(50),
   PRIMARY KEY (comment_id),
-  FOREIGN KEY (user_id) REFERENCES user_table(user_id)
+  FOREIGN KEY (user_id) REFERENCES user_table(user_id),
   FOREIGN KEY (report_id) REFERENCES report_table(report_id)
 )
