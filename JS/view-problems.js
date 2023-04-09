@@ -5,7 +5,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
     filterContainer = document.getElementById("filterContainer");
-    commentsContainer = document.getElementById("commentsContainer");
     if (scrollContainer) {
         renderReports("");
     }
