@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
     filterContainer = document.getElementById("filterContainer");
+    commentsContainer = document.getElementById("commentsContainer");
     if (scrollContainer) {
         renderReports("");
     }
@@ -40,9 +41,38 @@ function filtersChanged() {
     renderReports(filterString);
 }
 
+function displayComments(reportId){
+    container = document.getElementById("commentsContainer")
+    $.ajax({
+        type: "POST",
+        url: "../PHP/getComments.php",
+        data:"report_id="+reportId,
+        datatype: "json",
+        success: function(msg){
+            if (msg == "none") {
+                // Add a message saying no reported reports could be found
+            } else {
+                reportObj = JSON.parse(msg);
+
+                container.classList.remove("hidden");
+                
+
+                commentID = reportObj["comment_id"];
+                userId = reportObj["user_id"];
+                reportId = reportObj["report_id"];
+                commentText = reportObj["comment_text"];
+
+                document.getElementById("");
+            }
+        }
+    })
+
+    container.classList.remove("hidden");
+}
+
 function displayFullReport(reportId) {
     container = document.getElementById("fullReportContainer");
-    container2 = document.getElementById("commentsContainer")
+    
 
     $.ajax({
         type: "POST",
@@ -56,7 +86,7 @@ function displayFullReport(reportId) {
                 reportObj = JSON.parse(msg);
 
                 container.classList.remove("hidden");
-                container2.classList.remove("hidden");
+                
 
                 commentID = reportObj["comment_id"];
                 userId = reportObj["user_id"];
