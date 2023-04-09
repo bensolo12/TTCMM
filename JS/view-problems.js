@@ -42,7 +42,7 @@ function filtersChanged() {
 }
 
 function displayComments(reportId){
-    container = document.getElementById("commentsContainer")
+    container = document.getElementById("commentsContainer");
     $.ajax({
         type: "POST",
         url: "../PHP/getComments.php",
@@ -72,7 +72,6 @@ function displayComments(reportId){
 
 function displayFullReport(reportId) {
     container = document.getElementById("fullReportContainer");
-    
 
     $.ajax({
         type: "POST",
@@ -86,13 +85,6 @@ function displayFullReport(reportId) {
                 reportObj = JSON.parse(msg);
 
                 container.classList.remove("hidden");
-                
-
-                commentID = reportObj["comment_id"];
-                userId = reportObj["user_id"];
-                commentText = reportObj["comment_text"];
-
-                document.getElementById("")
                 
                 reportId = reportObj["report_id"];
                 reportType = reportObj["type"];
