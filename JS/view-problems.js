@@ -42,6 +42,7 @@ function filtersChanged() {
 
 function displayFullReport(reportId) {
     container = document.getElementById("fullReportContainer");
+    container2 = document.getElementById("commentsContainer")
 
     $.ajax({
         type: "POST",
@@ -55,6 +56,13 @@ function displayFullReport(reportId) {
                 reportObj = JSON.parse(msg);
 
                 container.classList.remove("hidden");
+                container2.classList.remove("hidden");
+
+                commentID = reportObj["comment_id"];
+                userId = reportObj["user_id"];
+                commentText = reportObj["comment_text"];
+
+                document.getElementById("")
                 
                 reportId = reportObj["report_id"];
                 reportType = reportObj["type"];
