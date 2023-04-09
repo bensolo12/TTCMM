@@ -169,6 +169,7 @@
         <div class="form-tab">Issue Type</div>
         <div class="form-tab">Issue Location</div>
         <div class="form-tab">Further Details</div>
+        <div class="form-tab">Review Information</div>
       </div>
 
         <?php 
@@ -203,7 +204,7 @@
         <div class="form-stage">
           <h1>Issue Type</h1>
           <label for="issueSelect">Select Issue</label>
-              <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
+              <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect" oninput="document.getElementById('typeValue').textContent = this.value">
                   <option>Littering</option>
                   <option>Graffiti</option>
                   <option>Pothole</option>
@@ -216,7 +217,7 @@
 
               <div>
                   <label for="otherIssue" id="otherLabel" style="display:none;" class="mt-4">Please describe your issue</label>
-                  <textarea name="otherIssue" class="form-control" style="display:none; width:50%" id="otherIssue" rows="3"></textarea>
+                  <textarea name="otherIssue" class="form-control" style="display:none; width:50%" id="otherIssue" rows="3" oninput="document.getElementById('otherValue').textContent = this.value"></textarea>
               </div>
           <div class="mt-3 mb-5">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
@@ -250,7 +251,7 @@
                 <li>Relevant landmarks or points of reference</li>
                 </ul>
               </label>
-              <textarea name="problemDescription" class="form-control" style="width:50%" id="problemDescription" rows="3" required></textarea>
+              <textarea name="problemDescription" class="form-control" style="width:50%" id="problemDescription" rows="3" required oninput="document.getElementById('descriptionValue').textContent = this.value"></textarea>
           </div>
           <div class="form-group">
             <label for="image-upload" class="upload-label">
@@ -259,10 +260,37 @@
               <ul id="file-list"></ul>
             </label>
           </div>
+          <div class="mt-3 nav-buttons">
+              <button class="prev-button btn btn-secondary" type="button">Previous</button>
+              <button style="background-color: #8403fc; border: none;" class="next-button btn btn-primary" type="button">Next</button>
+          </div>
+        </div>
+
+        <div class="form-stage">
+          <h1>Review Information</h1>
+
+          <div class="mt-3 mb-5">
+              <label style="font-weight: bold; display:block">Problem Type:</label>
+              <span style="display:block" id="typeValue"></span>
+          </div>
+
+          <div class="mb-5">
+              <label id="otherDesTitle" style="display:none; font-weight: bold">Other problem description:</label>
+              <span style="display:block" id="otherValue"></span>
+          </div>
+
+          <div class="mb-5">
+              <label style="font-weight: bold; display:block">Further details:</label>
+              <span style="display:block" id="descriptionValue"></span>
+          </div>
+
+          <div>
+              <label style="font-weight: bold; display:block">Photographic evidence:</label>
+        </div>
 
           <div class="mt-3 nav-buttons">
-          <button class="prev-button btn btn-secondary" type="button">Previous</button>
-          <button style="background-color: #8403fc; border: none;" class="submit-button btn btn-primary" type="submit">Submit</button>
+              <button class="prev-button btn btn-secondary" type="button">Previous</button>
+              <button style="background-color: #8403fc; border: none;" class="submit-button btn btn-primary" type="submit">Submit</button>
           </div>
         </div>
         
@@ -297,16 +325,25 @@
 
     <script>
       const dropdown = document.getElementById("issueSelect");
+      var selectedOption = document.getElementById("typeValue");
+      selectedOption.innerHTML = dropdown.value;
+
       const otherLabel = document.getElementById("otherLabel");
       const otherTextField = document.getElementById("otherIssue");
+      const otherReview = document.getElementById("otherDesTitle");
 
       dropdown.addEventListener("change", function() {
+        selectedOption.innerHTML = dropdown.value;
+        
         if (dropdown.value === "Other") {
           otherTextField.style.display = "block";
           otherLabel.style.display = "block";
+          otherReview.style.display = "block";
+          
         } else {
           otherTextField.style.display = "none";
           otherLabel.style.display = "none";
+          otherReview.style.display = "none";
         }
       });
     </script>
