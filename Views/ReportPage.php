@@ -117,6 +117,15 @@
       outline: 2px dotted #aaa;
     }
 
+    .review-label {
+      font-weight: bold;
+      display: block;
+    }
+
+    .review-value {
+      display: block;
+    }
+
     #issue-stage {
       display: flex;
       align-items: center;
@@ -270,22 +279,22 @@
           <h1>Review Information</h1>
 
           <div class="mt-3 mb-5">
-              <label style="font-weight: bold; display:block">Problem Type:</label>
-              <span style="display:block" id="typeValue"></span>
+              <label class="review-label">Problem Type:</label>
+              <span class="review-value" id="typeValue"></span>
           </div>
 
           <div class="mb-5">
-              <label id="otherDesTitle" style="display:none; font-weight: bold">Other problem description:</label>
-              <span style="display:block" id="otherValue"></span>
+              <label style="display:none" class="review-label" id="otherDesTitle">Other problem description:</label>
+              <span style="display:none" class="review-value" id="otherValue"></span>
           </div>
 
           <div class="mb-5">
-              <label style="font-weight: bold; display:block">Further details:</label>
-              <span style="display:block" id="descriptionValue"></span>
+              <label class="review-label">Further details:</label>
+              <span class="review-value" id="descriptionValue"></span>
           </div>
 
-          <div>
-              <label style="font-weight: bold; display:block">Photographic evidence:</label>
+          <div class="mb-5">
+              <label  class="review-label">Photographic evidence:</label>
         </div>
 
           <div class="mt-3 nav-buttons">
@@ -330,6 +339,7 @@
 
       const otherLabel = document.getElementById("otherLabel");
       const otherTextField = document.getElementById("otherIssue");
+      const otherReviewVal = document.getElementById("otherValue");
       const otherReview = document.getElementById("otherDesTitle");
 
       dropdown.addEventListener("change", function() {
