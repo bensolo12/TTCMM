@@ -62,7 +62,9 @@ function displayComments(reportId){
                 reportId = reportObj["report_id"];
                 commentText = reportObj["comment_text"];
 
-                document.getElementById("");
+                document.getElementById("commenter").textContent = "test";
+                document.getElementById("commentDate").textContent = "test";
+                document.getElementById("commentText").textContent = "test";
             }
         }
     })
@@ -77,7 +79,7 @@ function displayFullReport(reportId) {
         type: "POST",
         url: "../PHP/getreport.php",
         data:"report_id="+reportId,
-        datatype: "json",
+        datatype: "json",""
         success: function(msg){
             if (msg == "none") {
                 // Add a message saying no reported reports could be found
@@ -108,6 +110,7 @@ function displayFullReport(reportId) {
                     map: map,
                 });
                 markersArray.push(marker);
+                displayComments();
             }
         }
     })
