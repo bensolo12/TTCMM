@@ -117,6 +117,15 @@
       outline: 2px dotted #aaa;
     }
 
+    #issue-stage {
+      display: flex;
+      align-items: center;
+    }
+    
+    #issueSelect {
+      margin-right: 10px;
+    }
+
 </style>
 
 <head>
@@ -193,17 +202,23 @@
 
         <div class="form-stage">
           <h1>Issue Type</h1>
-          <label for="issueSelect">Dropdown List</label>
-          <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
-              <option>Littering</option>
-              <option>Graffiti</option>
-              <option>Pothole</option>
-              <option>Flooding</option>
-              <option>Wrecked car</option>
-              <option>Live wire</option>
-              <option>Broken Streetlight</option>
-          </select>
-          <div class="mt-3">
+          <label for="issueSelect">Select Issue</label>
+              <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
+                  <option>Littering</option>
+                  <option>Graffiti</option>
+                  <option>Pothole</option>
+                  <option>Flooding</option>
+                  <option>Wrecked car</option>
+                  <option>Live wire</option>
+                  <option>Broken Streetlight</option>
+                  <option>Other</option>
+              </select>
+
+              <div>
+                  <label for="otherIssue" id="otherLabel" style="display:none;" class="mt-4">Please describe your issue</label>
+                  <textarea name="otherIssue" class="form-control" style="display:none; width:50%" id="otherIssue" rows="3"></textarea>
+              </div>
+          <div class="mt-3 mb-5">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
               <button style="background-color: #8403fc; border: none;" class="next-button btn btn-primary" type="button">Next</button>
           </div>
@@ -278,6 +293,23 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
+
+
+    <script>
+      const dropdown = document.getElementById("issueSelect");
+      const otherLabel = document.getElementById("otherLabel");
+      const otherTextField = document.getElementById("otherIssue");
+
+      dropdown.addEventListener("change", function() {
+        if (dropdown.value === "Other") {
+          otherTextField.style.display = "block";
+          otherLabel.style.display = "block";
+        } else {
+          otherTextField.style.display = "none";
+          otherLabel.style.display = "none";
+        }
+      });
+    </script>
 
     <script>
       const input = document.querySelector('#image-upload');
