@@ -78,7 +78,7 @@ function displayFullReport(reportId) {
         type: "POST",
         url: "../PHP/getreport.php",
         data:"report_id="+reportId,
-        datatype: "json",""
+        datatype: "json",
         success: function(msg){
             if (msg == "none") {
                 // Add a message saying no reported reports could be found
