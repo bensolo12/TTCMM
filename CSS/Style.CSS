@@ -99,6 +99,12 @@ footer div{
    padding-left: 16px;
    margin: 8px;
  }
+ .CommentPanel{
+  background-color: #f0ecec;
+  border: 2px solid #747474;
+  padding-left: 16px;
+  margin: 8px;
+}
 
  .filter-panel{
    background-color: #f0ecec;
