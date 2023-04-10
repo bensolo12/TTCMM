@@ -9,7 +9,7 @@
     include "../PHP/dbConfig.php";
 
     //Get the result of the sql query being executed
-    $res = mysqli_query($connection, $sql2);
+    $res = mysqli_query($connection, $sql);
 
     //If there's no result then echo "none" back
     if(!$res){
