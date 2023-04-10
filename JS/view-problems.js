@@ -68,6 +68,26 @@ function displayComments(reportId){
             }
         }
     })
+    function createComment(reportId){
+        $('#formCreateComments').submit(function(event){
+            formData = $('#formCreateComments').serialize();
+            event.preventDefault();
+        
+            $.ajax({
+                type: "POST",
+                url: "../PHP/createComment.php",
+                data: formData,
+                success: function(msg){ 
+                    $("#divMessage").html(msg);	
+                    alert(msg);
+                },
+                error: function(msg){ 
+                    console.log(msg);
+                }
+            });
+        });
+
+    }
 
     container.classList.remove("hidden");
 }

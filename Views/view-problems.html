@@ -108,8 +108,11 @@
           <p id="commenter"></p>
           <p id="commentDate"></p>
           <p id="commentText"></p>
-          <button class="addcomment" type="button" onclick="showAddCommentFields()">Add Comment</button>
-          <input id="addCommentsField"></input>
+          <button class="addcomment" type="button" onclick="createComment()">Add Comment</button>
+          <form method = "post" action="formCreateComments" id = "formCreateComments"> 
+            <input id="addCommentsField">Add comment here</input>
+          </form>
+          
         </div>
         <div class="col-lg-1"></div>
     </div>
