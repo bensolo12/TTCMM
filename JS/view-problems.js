@@ -68,7 +68,9 @@ function displayComments(reportId){
             }
         }
     })
-    function createComment(reportId){
+
+
+    function createComment(){
         $('#formCreateComments').submit(function(event){
             formData = $('#formCreateComments').serialize();
             event.preventDefault();
