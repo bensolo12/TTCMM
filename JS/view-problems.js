@@ -56,7 +56,7 @@ function displayComments(reportId){
                 
 
                 commentID = reportObj["comment_id"];
-                userName = reportObj["user_name"];
+                userName = reportObj["first_name"];
                 //reportId = reportObj["report_id"];
                 commentDate = reportObj["comment_date"];
                 commentText = reportObj["comment_text"];
