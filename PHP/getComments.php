@@ -17,7 +17,7 @@
     }
 
     //Get the number of rows in the result of the query
-    $num_row = mysqli_num_rows($res2);
+    $num_row = mysqli_num_rows($res);
 
     //Get the row from the result of the query
     $row = mysqli_fetch_assoc($res);
