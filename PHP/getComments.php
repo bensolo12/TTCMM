@@ -3,7 +3,7 @@
     $id = $_POST["report_id"];
 
     //Make a sql statement to get all the info on a report based on the given report id
-    $sql = "SELECT * FROM `comments_table` WHERE report_id='" .$id. "'";
+    $sql = "SELECT user_table.user_name, commentDate, comment_text FROM `comments_table`,`user_table` WHERE user_table.user_id = comments_table.user_id AND report_id='" .$id. "'";
 
     //Get access to the code in the config.php file (used to access the database)
     include "../PHP/dbConfig.php";

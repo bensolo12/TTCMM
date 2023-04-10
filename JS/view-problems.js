@@ -49,7 +49,6 @@ function displayComments(reportId){
         datatype: "json",
         success: function(msg){
             if (msg == "none") {
-                // Add a message saying no reported reports could be found
             } else {
                 reportObj = JSON.parse(msg);
 
@@ -57,13 +56,14 @@ function displayComments(reportId){
                 
 
                 commentID = reportObj["comment_id"];
-                userId = reportObj["user_id"];
-                reportId = reportObj["report_id"];
+                userName = reportObj["user_name"];
+                //reportId = reportObj["report_id"];
+                commentDate = reportObj["comment_date"];
                 commentText = reportObj["comment_text"];
 
-                document.getElementById("commenter").textContent = "test";
-                document.getElementById("commentDate").textContent = "test";
-                document.getElementById("commentText").textContent = "test";
+                document.getElementById("commenter").textContent = "Commenter: " + userName;
+                document.getElementById("commentDate").textContent = "Comment date: " + commentDate;
+                document.getElementById("commentText").textContent = "Comment text: " + commentText;
             }
         }
     })
