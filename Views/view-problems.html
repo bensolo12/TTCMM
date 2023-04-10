@@ -104,10 +104,14 @@
             <div id="map" style="height: 500px; width: 100%;"></div>
         </div>
         <div id="commentsContainer" class="CommentPanel">
-          <h3> Comments Section</h3>
+          <h3 id="commentsSection"></h3>
           <p id="commenter"></p>
           <p id="commentDate"></p>
           <p id="commentText"></p>
+          <button class="addcomment" type="button" onclick="showAddCommentFields()">Add Comment</button>
+        </div>
+        <div id ="addComments" class="addComments">
+          <input id="addCommentsField"></input>
         </div>
         <div class="col-lg-1"></div>
     </div>
