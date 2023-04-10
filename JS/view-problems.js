@@ -109,7 +109,7 @@ function displayFullReport(reportId) {
                     map: map,
                 });
                 markersArray.push(marker);
-                displayComments();
+                displayComments(reportId);
             }
         }
     })
