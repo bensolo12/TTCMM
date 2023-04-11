@@ -1,6 +1,12 @@
 window.initMap = initMap;
 var markersArray = [];
-
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 51.8999977, lng:-2.0738122 },
+    zoom: 13,
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
