@@ -28,7 +28,7 @@ var mapOptions={
 var container=document.getElementById('map-canvas');
 var map=new google.maps.Map(container, mapOptions);
 
-var marker=new google.maps.Marker({
+marker=new google.maps.Marker({
 	position: mapCenter,
 	map:map,
 	title: 'Issue Location',
@@ -45,14 +45,15 @@ var infoWindow= new google.maps.InfoWindow({
 });
 
 marker.addListener('dragend', function(event){
-	var newLat = event.latLng.lat();
-	var newLng = event.latLng.lng();
-	latInput.value = newLat;
-	lngInput.value = newLng;
+
+	//latInput.value = event.latLng.lat();
+	//lngInput.value = event.latLng.lng();
+
+	//var position = marker.getPosition();
+    //console.log(position.lat(), position.lng());
+	console.log(marker.getDraggable());
+
+	//console.log(marker.getPosition().lat());
+  	//console.log(marker.getPosition().lng());
 	}
 );
-
-google.maps.event.addListener(marker, 'dragend', function(event){
-	console.log(marker.getPosition().lat());
-  console.log(marker.getPosition().lng());
-});
