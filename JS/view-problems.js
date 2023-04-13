@@ -122,6 +122,8 @@ function renderReports(filters) {
                     displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
 
                     //moved marker addition to here
+                    //creates a marker with a pin title and colour corosponding to the problem reportType
+                    //potential to do: can click on the pin to select a problem/ when problem is selected the map recenters to its pin
 
                     // map.setCenter({ lat: lat, lng: lng });
                     var marker = new google.maps.Marker({
