@@ -141,7 +141,12 @@
     <title>Council Report Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../CSS/style.CSS">
+
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
+
     <?php session_start();?>
 </head>
 
@@ -294,6 +299,13 @@
           </div>
 
           <div class="mb-5">
+            <label class="review-label">Issue Location:</label>
+            <div id="map-canvas2" class="mt-3" style="height: 425px; width: 100%;"></div>
+            <input type="hidden" id="lat2" name="lat2">
+            <input type="hidden" id="lng2" name="lng2">
+          </div>
+
+          <div class="mb-5">
               <label  class="review-label">Photographic evidence:</label>
         </div>
 
@@ -304,7 +316,6 @@
         </div>
         
       </form>
-      <script src="../JS/submitReport.js"></script>
 
       <div id="success-message" style="display: none;">
         <h1 class="mt-5">Thank you for bringing this issue to our attention!</h1>
@@ -326,37 +337,11 @@
       </div>
     </footer>
   </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
 
-
-    <script>
-      const dropdown = document.getElementById("issueSelect");
-      var selectedOption = document.getElementById("typeValue");
-      selectedOption.innerHTML = dropdown.value;
-
-      const otherLabel = document.getElementById("otherLabel");
-      const otherTextField = document.getElementById("otherIssue");
-      const otherReviewVal = document.getElementById("otherValue");
-      const otherReview = document.getElementById("otherDesTitle");
-
-      dropdown.addEventListener("change", function() {
-        selectedOption.innerHTML = dropdown.value;
-        
-        if (dropdown.value === "Other") {
-          otherTextField.style.display = "block";
-          otherLabel.style.display = "block";
-          otherReview.style.display = "block";
-          
-        } else {
-          otherTextField.style.display = "none";
-          otherLabel.style.display = "none";
-          otherReview.style.display = "none";
-        }
-      });
-    </script>
+    <script src="../JS/submitReport.js"></script>
+    <script src="../JS/reportFormHide.js"></script>
+    <script src="../JS/reportFormOther.js"></script>
+    <script src="../JS/reportFormTabs.js"></script>
 
     <script>
       const input = document.querySelector('#image-upload');
@@ -372,95 +357,5 @@
       });
     </script>
 
-    <script>
-      let latInput = document.getElementById('lat');
-      let lngInput = document.getElementById('lng');
-
-      var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
-      var mapOptions={
-        zoom: 18,
-        center: mapCenter,
-        mapTypeId: google.maps.MapTypeId.HYBRID
-      };
-      var container=document.getElementById('map-canvas');
-      var map=new google.maps.Map(container, mapOptions);
-
-      var marker=new google.maps.Marker({
-        position: mapCenter,
-        map:map,
-        title: 'Issue Location',
-        draggable: true
-      });
-      var contentString = '<h1>Issue Location</h1>' + 'Please place this marker the location of the issue';
-
-      marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-      });
-    
-      var infoWindow= new google.maps.InfoWindow({
-        content:contentString
-      });
-
-      marker.addListener('dragend', function(event){  
-        var newLat = event.latLng.lat();
-        var newLng = event.latLng.lng();
-        latInput.value = newLat;
-        lngInput.value = newLng;
-        }
-      );
-
-      google.maps.event.addListener(marker, 'dragend', function(event){
-        updateMarkerPosition(this.position, true, true);
-      });
-    </script>
-
-    <script>
-        const form = document.getElementById('formCreateReport');
-        const stages = document.getElementsByClassName('form-stage');
-        const tabs = document.getElementsByClassName('form-tab');
-        const nextButtons = document.getElementsByClassName('next-button');
-        const prevButtons = document.getElementsByClassName('prev-button');
-
-        let currentStage = 0;
-        tabs[currentStage].classList.add('active');
-        stages[currentStage].classList.add('active');
-
-        for (let i = 0; i < nextButtons.length; i++) {
-        nextButtons[i].addEventListener('click', () => {
-            stages[currentStage].classList.remove('active');
-            tabs[currentStage].classList.remove('active');
-
-            currentStage++;
-            stages[currentStage].classList.add('active');
-            tabs[currentStage].classList.add('active');
-        });
-        }
-
-        for (let i = 0; i < prevButtons.length; i++) {
-        prevButtons[i].addEventListener('click', () => {
-            stages[currentStage].classList.remove('active');
-            tabs[currentStage].classList.remove('active');
-
-            currentStage--;
-            stages[currentStage].classList.add('active');
-            tabs[currentStage].classList.add('active');
-        });
-        }
-    </script>
-
-    <script>
-      function handleFormSubmission(event) {
-        event.preventDefault();
-
-        const form = document.getElementById('formCreateReport');
-        const successMessage = document.getElementById('success-message');
-
-        form.style.display = 'none';
-        successMessage.style.display = 'block';
-      }
-
-      const form2 = document.getElementById('formCreateReport');
-      form.addEventListener('submit', handleFormSubmission);
-    </script>
  </body>
 </html>
