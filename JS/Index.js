@@ -83,7 +83,7 @@ function CitizenNav(){
   nav.append('<li><a href="ReportPage.php">Report Issue</a></li>');
   nav.append('<li id="NavView"><a href="view-problems.html">View Problems</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
-  nav.append('<button onclick="logout()" style="float:right">Sign Out</button>');
+  nav.append('<li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignin">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
 }
@@ -102,7 +102,7 @@ function ContractorNav(){
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
   nav.append('<li><a href="Jobs.html">Jobs</a></li>');
   nav.append('<li><a href="ContactUs.html">Contact Us</a></li>');
-  nav.append('<button onclick="logout()" style="float:right">Sign Out</button>');
+  nav.append('<li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
   prompt.append('<a href="Jobs.html" class="ButtonLink">View your Jobs</a><br>');
@@ -120,7 +120,7 @@ function EmployeeNav(){
   nav.append('<li><a href="createNews.html">News</a></li>');
   nav.append('<li><a href="stats.html">Statistics</a></li>');
   nav.append('<li><a href="Contractors.html">Contractors</a></li>');
-  nav.append('<button onclick="logout()" style="float:right">Sign Out</button>');
+  nav.append('<li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>');
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
   prompt.append('<a href="UserReports.html" class="ButtonLink">View User Reports</a><br>');
