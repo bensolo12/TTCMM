@@ -92,6 +92,7 @@ function displayFullReport(reportId) {
 
 
 function renderReports(filters) {
+    clearMarkers();
     scrollContainer.innerHTML = "";
     container = document.getElementById("fullReportContainer");
     $.ajax({
@@ -121,12 +122,13 @@ function renderReports(filters) {
                     displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
 
                     //moved marker addition to here
-                    var markerURL = ("../Images/PotholePin.png")
+
                     // map.setCenter({ lat: lat, lng: lng });
                     var marker = new google.maps.Marker({
                         position: { lat: lat, lng: lng },
                         map: map,
                         icon: "../Images/"+reportType+"Pin.png",
+                        title: reportType,
                     });
                     markersArray.push(marker);
 
