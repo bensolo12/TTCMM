@@ -8,7 +8,7 @@ if($_POST['phpFunction'] == 'create')
 
         include 'dbConfig.php';
 
-		$userID = 1;
+		$userID = $_POST['userId'];
         $issueType = $_POST['issueSelect'];
         $otherIssue = mysqli_real_escape_string($connection, $_POST['otherIssue']);
         $long = $_POST['lng'];

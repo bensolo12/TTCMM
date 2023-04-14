@@ -202,6 +202,8 @@
         ?>
       <form id="formCreateReport" method="POST">
 
+        <input type="hidden" id="userId" name="userId" value="<?php echo $_SESSION['user_id']; ?>">
+
         <div class="form-stage">
           <h1>Information</h1>
           <p>Use this service to report an issue in your local area. You'll need to provide:</p>
