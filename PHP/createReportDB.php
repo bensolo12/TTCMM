@@ -15,7 +15,8 @@ if($_POST['phpFunction'] == 'create')
         $lat = $_POST['lat'];
         $problemDescription = mysqli_real_escape_string($connection, $_POST['problemDescription']);
         $reportStatus = "Awaiting";
-        $dateReported = date('d/m/Y H:i:s');
+        date_default_timezone_set('Europe/London');
+        $dateReported = date('Y/m/d H:i:s');
 
 		include "../PHP/dbConfig.php";
 

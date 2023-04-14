@@ -231,7 +231,7 @@
 
               <div>
                   <label for="otherIssue" id="otherLabel" style="display:none;" class="mt-4">Please describe your issue</label>
-                  <textarea name="otherIssue" class="form-control" style="display:none; width:50%" id="otherIssue" rows="3" oninput="document.getElementById('otherValue').textContent = this.value"></textarea>
+                  <textarea name="otherIssue" class="form-control" style="display:none; width:50%" id="otherIssue" rows="3" oninput="document.getElementById('otherValue').innerHTML = this.value.replace(/\n/g, '<br>')"></textarea>
               </div>
           <div class="mt-3 mb-5">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
@@ -241,7 +241,7 @@
 
         <div class="form-stage">
           <h1>Issue Location</h1>
-          <div id="map-canvas" class="mt-3" style="height: 425px; width: 100%;"></div>
+          <div id="map-canvas1" class="mt-3" style="height: 425px; width: 100%;"></div>
           <div class="mt-4" style="display:flex">
             <input type="hidden" id="lat" name="lat">
             <input type="hidden" id="lng" name="lng">
@@ -265,7 +265,7 @@
                 <li>Relevant landmarks or points of reference</li>
                 </ul>
               </label>
-              <textarea name="problemDescription" class="form-control" style="width:50%" id="problemDescription" rows="3" required oninput="document.getElementById('descriptionValue').textContent = this.value"></textarea>
+              <textarea name="problemDescription" class="form-control" style="width:50%" id="problemDescription" rows="3" required oninput="document.getElementById('descriptionValue').innerHTML = this.value.replace(/\n/g, '<br>')"></textarea>
           </div>
           <div class="form-group">
             <label for="image-upload" class="upload-label">
@@ -289,7 +289,7 @@
           </div>
 
           <div class="mb-5">
-              <label style="display:none" class="review-label" id="otherDesTitle">Other problem description:</label>
+              <label style="display:none" class="review-label" id="otherDesTitle">Other:</label>
               <span style="display:none" class="review-value" id="otherValue"></span>
           </div>
 
@@ -301,8 +301,6 @@
           <div class="mb-5">
             <label class="review-label">Issue Location:</label>
             <div id="map-canvas2" class="mt-3" style="height: 425px; width: 100%;"></div>
-            <input type="hidden" id="lat2" name="lat2">
-            <input type="hidden" id="lng2" name="lng2">
           </div>
 
           <div class="mb-5">
