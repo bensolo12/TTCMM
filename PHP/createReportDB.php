@@ -25,6 +25,11 @@ if($_POST['phpFunction'] == 'create')
 
         if(mysqli_query($connection, $sql)) {
             echo "Successfully registered.";
+
+            //CODE FOR THE IMAGE UPLOAD HERE, LIKELY NEED A LOOP???
+            $reportId = mysqli_insert_id($connection);
+            $sql = "INSERT INTO `images_table`(image_location)"."values"."($imageLocations)";
+
         } else {
             echo mysqli_error($connection);
             return;
