@@ -16,21 +16,21 @@
     width: 100%;
     background-color: black;
     color: white;
-  
+
   }
 </style>
   <nav id="navbar">
     <!-- space and framework left to make navbar collapsable if needed -->
-          <div class="">
-            <ul id="NavList"class="nav">
-              <li id="NavHome"><a  href="Index.html">Home</a></li>
-              <li id="NavReport"><a href="Report.html">Report Issue</a></li>
-              <li id="NavView"><a class="NavActive" href="view-problems.html">Report Issue</a></li>
-              <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
-              <li id="NavSignIn" style="float:right"><a href="login.html" id="NavSignIn">Sign In</a></li>
-              <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
-            </ul>
-          </div>
+    <div class="">
+      <ul id="NavList"class="nav">
+        <li id="NavHome"><a href="Index.html">Home</a></li>
+        <li id="NavReport"><a href="Report.php">Report Issue</a></li>
+        <li id="NavView"><a href="view-problems.html">View Problems</a></li>
+        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
+        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+      </ul>
+    </div>
         </nav>
     <div class="row">
         <div class="col-lg-1"></div>
@@ -129,6 +129,7 @@
 
     <!-- Link the javascript file to this page -->
     <script src="../JS/view-problems.js"></script>
+    <script src="../JS/Common.js"></script>
     <div class="footer">
       <a href="ContactUs.html">Contact Us</a><br>
       Report a bug: CheltBugReport@email.com

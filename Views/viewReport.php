@@ -70,6 +70,7 @@ function json(){
           <li><a href="createNews.html">News</a></li>
           <li><a href="stats.html">Statistics</a></li>
           <li><a href="contractors.html">Contractors</a></li>
+          <li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>
           <li style="float:right"><p>Account</p></li>
           <li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
 
@@ -135,5 +136,6 @@ function json(){
       Made by TEMA TEMA inc
       <img src="../Images/tematemalogo.png" height="40px" width="40px">
     </div>
+    <script src="../JS/Common.js"></script>
 </body>
 </html>

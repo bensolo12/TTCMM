@@ -121,7 +121,7 @@
       display: flex;
       align-items: center;
     }
-    
+
     #issueSelect {
       margin-right: 10px;
     }
@@ -139,16 +139,16 @@
 <body>
   <nav style="position:sticky;z-index: 1100;">
     <!-- space and framework left to make navbar collapsable if needed -->
-          <div class="">
-            <ul class="nav">
-              <li><a href="Index.html">Home</a></li>
-              <li><a class="NavActive" href="ReportPage.php">Report Issue</a></li>
-              <li><a href="ContactUs.html">Contact Us</a></li>
-              <li class="mr-2" style="float:right;display: flex; justify-content: flex-end;"><a href="Index.html" id="NavSignIn">Sign In</a></li>
-              <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
-              <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value="" placeholder="Search"></li>
-            </ul>
-          </div>
+    <div class="">
+      <ul id="NavList"class="nav">
+        <li id="NavHome"><a href="Index.html">Home</a></li>
+        <li id="NavReport"><a href="Report.php">Report Issue</a></li>
+        <li id="NavView"><a href="view-problems.html">View Problems</a></li>
+        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
+        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+      </ul>
+    </div>
   </nav>
 
   <div id="page-container">
@@ -171,7 +171,7 @@
         <div class="form-tab">Further Details</div>
       </div>
 
-        <?php 
+        <?php
         try{
           error_reporting(E_ERROR | E_PARSE);
           $userID = $_SESSION['user_id'];
@@ -182,7 +182,7 @@
         }
         catch(Exception $e){
         }
-        
+
         if($userID != null):
         ?>
       <form id="formCreateReport" method="POST">
@@ -265,7 +265,7 @@
           <button style="background-color: #8403fc; border: none;" class="submit-button btn btn-primary" type="submit">Submit</button>
           </div>
         </div>
-        
+
       </form>
       <script src="../JS/submitReport.js"></script>
 
@@ -275,7 +275,7 @@
     </div>
     <?php endif;
     ?>
-    
+
     <footer id="footer">
       <div class="" style="width:45%;">
         <a href="ContactUs.html">Contact Us</a><br>
@@ -289,7 +289,8 @@
       </div>
     </footer>
   </div>
-  
+  <script src="../JS/Common.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
@@ -349,12 +350,12 @@
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
-    
+
       var infoWindow= new google.maps.InfoWindow({
         content:contentString
       });
 
-      marker.addListener('dragend', function(event){  
+      marker.addListener('dragend', function(event){
         var newLat = event.latLng.lat();
         var newLng = event.latLng.lng();
         latInput.value = newLat;
