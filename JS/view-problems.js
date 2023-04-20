@@ -133,7 +133,7 @@ function displayFullReport(reportId) {
                 document.getElementById("reportDate").textContent = "Reported: " + reportDate;
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
-                displayComments();
+                displayComments(reportId);
 
                 // clearMarkers();
                 // // var markerURL = ("../Images/",reportType,"Pin.png")
