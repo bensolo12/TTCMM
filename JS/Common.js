@@ -30,6 +30,8 @@ $.ajax({
         ContractorNav();
       }else if (msg == "Employee"){
         EmployeeNav();
+      }else if (msg == "Admin"){
+        AdminNav();
       }
 
   },
@@ -111,4 +113,14 @@ function EmployeeNav(){
   nav.append('<li style="float:right"><a href="Account.html" id="NavSignIn">Account</a></li>');
   nav.append('<li style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>');
   prompt.append('<a href="UserReports.html" class="ButtonLink">View User Reports</a><br>');
+}
+
+//adds the new navbar for citizen
+function AdminNav(){
+  nav=$("#NavList")
+  ClearBar();
+  nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
+  nav.append('<li><a href="CreateCouncil.html">Create Council Account</a></li>');
+  nav.append('<li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>');
+  nav.append('<li style="float:right"><a href="Account.html" id="NavSignin">Account</a></li>');
 }

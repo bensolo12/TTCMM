@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        background-color:#E8E8E8;
+        margin-top: 2em;
+        margin-bottom: 1em;
+    }
+
+    .form-field {
+      width:80%;
+      margin:auto;
+    }
+
+    .form-text-box {
+      height: 150px;
+    }
+
+    .form-field-optional {
+      width:100%;
+      margin:auto;
+    }
+
+    #footer {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 3.3rem;            /* Footer height */
+    }
+
+    #page-container {
+      position: relative;
+      min-height: 86vh;
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .nav li:nth-child(4){
+      margin-left: auto;
+    }
+
+    .nav li {
+      display: flex;
+      align-items: center;
+    }
+
+    @media (max-width: 767px) {
+        .container {
+            margin-top: 100px;
+        }
+    }
+
+    button {
+      border: none;
+      background-color: transparent;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .submit-button {
+        background-color: #8403fc;
+        color: white;
+    }
+
+</style>
+
+<head>
+    <title>Create Council Account</title>
+    <link rel="icon" type="image/x-icon" href="../Images/cheltenham-council.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <nav style="position:sticky;z-index: 1100;">
+    <!-- space and framework left to make navbar collapsable if needed -->
+          <div class="">
+            <ul class="nav">
+              <li><a href="Index.html">Home</a></li>
+              <li><a class="NavActive" href="CreateCouncil.html">Create Council Account</a></li>
+              <li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>
+              <li style="float:right"><a href="Account.html" id="NavSignin">Account</a></li>
+            </ul>
+          </div>
+  </nav>
+
+    <div id="page-container">
+        <div class="container" style="padding-bottom: 4rem; width:30%;">
+            <form id="formCreateUser" method="POST">
+                  <h2 class="mt-3" style="text-align: center;">Sign Up</h2>
+
+                  <label class="form-field" for="firstName">First Name:</label>
+                  <input class="form-field mb-3" type="text" id="firstName" name="firstName" required>
+
+                  <label class="form-field" for="lastName">Last Name:</label>
+                  <input class="form-field mb-3" type="text" id="lastName" name="lastName" required>
+
+                  <label class="form-field" for="DoB">Date of Birth:</label>
+                  <input class="form-field mb-3" name="DoB" type="date" id="DoB" required>
+
+                  <label class="form-field" for="email">Email:</label>
+                  <input class="form-field mb-3" type="email" id="email" name="email" required>
+
+                  <label class="form-field" for="password">Password:</label>
+                  <input class="form-field mb-3" type="password" id="password" name="password" required>
+
+                  <label class="form-field" for="confirmPassword">Confirm Password:</label>
+                  <input class="form-field mb-4" type="password" id="confirmPassword" name="confirmPassword" required>
+                  <div class="form-field" id="optional-fields" style="display:none;">
+
+                    <label class="form-field" for="companyName">Company Name:</label>
+                    <input class="form-field-optional mb-3" type="text" id="companyName" name="companyName">
+
+                    <label for="phoneNumber">Phone Number:</label>
+                    <input class="form-field-optional mb-3" type="tel" id="phoneNumber" name="phoneNumber">
+
+                    <label for="companyDescription">Company Description:</label>
+                    <textarea class="form-field-optional form-text-box mb-3" id="companyDescription" name="companyDescription"></textarea>
+
+                    <label for="companyAddress">Company Address:</label>
+                    <textarea class="form-field-optional form-text-box mb-3" id="companyAddress" name="companyAddress"></textarea>
+                  </div>
+
+
+                  <input class="submit-button form-field mb-3" type="submit" value="Create Account">
+
+
+            </form>
+
+            <div id="success-message" style="display: none;">
+              <h1 class="mt-5">Account Created</h1>
+            </div>
+        </div>
+
+        <footer id="footer">
+        <div class="" style="width:45%;">
+            <a href="ContactUs.html">Contact Us</a><br>
+            Report a bug: CheltBugReport@email.com
+        </div>
+        <div class="" style="width:45%;">
+        Made by TEMA TEMA inc
+        </div>
+        <div class="" style="width:10%;">
+            <img src="../Images/tematemalogo.png" height="40px" width="40px">
+        </div>
+        </footer>
+    </div>
+    <script src="../JS/Common.js"></script>
+    <script src="../JS/createCouncil.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+
+    <script>
+      function handleFormSubmission(event) {
+        event.preventDefault(); // Prevent the form from submitting
+
+        // Get a reference to the form and the success message
+        const form = document.getElementById('formCreateUser');
+        const successMessage = document.getElementById('success-message');
+
+        // Hide the form and show the success message
+        form.style.display = 'none';
+        successMessage.style.display = 'block';
+      }
+
+      // Add an event listener to the form submit event
+      const form = document.getElementById('formCreateUser');
+      form.addEventListener('submit', handleFormSubmission);
+    </script>
+
+ </body>
+</html>
