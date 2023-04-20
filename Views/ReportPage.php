@@ -348,9 +348,11 @@
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
+
       var infoWindow= new google.maps.InfoWindow({
         content:contentString
       });
+
       marker.addListener('dragend', function(event){
         var newLat = event.latLng.lat();
         var newLng = event.latLng.lng();
