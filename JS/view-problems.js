@@ -66,7 +66,7 @@ function displayComments(reportId){
                 document.getElementById("commentDate").textContent = "Comment date: " + commentDate;
                 document.getElementById("commentText").textContent = "Comment text: " + commentText;
                 button = document.getElementById("addcomment");
-                button.
+                document.getElementById("addComment").onclick(createComment(reportId));
                 document.getElementById("addcomment").textContent = "Add Comment";
             }
         }
