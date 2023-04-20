@@ -121,7 +121,7 @@
       display: flex;
       align-items: center;
     }
-    
+
     #issueSelect {
       margin-right: 10px;
     }
@@ -271,6 +271,7 @@
 
       </form>
       <script src="../JS/submitReport.js"></script>
+      <script src="../JS/Common.js"></script>
 
       <div id="success-message" style="display: none;">
         <h1 class="mt-5">Thank you for bringing this issue to our attention!</h1>
@@ -329,7 +330,6 @@
     <!-- <script>
       let latInput = document.getElementById('lat');
       let lngInput = document.getElementById('lng');
-
       var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
       var mapOptions={
         zoom: 18,
@@ -338,7 +338,6 @@
       };
       var container=document.getElementById('map-canvas');
       var map=new google.maps.Map(container, mapOptions);
-
       var marker=new google.maps.Marker({
         position: mapCenter,
         map:map,
@@ -346,7 +345,6 @@
         draggable: true
       });
       var contentString = '<h1>Issue Location</h1>' + 'Please place this marker the location of the issue';
-
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
@@ -362,7 +360,6 @@
         lngInput.value = newLng;
         }
       );
-
       google.maps.event.addListener(marker, 'dragend', function(event){
         updateMarkerPosition(this.position, true, true);
       });
