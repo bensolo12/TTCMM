@@ -100,9 +100,6 @@ footer div{
    margin: 8px;
  }
  .commentsContainer{
-  position: absolute;
-  bottom: 15px;
-  width: 50%;
   background-color: #f0ecec;
   border: 2px solid #747474;
   padding-left: 16px;
