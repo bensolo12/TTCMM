@@ -117,14 +117,26 @@
       outline: 2px dotted #aaa;
     }
 
+    #issue-stage {
+      display: flex;
+      align-items: center;
+    }
+    
+    #issueSelect {
+      margin-right: 10px;
+    }
+
 </style>
 
 <head>
     <title>Council Report Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/style.CSS">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <?php session_start();?>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
 </head>
 
 <body>
@@ -162,7 +174,7 @@
         <div class="form-tab">Further Details</div>
       </div>
 
-        <?php 
+        <?php
         try{
           error_reporting(E_ERROR | E_PARSE);
           $userID = $_SESSION['user_id'];
@@ -173,7 +185,7 @@
         }
         catch(Exception $e){
         }
-        
+
         if($userID != null):
         ?>
       <form id="formCreateReport" method="POST">
@@ -193,17 +205,23 @@
 
         <div class="form-stage">
           <h1>Issue Type</h1>
-          <label for="issueSelect">Dropdown List</label>
-          <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
-              <option>Littering</option>
-              <option>Graffiti</option>
-              <option>Pothole</option>
-              <option>Flooding</option>
-              <option>Wrecked car</option>
-              <option>Live wire</option>
-              <option>Broken Streetlight</option>
-          </select>
-          <div class="mt-3">
+          <label for="issueSelect">Select Issue</label>
+              <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
+                  <option>Littering</option>
+                  <option>Graffiti</option>
+                  <option>Pothole</option>
+                  <option>Flooding</option>
+                  <option>Wrecked car</option>
+                  <option>Live wire</option>
+                  <option>Broken Streetlight</option>
+                  <option>Other</option>
+              </select>
+
+              <div>
+                  <label for="otherIssue" id="otherLabel" style="display:none;" class="mt-4">Please describe your issue</label>
+                  <textarea name="otherIssue" class="form-control" style="display:none; width:50%" id="otherIssue" rows="3"></textarea>
+              </div>
+          <div class="mt-3 mb-5">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
               <button style="background-color: #8403fc; border: none;" class="next-button btn btn-primary" type="button">Next</button>
           </div>
@@ -250,7 +268,7 @@
           <button style="background-color: #8403fc; border: none;" class="submit-button btn btn-primary" type="submit">Submit</button>
           </div>
         </div>
-        
+
       </form>
       <script src="../JS/submitReport.js"></script>
 
@@ -260,7 +278,7 @@
     </div>
     <?php endif;
     ?>
-    
+
     <footer id="footer">
       <div class="" style="width:45%;">
         <a href="ContactUs.html">Contact Us</a><br>
@@ -274,10 +292,25 @@
       </div>
     </footer>
   </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
+
+
+
+
+    <script>
+      const dropdown = document.getElementById("issueSelect");
+      const otherLabel = document.getElementById("otherLabel");
+      const otherTextField = document.getElementById("otherIssue");
+
+      dropdown.addEventListener("change", function() {
+        if (dropdown.value === "Other") {
+          otherTextField.style.display = "block";
+          otherLabel.style.display = "block";
+        } else {
+          otherTextField.style.display = "none";
+          otherLabel.style.display = "none";
+        }
+      });
+    </script>
 
     <script>
       const input = document.querySelector('#image-upload');
@@ -293,7 +326,7 @@
       });
     </script>
 
-    <script>
+    <!-- <script>
       let latInput = document.getElementById('lat');
       let lngInput = document.getElementById('lng');
 
@@ -317,12 +350,12 @@
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
-    
+
       var infoWindow= new google.maps.InfoWindow({
         content:contentString
       });
 
-      marker.addListener('dragend', function(event){  
+      marker.addListener('dragend', function(event){
         var newLat = event.latLng.lat();
         var newLng = event.latLng.lng();
         latInput.value = newLat;
@@ -333,7 +366,7 @@
       google.maps.event.addListener(marker, 'dragend', function(event){
         updateMarkerPosition(this.position, true, true);
       });
-    </script>
+    </script> -->
 
     <script>
         const form = document.getElementById('formCreateReport');
