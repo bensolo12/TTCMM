@@ -72,7 +72,7 @@ function displayComments(reportId){
                 document.getElementById("commentDate").textContent = "Comment date: " + commentDate;
                 document.getElementById("commentText").textContent = "Comment text: " + commentText;
                 document.getElementById("addcomment").textContent = "Add Comment";
-                document.getElementById("addComment").onclick = function(){createComment()};
+                document.getElementById("addcomment").onclick = function(){createComment()};
                 
                 
             }
