@@ -131,24 +131,27 @@
 <head>
     <title>Council Report Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/style.CSS">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <?php session_start();?>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
 </head>
 
 <body>
   <nav style="position:sticky;z-index: 1100;">
     <!-- space and framework left to make navbar collapsable if needed -->
-    <div class="">
-      <ul id="NavList"class="nav">
-        <li id="NavHome"><a href="Index.html">Home</a></li>
-        <li id="NavReport"><a href="Report.php">Report Issue</a></li>
-        <li id="NavView"><a href="view-problems.html">View Problems</a></li>
-        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
-        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
-        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
-      </ul>
-    </div>
+          <div class="">
+            <ul class="nav">
+              <li><a href="Index.html">Home</a></li>
+              <li><a class="NavActive" href="ReportPage.php">Report Issue</a></li>
+              <li><a href="ContactUs.html">Contact Us</a></li>
+              <li class="mr-2" style="float:right;display: flex; justify-content: flex-end;"><a href="Index.html" id="NavSignIn">Sign In</a></li>
+              <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
+              <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value="" placeholder="Search"></li>
+            </ul>
+          </div>
   </nav>
 
   <div id="page-container">
@@ -268,6 +271,7 @@
 
       </form>
       <script src="../JS/submitReport.js"></script>
+      <script src="../JS/Common.js"></script>
 
       <div id="success-message" style="display: none;">
         <h1 class="mt-5">Thank you for bringing this issue to our attention!</h1>
@@ -289,11 +293,8 @@
       </div>
     </footer>
   </div>
-  <script src="../JS/Common.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
+
 
 
     <script>
@@ -326,10 +327,9 @@
       });
     </script>
 
-    <script>
+    <!-- <script>
       let latInput = document.getElementById('lat');
       let lngInput = document.getElementById('lng');
-
       var mapCenter=new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
       var mapOptions={
         zoom: 18,
@@ -338,7 +338,6 @@
       };
       var container=document.getElementById('map-canvas');
       var map=new google.maps.Map(container, mapOptions);
-
       var marker=new google.maps.Marker({
         position: mapCenter,
         map:map,
@@ -346,15 +345,12 @@
         draggable: true
       });
       var contentString = '<h1>Issue Location</h1>' + 'Please place this marker the location of the issue';
-
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
-
       var infoWindow= new google.maps.InfoWindow({
         content:contentString
       });
-
       marker.addListener('dragend', function(event){
         var newLat = event.latLng.lat();
         var newLng = event.latLng.lng();
@@ -362,11 +358,10 @@
         lngInput.value = newLng;
         }
       );
-
       google.maps.event.addListener(marker, 'dragend', function(event){
         updateMarkerPosition(this.position, true, true);
       });
-    </script>
+    </script> -->
 
     <script>
         const form = document.getElementById('formCreateReport');
