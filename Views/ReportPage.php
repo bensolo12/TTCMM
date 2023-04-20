@@ -131,9 +131,12 @@
 <head>
     <title>Council Report Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../CSS/style.CSS">
+    <link rel="stylesheet" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <?php session_start();?>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
 </head>
 
 <body>
@@ -171,7 +174,7 @@
         <div class="form-tab">Further Details</div>
       </div>
 
-        <?php 
+        <?php
         try{
           error_reporting(E_ERROR | E_PARSE);
           $userID = $_SESSION['user_id'];
@@ -182,7 +185,7 @@
         }
         catch(Exception $e){
         }
-        
+
         if($userID != null):
         ?>
       <form id="formCreateReport" method="POST">
@@ -265,7 +268,7 @@
           <button style="background-color: #8403fc; border: none;" class="submit-button btn btn-primary" type="submit">Submit</button>
           </div>
         </div>
-        
+
       </form>
       <script src="../JS/submitReport.js"></script>
 
@@ -275,7 +278,7 @@
     </div>
     <?php endif;
     ?>
-    
+
     <footer id="footer">
       <div class="" style="width:45%;">
         <a href="ContactUs.html">Contact Us</a><br>
@@ -289,10 +292,8 @@
       </div>
     </footer>
   </div>
-  
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script>
+
+
 
 
     <script>
@@ -325,7 +326,7 @@
       });
     </script>
 
-    <script>
+    <!-- <script>
       let latInput = document.getElementById('lat');
       let lngInput = document.getElementById('lng');
 
@@ -349,12 +350,12 @@
       marker.addListener('click', function(){
         infoWindow.open(map, marker);
       });
-    
+
       var infoWindow= new google.maps.InfoWindow({
         content:contentString
       });
 
-      marker.addListener('dragend', function(event){  
+      marker.addListener('dragend', function(event){
         var newLat = event.latLng.lat();
         var newLng = event.latLng.lng();
         latInput.value = newLat;
@@ -365,7 +366,7 @@
       google.maps.event.addListener(marker, 'dragend', function(event){
         updateMarkerPosition(this.position, true, true);
       });
-    </script>
+    </script> -->
 
     <script>
         const form = document.getElementById('formCreateReport');
