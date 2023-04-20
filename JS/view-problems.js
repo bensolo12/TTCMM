@@ -66,14 +66,14 @@ function displayComments(reportId){
                 document.getElementById("commentDate").textContent = "Comment date: " + commentDate;
                 document.getElementById("commentText").textContent = "Comment text: " + commentText;
                 button = document.getElementById("addcomment");
-                document.getElementById("addComment").onclick(createComment(reportId));
+                document.getElementById("addComment").onclick = function(){createComment()};
                 document.getElementById("addcomment").textContent = "Add Comment";
             }
         }
     })
 
 
-    function createComment(reportId){
+    function createComment(){
         $('#formCreateComments').submit(function(event){
             formData = $('#formCreateComments').serialize();
             event.preventDefault();
