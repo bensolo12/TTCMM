@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS report_table (
   report_id int(5) not null AUTO_INCREMENT,
   user_id int(5) not null,
   type varchar(15),
+  other text(150),
   longitude float(30) not null,
   latitude float(30) not null,
   description text(300),
