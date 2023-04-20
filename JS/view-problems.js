@@ -83,6 +83,7 @@ function displayComments(reportId){
     function createComment(){
         $('#formCreateComments').submit(function(event){
             formData = $('#formCreateComments').serialize();
+            console.log("Before Ajax");
             event.preventDefault();
         
             $.ajax({
@@ -92,11 +93,15 @@ function displayComments(reportId){
                 success: function(msg){ 
                     $("#divMessage").html(msg);	
                     alert(msg);
+                    console.log("After Ajax");
                 },
                 error: function(msg){ 
                     console.log(msg);
+
                 }
+                
             });
+            console.log("Nothing happened")
         });
 
     }
