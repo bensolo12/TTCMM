@@ -295,7 +295,7 @@
             </div>
             <div class="mt-3 nav-buttons">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
-              <button style="background-color: #8403fc; border: none;" class="next-button btn btn-primary"
+              <button style="background-color: #8403fc; border: none;" class="description-button next-button btn btn-primary"
                 type="button">Next</button>
             </div>
           </div>
@@ -371,7 +371,6 @@
     echo "<script src='../JS/reportFormOther.js'></script>";
     echo "<script src='../JS/reportFormTabs.js'></script>";
     echo "<script src='../JS/imagePreview.js'></script>";
-    echo "<script src='../JS/Common.js'></script>";
   endif;
   ?>
 
