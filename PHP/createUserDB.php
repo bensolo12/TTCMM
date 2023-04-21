@@ -12,6 +12,7 @@ if($_POST['phpFunction'] == 'create')
         $email = $_POST['email'];
         $password = $_POST['password'];
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+				$role = $_POST['role'];
 
         $companyName = $_POST['companyName'];
         $phoneNumber = $_POST['phoneNumber'];
@@ -22,7 +23,7 @@ if($_POST['phpFunction'] == 'create')
 
         $sql = "INSERT INTO `user_table`(first_name, last_name, email, date_of_birth,
                                         user_password, role)"."values".
-		"('$firstName', '$lastName', '$email', '$dateOfBirth', '$hashedPassword', 'Citizen')";
+		"('$firstName', '$lastName', '$email', '$dateOfBirth', '$hashedPassword', '$role')";
 
         if(!empty($companyName) and !empty($phoneNumber) and !empty($companyDescription) and !empty($companyAddress)){
             $sql = "INSERT INTO `contractor_table`(company_name, phone_number, company_description, company_address)"."values".

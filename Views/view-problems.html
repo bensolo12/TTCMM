@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reports in your area</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script> -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg"
+      async
+      defer
+    ></script>
+<title>Reports in your area</title>
+    <!-- <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB' async defer></script> -->
+
     <link rel="stylesheet" href="../CSS/Style.CSS" type="text/css">
 </head>
 <body>
@@ -16,21 +27,21 @@
     width: 100%;
     background-color: black;
     color: white;
-  
+
   }
 </style>
   <nav id="navbar">
     <!-- space and framework left to make navbar collapsable if needed -->
-          <div class="">
-            <ul id="NavList"class="nav">
-              <li id="NavHome"><a  href="Index.html">Home</a></li>
-              <li id="NavReport"><a href="Report.html">Report Issue</a></li>
-              <li id="NavView"><a class="NavActive" href="view-problems.html">Report Issue</a></li>
-              <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
-              <li id="NavSignIn" style="float:right"><a href="login.html" id="NavSignIn">Sign In</a></li>
-              <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
-            </ul>
-          </div>
+    <div class="">
+      <ul id="NavList"class="nav">
+        <li id="NavHome"><a href="Index.html">Home</a></li>
+        <li id="NavReport"><a href="Report.php">Report Issue</a></li>
+        <li id="NavView"><a href="view-problems.html">View Problems</a></li>
+        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
+        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+      </ul>
+    </div>
         </nav>
     <div class="row">
         <div class="col-lg-1"></div>
@@ -94,7 +105,7 @@
             </label><br>
           </div>
         <div class="scroll__container col-lg-4" id="viewReportsContainer"></div>
-        <div id="fullReportContainer" class="hidden col-lg-4 full-report-panel">
+        <div id="fullReportContainer" class="col-lg-4 full-report-panel">
             <h3 id="reportTitle"></h3>
             <p id="reportDate"></p>
             <p id="reportStatus"></p>
@@ -105,30 +116,31 @@
         </div>
         <div class="col-lg-1"></div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script> -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
 
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> -->
 
-    <script
+    <!-- <script
       src="https://maps.googleapis.com/maps/api/js?callback=initMap"
       async
       defer
-    ></script>
-    <script>
+    ></script> -->
+    <!-- <script>
       var map;
       function initMap() {
         map = new google.maps.Map(document.getElementById("map"), {
-          center: { lat: 37.7749, lng: -122.4194 },
+          center: { lat: 51.8999977, lng:-2.0738122 },
           zoom: 13,
         });
       }
-    </script>
+    </script> -->
 
     <!-- Link the javascript file to this page -->
     <script src="../JS/view-problems.js"></script>
+    <script src="../JS/Common.js"></script>
     <div class="footer">
       <a href="ContactUs.html">Contact Us</a><br>
       Report a bug: CheltBugReport@email.com

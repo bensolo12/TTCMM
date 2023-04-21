@@ -5,7 +5,7 @@ $('#formCreateUser').submit(function(event){
 	$.ajax({
 		type: "POST",
 		url: "../PHP/createUserDB.php",
-		data: formData+"&role=Citizen&phpFunction=create",
+		data: formData+"&role=Employee&phpFunction=create",
 	    success: function(msg){
 			$("#divMessage").html(msg);
 			alert(msg);

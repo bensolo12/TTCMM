@@ -126,6 +126,14 @@
   .review-value {
     display: block;
   }
+    #issue-stage {
+      display: flex;
+      align-items: center;
+    }
+
+    #issueSelect {
+      margin-right: 10px;
+    }
 
   #issue-stage {
     display: flex;
@@ -337,6 +345,11 @@
                 type="submit">Submit</button>
             </div>
           </div>
+        </div>
+
+      </form>
+      <script src="../JS/submitReport.js"></script>
+      <script src="../JS/Common.js"></script>
 
         </form>
 
@@ -360,8 +373,7 @@
       </div>
     </footer>
   </div>
-
-
+  
   <?php
   try {
     error_reporting(E_ERROR | E_PARSE);
