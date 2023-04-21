@@ -40,7 +40,9 @@ function create()
                 if ($image_size < 5000000) { // 5 MB limit
                     $image_path = "../media/report_" . $reportId . "_" . $image_name;
                     move_uploaded_file($image_tmp, $image_path);
-                    $imageLocations[] = $image_path;
+
+                    $sql = "INSERT INTO `images_table`(image_location, report_id) VALUES ('$image_path', '$reportId')";
+                    mysqli_query($connection, $sql);
                 } else {
                     echo "Error: Image is too large.";
                 }
@@ -48,11 +50,6 @@ function create()
                 echo "Error: Invalid image type.";
             }
         }
-
-        // insert image locations into database
-        $imageLocations = implode(",", $imageLocations);
-        $sql = "INSERT INTO `images_table`(image_location) VALUES ('$imageLocations')";
-        mysqli_query($connection, $sql);
     } else {
         echo mysqli_error($connection);
         return;

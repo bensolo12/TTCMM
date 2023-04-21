@@ -1,11 +1,17 @@
 $('#formCreateReport').submit(function(event){
-	formData = $('#formCreateReport').serialize();
     event.preventDefault();
+
+    var formData = new FormData(this);
+    formData.append('lat', marker1.getPosition().lat());
+    formData.append('lng', marker1.getPosition().lng());
+    formData.append('phpFunction', 'create');
 
 	$.ajax({
 		type: "POST",
 		url: "../PHP/createReportDB.php",
-		data: formData+ "&lat="+marker1.getPosition().lat()+"&lng="+marker1.getPosition().lng()+"&phpFunction=create",
+		data: formData,
+        contentType: false,
+        processData: false,
 	    success: function(msg){
 			$("#divMessage").html(msg);	
 			alert(msg);

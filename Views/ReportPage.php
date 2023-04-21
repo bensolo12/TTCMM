@@ -211,7 +211,7 @@
 
       if ($userID != null):
         ?>
-        <form id="formCreateReport" method="POST">
+        <form id="formCreateReport" method="POST" enctype="multipart/form-data">
 
           <input type="hidden" id="userId" name="userId" value="<?php echo $_SESSION['user_id']; ?>">
 
@@ -289,8 +289,8 @@
                 oninput="document.getElementById('descriptionValue').innerHTML = this.value.replace(/\n/g, '<br>')"></textarea>
             </div>
             <div class="form-group">
-              <label for="image-upload"></label>
                 <span class="mr-1"><b>Upload photographic evidence here</b></span>
+                <label for="image-upload"></label>
                 <input class="form-control" type="file" id="image-upload" name="images[]" multiple>
                 <button type="button" onclick="document.getElementById('image-upload').click()">Choose file(s)</button>
                 <br>
@@ -389,7 +389,8 @@
 
       for (let i = 0; i < 6; i++) {
         const file = input.files[i];
-        const fileName = file.name;
+        if (file) {
+          const fileName = file.name;
         const nameElement = document.createElement('p');
         const img = document.createElement('img');
 
@@ -399,6 +400,7 @@
         img.src = URL.createObjectURL(file);
         img.onload = () => URL.revokeObjectURL(img.src);
         imagePreview.appendChild(img);
+        }
       }
     });
   </script>
