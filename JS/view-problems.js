@@ -81,7 +81,6 @@ function displayComments(reportId){
 
 
     function createComment(){
-        console.log("In function");
         $('#formCreateComments').submit(function(event){
             formData = $('#formCreateComments').serialize();
             console.log("Before Ajax");
