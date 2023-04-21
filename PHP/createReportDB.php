@@ -37,7 +37,6 @@ function create()
                     $image_tmp = $_FILES['images']['tmp_name'][$key];
                     $image_type = $_FILES['images']['type'][$key];
                     
-                    echo $image_type;
                     if ($image_type == "image/jpeg" || $image_type == "image/png") {
                         if ($image_size < 5000000) { // 5 MB limit
                             $image_path = "../media/report_" . $reportId . "_" . $image_name;
