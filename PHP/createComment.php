@@ -2,7 +2,7 @@
         $commentText = $_POST['addCommentsField'];
 		$reportID = 1;
         $date = date("d/m/Y");
-        $userID = 1;
+        $userID = 2;
         
 		include "../PHP/dbConfig.php";
 		$sql = "INSERT INTO `comments_table`(user_id, report_id, comment_text, comment_date)".
