@@ -1,4 +1,4 @@
-//const form = document.getElementById('formCreateReport');
+
 const stages = document.getElementsByClassName('form-stage');
 const tabs = document.getElementsByClassName('form-tab');
 const nextButtons = document.getElementsByClassName('next-button');
