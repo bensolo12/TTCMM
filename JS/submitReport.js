@@ -1,25 +1,27 @@
 $('#formCreateReport').submit(function(event){
     event.preventDefault();
 
-    var formData = new FormData(this);
-    formData.append('lat', marker1.getPosition().lat());
-    formData.append('lng', marker1.getPosition().lng());
-    formData.append('phpFunction', 'create');
+    if ($('#problemDescription').val().trim() != '') {
+        var formData = new FormData(this);
+        formData.append('lat', marker1.getPosition().lat());
+        formData.append('lng', marker1.getPosition().lng());
+        formData.append('phpFunction', 'create');
 
-	$.ajax({
-		type: "POST",
-		url: "../PHP/createReportDB.php",
-		data: formData,
-        contentType: false,
-        processData: false,
-	    success: function(msg){
-			$("#divMessage").html(msg);	
-			alert(msg);
-	    },
-		error: function(msg){
-			console.log(msg);
-	    }
-	});
+        $.ajax({
+            type: "POST",
+            url: "../PHP/createReportDB.php",
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(msg){
+                $("#divMessage").html(msg);	
+                alert(msg);
+            },
+            error: function(msg){
+                console.log(msg);
+            }
+        });
+    }
 });
 
 let latInput = document.getElementById('lat');

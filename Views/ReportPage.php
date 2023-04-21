@@ -285,7 +285,6 @@
                 </ul>
               </label>
               <textarea name="problemDescription" class="form-control" style="width:50%" id="problemDescription" rows="3"
-                required
                 oninput="document.getElementById('descriptionValue').innerHTML = this.value.replace(/\n/g, '<br>')"></textarea>
             </div>
             <div class="form-group">
