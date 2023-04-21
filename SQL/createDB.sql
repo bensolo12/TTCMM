@@ -9,12 +9,12 @@ CREATE TABLE IF NOT EXISTS contractor_table (
 );
 CREATE TABLE IF NOT EXISTS user_table (
   user_id int(5) not null AUTO_INCREMENT,
-  contractor_id int(5) not null,
+  contractor_id int(5),
   first_name varchar(15),
   last_name varchar(30),
   email varchar(30),
   date_of_birth date,
-  user_password varchar(30),
+  user_password varchar(250),
   role text(10),
   PRIMARY KEY (user_id),
   FOREIGN KEY (contractor_id) REFERENCES contractor_table(contractor_id)
@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS report_table (
   report_id int(5) not null AUTO_INCREMENT,
   user_id int(5) not null,
   type varchar(15),
+  other text(150),
   longitude float(30) not null,
   latitude float(30) not null,
   description text(300),
@@ -76,3 +77,12 @@ CREATE TABLE IF NOT EXISTS images_table (
   PRIMARY KEY (image_location),
   FOREIGN KEY (report_id) REFERENCES report_table(report_id)
 );
+CREATE TABLE IF NOT EXISTS comments_table(
+  comment_id int(4) not null,
+  user_id int(4) not null,
+  report_id int(4) not null,
+  comment_text varchar(50),
+  PRIMARY KEY (comment_id),
+  FOREIGN KEY (user_id) REFERENCES user_table(user_id),
+  FOREIGN KEY (report_id) REFERENCES report_table(report_id)
+)

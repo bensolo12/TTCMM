@@ -135,6 +135,13 @@
   #issueSelect {
     margin-right: 10px;
   }
+
+  #image-preview img {
+    max-width: 500px;
+    max-height: 500px;
+    margin: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 2);
+  }
 </style>
 
 <head>
@@ -282,11 +289,13 @@
                 oninput="document.getElementById('descriptionValue').innerHTML = this.value.replace(/\n/g, '<br>')"></textarea>
             </div>
             <div class="form-group">
-              <label for="image-upload" class="upload-label">
-                <span><b>Upload photographic evidence here</b></span>
-                <input id="image-upload" type="file" name="image-upload" multiple accept="image/*">
-                <ul id="file-list"></ul>
-              </label>
+              <label for="image-upload"></label>
+                <span class="mr-1"><b>Upload photographic evidence here</b></span>
+                <input class="form-control" type="file" id="image-upload" name="images[]" multiple>
+                <button type="button" onclick="document.getElementById('image-upload').click()">Choose file(s)</button>
+                <br>
+                <span style="font-style: italic;" class="max-images-message">(A maximum of 6 images are allowed)</span>
+                <div class="mt-3" id="name-preview"></div>
             </div>
             <div class="mt-3 nav-buttons">
               <button class="prev-button btn btn-secondary" type="button">Previous</button>
@@ -320,6 +329,7 @@
 
             <div class="mb-5">
               <label class="review-label">Photographic evidence:</label>
+              <div id="image-preview"></div>
             </div>
 
             <div class="mt-3 nav-buttons">
@@ -368,26 +378,31 @@
   endif;
   ?>
 
-  <!--
-  <script src="../JS/submitReport.js"></script>
-  <script src="../JS/reportFormHide.js"></script>
-  <script src="../JS/reportFormOther.js"></script>
-  <script src="../JS/reportFormTabs.js"></script>
-  -->
-
   <script>
-    const input = document.querySelector('#image-upload');
-    const fileList = document.querySelector('#file-list');
+    const input = document.getElementById('image-upload');
+    const namePreview = document.getElementById('name-preview');
+    const imagePreview = document.getElementById('image-preview');
 
     input.addEventListener('change', () => {
-      fileList.innerHTML = ''; // clear the previous file list
-      for (const file of input.files) {
-        const listItem = document.createElement('li');
-        listItem.textContent = file.name;
-        fileList.appendChild(listItem);
+      namePreview.innerHTML = '';
+      imagePreview.innerHTML = '';
+
+      for (let i = 0; i < 6; i++) {
+        const file = input.files[i];
+        const fileName = file.name;
+        const nameElement = document.createElement('p');
+        const img = document.createElement('img');
+
+        nameElement.textContent = fileName;
+        namePreview.appendChild(nameElement);
+
+        img.src = URL.createObjectURL(file);
+        img.onload = () => URL.revokeObjectURL(img.src);
+        imagePreview.appendChild(img);
       }
     });
   </script>
+
 
 </body>
 
