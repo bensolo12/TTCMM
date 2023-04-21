@@ -57,7 +57,6 @@
     bottom: 0;
     width: 100%;
     height: 3.3rem;
-    /* Footer height */
   }
 
   #page-container {
@@ -166,9 +165,7 @@
         <li><a href="Index.html">Home</a></li>
         <li><a class="NavActive" href="ReportPage.php">Report Issue</a></li>
         <li><a href="ContactUs.html">Contact Us</a></li>
-        <li class="mr-2" style="float:right;display: flex; justify-content: flex-end;"><a href="Index.html"
-            id="NavSignIn">Sign In</a></li>
-        <!-- <li style="float:right"><a href="AccountSettings.html">Account Settings</a></li> -->
+        <li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>
         <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value=""
             placeholder="Search"></li>
       </ul>
@@ -176,7 +173,7 @@
   </nav>
 
   <div id="page-container">
-    <div class="container" style="padding-bottom: 2.5rem;">
+    <div class="container">
       <div>
         <h1 class="text-center mt-5">Report a Problem</h1>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
@@ -366,7 +363,6 @@
   try {
     error_reporting(E_ERROR | E_PARSE);
     $userID = $_SESSION['user_id'];
-    echo $userID;
   } catch (Exception $e) {
   }
   if ($userID != null):
@@ -375,6 +371,7 @@
     echo "<script src='../JS/reportFormOther.js'></script>";
     echo "<script src='../JS/reportFormTabs.js'></script>";
     echo "<script src='../JS/imagePreview.js'></script>";
+    echo "<script src='../JS/Common.js'></script>";
   endif;
   ?>
 
