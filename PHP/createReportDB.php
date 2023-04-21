@@ -30,7 +30,7 @@ function create()
             $reportId = mysqli_insert_id($connection);
             $imageLocations = array();
         
-            if (count($_FILES['images']['tmp_name']) > 1) {
+            if (count($_FILES['images']['tmp_name']) > 0) {
                 foreach ($_FILES['images']['tmp_name'] as $key => $tmp_name) {
                     $image_name = $_FILES['images']['name'][$key];
                     $image_size = $_FILES['images']['size'][$key];
