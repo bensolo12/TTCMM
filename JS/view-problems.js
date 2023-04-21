@@ -72,8 +72,10 @@ function displayComments(reportId){
                 document.getElementById("commentDate").textContent = "Comment date: " + commentDate;
                 document.getElementById("commentText").textContent = "Comment text: " + commentText;
                 document.getElementById("addcomment").textContent = "Add Comment";
-                document.getElementById("addcomment").removeAttribute("hidden");
-                document.getElementById("addCommentsField").removeAttribute("hidden");
+                addcomment =  document.getElementById("addcomment");
+                addcomment.removeAttribute("hidden");
+                addcommentsTxt = document.getElementById("addCommentsField")
+                addcommentsTxt.removeAttribute("hidden");
                 document.getElementById("addcomment").addEventListener("click", createComment);
                 
                 
