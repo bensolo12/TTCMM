@@ -142,8 +142,8 @@ function displayFullReport(reportId) {
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
 
-                //document.getElementById("addcomment").style.visibility = "hidden";
-                //document.getElementById("addCommentsField").style.visibility = "hidden";
+                document.getElementById("addcomment").style.visibility = "hidden";
+                document.getElementById("addCommentsField").style.visibility = "hidden";
                 displayComments(reportId);
 
                 // clearMarkers();
