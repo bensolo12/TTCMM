@@ -34,13 +34,19 @@ var mapCenter2 = new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
 // If user location is available
 if (window.navigator.geolocation) {
     // Center the google maps on their location
-    window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
-
     const successCallback = (position) => {
-      userLat, userLng = position.coords;
-      mapCenter1 = new google.maps.LatLng(userLat, userLng);
-      mapCenter2 = new google.maps.LatLng(userLat, userLng);
+        console.log(position);
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+        mapCenter1 = new google.maps.LatLng(userLat, userLng);
+        mapCenter2 = new google.maps.LatLng(userLat, userLng);
     };
+
+    const failureCallback = (msg) => {
+        console.log(msg);
+    };
+    
+    window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
 }
 
 var mapOptions1 = {
