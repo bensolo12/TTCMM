@@ -27,7 +27,28 @@ $('#formCreateReport').submit(function(event){
 let latInput = document.getElementById('lat');
 let lngInput = document.getElementById('lng');
 
+// Moved map center locations up here
 var mapCenter1 = new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
+var mapCenter2 = new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
+
+// If user location is available
+if (window.navigator.geolocation) {
+    // Center the google maps on their location
+    const successCallback = (position) => {
+        console.log(position);
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
+        mapCenter1 = new google.maps.LatLng(userLat, userLng);
+        mapCenter2 = new google.maps.LatLng(userLat, userLng);
+    };
+
+    const failureCallback = (msg) => {
+        console.log(msg);
+    };
+    
+    window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
+}
+
 var mapOptions1 = {
     zoom: 16,
     center: mapCenter1,
@@ -36,7 +57,6 @@ var mapOptions1 = {
 var container1 = document.getElementById('map-canvas1');
 var map1 = new google.maps.Map(container1, mapOptions1);
 
-var mapCenter2 = new google.maps.LatLng(51.887912272257076,-2.0869772550118904);
 var mapOptions2 = {
     zoom: 16,
     center: mapCenter2,
