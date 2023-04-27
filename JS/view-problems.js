@@ -3,6 +3,13 @@ var markersArray = [];
 let userLat;
 let userLng;
 
+var map;
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: 51.8999977, lng:-2.0738122 },
+    zoom: 13,
+  });
+}
 document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
@@ -71,8 +78,8 @@ function displayFullReport(reportId) {
             } else {
                 reportObj = JSON.parse(msg);
 
-                container.classList.remove("hidden");
-                
+                // container.classList.remove("hidden");
+
                 reportId = reportObj["report_id"];
                 reportType = reportObj["type"];
                 reportAddress = reportObj["address"];
@@ -87,14 +94,15 @@ function displayFullReport(reportId) {
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
 
-                clearMarkers();
-                
-                map.setCenter({ lat: lat, lng: lng });
-                var marker = new google.maps.Marker({
-                    position: { lat: lat, lng: lng },
-                    map: map,
-                });
-                markersArray.push(marker);
+                // clearMarkers();
+                // // var markerURL = ("../Images/",reportType,"Pin.png")
+                // map.setCenter({ lat: lat, lng: lng });
+                // var marker = new google.maps.Marker({
+                //     position: { lat: lat, lng: lng },
+                //     map: map,
+                //     // icon: {markerURL},
+                // });
+                // markersArray.push(marker);
             }
         }
     })
@@ -126,7 +134,9 @@ function isWithinRadius(lat1, lng1, lat2, lng2, radius) {
     
 
 function renderReports(filters) {
+    clearMarkers();
     scrollContainer.innerHTML = "";
+    container = document.getElementById("fullReportContainer");
     $.ajax({
         type: "POST",
         url: "../PHP/getreports.php",
@@ -160,6 +170,29 @@ function renderReports(filters) {
                     } else {
                         displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
                     }
+
+                    lat =  parseFloat(reportObj["latitude"]);
+                    lng =  parseFloat(reportObj["longitude"]);
+                    console.log(lat);
+                    console.log(lng);
+
+                    // COMMENTED THIS OUT BECAUSE REPORT PANEL IS BEING RENDERED IN ELSE STATEMENT ABOVE - THIS MEANS ONLY REPORTS IN USER RADIUS ARE RENDERED WHEN FILTER IS APPLIED
+                    // NOT SURE WHETHER THIS IS INTENDED OR NOT SO COMMENTED RATHER THAN DELETED
+                    //displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+
+                    //moved marker addition to here
+                    //creates a marker with a pin title and colour corosponding to the problem reportType
+                    //potential to do: can click on the pin to select a problem/ when problem is selected the map recenters to its pin
+
+                    // map.setCenter({ lat: lat, lng: lng });
+                    var marker = new google.maps.Marker({
+                        position: { lat: lat, lng: lng },
+                        map: map,
+                        icon: "../Images/"+reportType+"Pin.png",
+                        title: reportType,
+                    });
+                    markersArray.push(marker);
+
                 }
             }
         }
@@ -245,6 +278,20 @@ function displayReportPanel(scrollContainer, dateReported, id, type, address, st
                 
             });
             newPanel.append(heartElement);
+    // TEMPORARY - for testing, MUST CHANGE THIS TO CHECK THE ACTUAL CURRENTLY LOGGED IN USER
+    // userId = 1;
+
+    // isFavourited(id, userId, function(result) {
+    //     if (result) {
+    //         heartElement.classList.add("active");
+    //     }
+    // });
+
+    // heartElement.addEventListener('click', function() {
+
+    //     this.classList.toggle('active');
+    //     if (this.classList.contains('active')) {
+    //         favourite(id, userId);
         } else {
             console.log("Something has gone wrong - could not get the currently logged in user ID");
         }
