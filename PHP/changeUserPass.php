@@ -10,21 +10,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $error = "Invalid email address";
     } else {
       // Check if email exists in database
-      echo "lol";
       $user = getUserByEmail($email);
-      echo "lol2";
       if (!$user) {
         $error = "User with email '$email' does not exist";
-        echo "lol3";
       } else {
         // Generate one-time use tok
-        echo "lol4";
         $token = generateRandomString();
         // Store token in a temporary cache (e.g. Redis)
         storeToken($token, $email);
         // Send password reset email
         $reset_url = createUrl($email, $token);
-        echo "lol5";
         sendPasswordResetEmail($email, $reset_url);
         
         $success = "Password reset email has been sent to '$email'. Please follow the instructions in the email to reset your password.";
@@ -133,8 +128,6 @@ function sendPasswordResetEmail($to, $token) {
   // Include the SendGrid dependencies.
   require_once __DIR__ . '/../vendor/autoload.php';
 
-  echo "lol6";
-
   // Set the email message details.
   $from = new \SendGrid\Mail\From("marcus.abraham100@gmail.com", "TTCMM");
   $to = new \SendGrid\Mail\To($to);
@@ -154,13 +147,9 @@ function sendPasswordResetEmail($to, $token) {
   $sg = new \SendGrid($apiKey);
 
   try {
-      echo "lol7";
       $response = $sg->send($mail);
-      echo "lol7.5";
-      print_r($response);
       return true;
   } catch (Exception $e) {
-      echo "lol8";
       echo 'Caught exception: ', $e->getMessage(), "\n";
       return false;
   }
