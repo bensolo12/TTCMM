@@ -150,7 +150,7 @@ function sendPasswordResetEmail($to, $token) {
   $mail->addContent($content);
 
   // Send the email using the SendGrid API.
-  $apiKey = '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';
+  $apiKey = 'PUT_API_KEY_HERE_OR_IT_WONT_WORK';
   $sg = new \SendGrid($apiKey);
 
   try {
