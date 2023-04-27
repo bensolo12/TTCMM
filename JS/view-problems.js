@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
     filterContainer = document.getElementById("filterContainer");
+    document.getElementById("addcomment").hidden = true;
+    document.getElementById("addCommentsField").hidden = true;
     if (scrollContainer) {
         renderReports("");
     }
@@ -142,8 +144,7 @@ function displayFullReport(reportId) {
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
 
-                document.getElementById("addcomment").hidden = true;
-                document.getElementById("addCommentsField").hidden = true;
+                
                 displayComments(reportId);
 
                 // clearMarkers();
