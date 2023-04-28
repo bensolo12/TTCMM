@@ -78,11 +78,11 @@ CREATE TABLE IF NOT EXISTS images_table (
   FOREIGN KEY (report_id) REFERENCES report_table(report_id)
 );
 CREATE TABLE IF NOT EXISTS comments_table(
-  comment_id int(4) not null,
+  comment_id int(4) not null AUTO_INCREMENT,
   user_id int(4) not null,
   report_id int(4) not null,
   comment_text varchar(50),
   PRIMARY KEY (comment_id),
   FOREIGN KEY (user_id) REFERENCES user_table(user_id),
   FOREIGN KEY (report_id) REFERENCES report_table(report_id)
-)
+);
