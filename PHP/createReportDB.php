@@ -25,7 +25,6 @@ function create()
         "($userID, '$issueType', '$otherIssue', '$long', '$lat', '$problemDescription', '$reportStatus', '$dateReported')";
 
         if (mysqli_query($connection, $sql)) {
-            echo "Successfully registered.";
         
             $reportId = mysqli_insert_id($connection);
             $imageLocations = array();
@@ -37,7 +36,7 @@ function create()
                     $image_tmp = $_FILES['images']['tmp_name'][$key];
                     $image_type = $_FILES['images']['type'][$key];
                     
-                    if ($image_type == "image/jpeg" || $image_type == "image/png") {
+                    if ($image_type == "image/jpeg" || $image_type == "image/png" || $image_type == "") {
                         if ($image_size < 5000000) { // 5 MB limit
                             $image_path = "../media/report_" . $reportId . "_" . $image_name;
                             move_uploaded_file($image_tmp, $image_path);
