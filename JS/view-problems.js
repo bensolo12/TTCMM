@@ -94,6 +94,8 @@ function displayFullReport(reportId) {
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
 
+                map.setCenter({ lat: lat, lng: lng });
+                
                 // clearMarkers();
                 // // var markerURL = ("../Images/",reportType,"Pin.png")
                 // map.setCenter({ lat: lat, lng: lng });
