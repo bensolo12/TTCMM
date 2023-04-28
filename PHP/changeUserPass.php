@@ -11,10 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $error = "User with email '$email' does not exist";
       } else {
         $token = generateRandomString();
-        storeToken($token, $email);
+        storeToken($email);
         $reset_url = createUrl($email, $token);
         sendPasswordResetEmail($email, $reset_url);
-        
         $success = "Password reset email has been sent to '$email'. Please follow the instructions in the email to reset your password.";
       }
     }
@@ -27,14 +26,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $error = "Passwords do not match";
     } else {
       $token = $_POST['token'];
-      $email = verifyToken($token);
+      $email = verifyToken($email, $token);
       if (!$email) {
         $error = "Invalid or expired token";
       } else {
         $user = getUserByEmail($email);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         updateUserPassword($user['id'], $hashed_password);
-        deleteToken($token);
+        deleteToken();
 
         $success = "Password has been reset for user with email '$email'";
       }
@@ -115,7 +114,7 @@ function sendPasswordResetEmail($to, $token) {
   $mail->setSubject($subject);
   $mail->addContent($content);
 
-  $apiKey = 'PUT_API_KEY_HERE_OR_IT_WONT_WORK';
+  $apiKey = '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';
   $sg = new \SendGrid($apiKey);
 
   try {
