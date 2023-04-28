@@ -114,20 +114,20 @@
             <p>Description:</p>
             <p id="reportDescription"></p>
             <div id="map" style="height: 500px; width: 100%;"></div>
-        </div>
-        <div id="commentsContainer" class="commentsContainer">
-          <h3 id="commentsSection"></h3>
-          <p id="commenter"></p>
-          <p id="commentDate"></p>
-          <p id="commentText"></p>
-          <form method = "post" action="formCreateComments" id = "formCreateComments"> 
-            <p><input id="addCommentsField" name="addCommentsField"></input></p>
-            <p><button id="addcomment" type="submit"></button></p>
-            <script>
-              document.getElementById("addcomment").hidden = true;
-              document.getElementById("addCommentsField").hidden = true;
-            </script>
-          </form>
+            <div id="commentsContainer" class="commentsContainer">
+              <h3 id="commentsSection"></h3>
+              <p id="commenter"></p>
+              <p id="commentDate"></p>
+              <p id="commentText"></p>
+              <form method = "post" action="formCreateComments" id = "formCreateComments"> 
+                <p><input id="addCommentsField" name="addCommentsField"></input></p>
+                <p><button id="addcomment" type="submit"></button></p>
+                <script>
+                  document.getElementById("addcomment").hidden = true;
+                  document.getElementById("addCommentsField").hidden = true;
+                </script>
+              </form>
+            </div>
         </div>
         <div class="col-lg-1"></div>
     </div>
