@@ -133,7 +133,10 @@ function isWithinRadius(lat1, lng1, lat2, lng2, radius) {
 
     return distance <= radius;
 }
-    
+
+function toRadians(value) {
+    return value * Math.PI / 180;
+}   
 
 function renderReports(filters) {
     clearMarkers();
