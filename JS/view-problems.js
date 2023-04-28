@@ -94,6 +94,8 @@ function displayFullReport(reportId) {
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
 
+                map.setCenter({ lat: lat, lng: lng });
+                
                 // clearMarkers();
                 // // var markerURL = ("../Images/",reportType,"Pin.png")
                 // map.setCenter({ lat: lat, lng: lng });
@@ -131,7 +133,10 @@ function isWithinRadius(lat1, lng1, lat2, lng2, radius) {
 
     return distance <= radius;
 }
-    
+
+function toRadians(value) {
+    return value * Math.PI / 180;
+}   
 
 function renderReports(filters) {
     clearMarkers();
