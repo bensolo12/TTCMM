@@ -14,8 +14,6 @@ $('#formCreateReport').submit(function(event){
             contentType: false,
             processData: false,
             success: function(msg){
-                $("#divMessage").html(msg);	
-                alert(msg);
             },
             error: function(msg){
                 console.log(msg);
