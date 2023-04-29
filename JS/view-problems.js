@@ -89,6 +89,8 @@ function displayFullReport(reportId) {
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
 
+                document.getElementById("reportFake").textContent = "Report as fake";
+                document.getElementById("assign").textContent = "Assign to contractor";
                 document.getElementById("reportTitle").textContent = reportType + " at " + reportAddress;
                 document.getElementById("reportDate").textContent = "Reported: " + reportDate;
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
