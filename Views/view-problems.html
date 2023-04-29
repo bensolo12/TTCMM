@@ -114,8 +114,12 @@
           </div>
         <div class="scroll__container col-lg-4" id="viewReportsContainer"></div>
         <div id="fullReportContainer" class="col-lg-4 full-report-panel">
-            <p id="reportFake"></p>
-            <p id="assign"></p>
+          <p><button id="assign" type="submit"></button></p>
+          <p><button id="reportFake" type="submit"></button></p>
+          <script>
+            document.getElementById("addcomment").hidden = true;
+            document.getElementById("addCommentsField").hidden = true;
+          </script>
             <h3 id="reportTitle"></h3>
             <p id="reportDate"></p>
             <p id="reportStatus"></p>
