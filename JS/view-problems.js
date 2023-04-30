@@ -85,9 +85,14 @@ function filtersChanged() {
 
 function displayComments(reportId){
     const container = document.getElementById("commentsContainer");
-    document.getElementById("addComment").addEventListener("click", createComment);
+    const commentBtn = document.getElementById("addComment")
+    const formCreateComments = document.getElementById("formCreateComments");
+    commentBtn.addEventListener("click", createComment(reportId));
     if (reportId !== "" && reportId !== undefined && reportId !== null) {
         container.classList.remove("hidden");
+    }
+    if (currentUserID !== null) {
+        createCommentForm.classList.remove("hidden");
     }
     $.ajax({
         type: "POST",
@@ -121,15 +126,17 @@ function displayComments(reportId){
 
                     // Create an element for the comment date
                     commentDateElement = document.createElement("p");
-                    commentDateElement.textContent = "Comment Date: " + commentDate;
+                    commentDateElement.textContent = commentDate;
                     // Append the element to the panel so it's displayed
-                    commentPanel.appendChild(commenterElement);
+                    commentPanel.appendChild(commentDateElement);
 
                     // Create an element for the commenter
                     commentTextElement = document.createElement("p");
                     commentTextElement.textContent = commentText;
                     // Append the element to the panel so it's displayed
                     commentPanel.appendChild(commentTextElement);
+
+                    commentPanel.classList.add("comment-panel");
 
                     // Append the panel to the comments section
                     container.appendChild(commentPanel);
@@ -149,11 +156,11 @@ function createComment(reportId){
         $.ajax({
             type: "POST",
             url: "../PHP/createComment.php",
-            data: "comment_text="+commentText+"&report_id="+reportId+"&user_id="+currentUserId+"&comment_date="+commentDate,
+            data: "comment_text="+commentText+"&report_id="+reportId+"&user_id="+currentUserID+"&comment_date="+commentDate,
+            datatype: "json",
             success: function(msg) {
                 $("#divMessage").html(msg);	
                 alert(msg);
-                console.log("After Ajax");
             },
             error: function(msg){ 
                 console.log("ERROR:");

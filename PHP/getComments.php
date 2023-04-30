@@ -4,6 +4,7 @@
 
     //Make a sql statement to get all the info on a report based on the given report id
     $sql = "SELECT user_table.first_name, comment_date, comment_text FROM `comments_table`,`user_table` WHERE user_table.user_id = comments_table.user_id AND report_id='" .$id. "'";
+    //$sql = "SELECT comments_table.*, user_table.first_name FROM `comments_table` WHERE report_id='".$id."'";
 
     //Get access to the code in the config.php file (used to access the database)
     include "../PHP/dbConfig.php";
@@ -14,18 +15,16 @@
     //If there's no result then echo "none" back
     if(!$res){
         echo "none";
-    }
-
-    //Get the number of rows in the result of the query
-    $num_row = mysqli_num_rows($res);
-
-    //Get the row from the result of the query
-    $row = mysqli_fetch_assoc($res);
-    
-    //If there's one row in the result then encode the row and echo it back
-    if($num_row == 1){
-        echo json_encode($row);
-    //Otherwise echo back "none"
     } else {
-        echo "none";
+        while ($r = mysqli_fetch_assoc($res)) {
+            $rows[] = $r;
+        }
+
+        // If rows is empty afterwards then echo back "none"
+        if (count($rows) == 0) {
+            echo "none";
+        // Otherwise, echo back the array of rows
+        } else {
+            echo json_encode($rows);
+        }
     }
