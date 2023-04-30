@@ -48,7 +48,10 @@ function filtersChanged() {
 }
 
 function displayComments(reportId){
-    container = document.getElementById("commentsContainer");
+    const container = document.getElementById("commentsContainer");
+    if (reportId !== "" && reportId !== undefined && reportId !== null) {
+        container.classList.remove("hidden");
+    }
     $.ajax({
         type: "POST",
         url: "../PHP/getComments.php",
@@ -56,61 +59,72 @@ function displayComments(reportId){
         datatype: "json",
         success: function(msg){
             if (msg == "none") {
+                console.log("No comments");
             } else {
-                reportObj = JSON.parse(msg);
-
-                container.classList.remove("hidden");
-                
-
-                commentID = reportObj["comment_id"];
-                userName = reportObj["first_name"];
-                //reportId = reportObj["report_id"];
-                commentDate = reportObj["comment_date"];
-                commentText = reportObj["comment_text"];
-
                 document.getElementById("commentsSection").textContent = "Comments:";
-                document.getElementById("commenter").textContent = "Commenter: " + userName;
-                document.getElementById("commentDate").textContent = "Comment date: " + commentDate;
-                document.getElementById("commentText").textContent = "Comment text: " + commentText;
-                document.getElementById("addcomment").textContent = "Add Comment";
-                document.getElementById("addcomment").hidden = false;
-                document.getElementById("addCommentsField").hidden = false;
-                
                 document.getElementById("addcomment").addEventListener("click", createComment);
+
+                jsonComments = JSON.parse(msg);
+
+                // For every comment
+                for (let i = 0; i < jsonComments.length; i++) {
+                    const commentObj = jsonComments[i];
                 
-                
+                    const commentPanel = document.createElement("div");
+
+                    commentID = commentObj["comment_id"];
+                    userName = commentObj["first_name"];
+                    commentDate = commentObj["comment_date"];
+                    commentText = commentObj["comment_text"];
+
+                    // Create an element for the commenter name
+                    commenterElement = document.createElement("p");
+                    commenterElement.textContent = "Commenter: " + userName;
+                    // Append the element to the panel so it's displayed
+                    commentPanel.appendChild(commenterElement);
+
+                    // Create an element for the comment date
+                    commentDateElement = document.createElement("p");
+                    commentDateElement.textContent = "Comment Date: " + commentDate;
+                    // Append the element to the panel so it's displayed
+                    commentPanel.appendChild(commenterElement);
+
+                    // Create an element for the commenter
+                    commentTextElement = document.createElement("p");
+                    commentTextElement.textContent = commentText;
+                    // Append the element to the panel so it's displayed
+                    commentPanel.appendChild(commentTextElement);
+
+                    // Append the panel to the comments section
+                    container.appendChild(commentPanel);
+                }
             }
         }
     })
+}
 
+function createComment(){
+    $('#formCreateComments').submit(function(event){
+        formData = $('#formCreateComments').serialize();
+        console.log("Before Ajax");
+        event.preventDefault();
+    
+        $.ajax({
+            type: "POST",
+            url: "../PHP/createComment.php",
+            data: formData,
+            success: function(msg){ 
+                $("#divMessage").html(msg);	
+                alert(msg);
+                console.log("After Ajax");
+            },
+            error: function(msg){ 
+                console.log(msg);
 
-    function createComment(){
-        $('#formCreateComments').submit(function(event){
-            formData = $('#formCreateComments').serialize();
-            console.log("Before Ajax");
-            event.preventDefault();
-        
-            $.ajax({
-                type: "POST",
-                url: "../PHP/createComment.php",
-                data: formData,
-                success: function(msg){ 
-                    $("#divMessage").html(msg);	
-                    alert(msg);
-                    console.log("After Ajax");
-                },
-                error: function(msg){ 
-                    console.log(msg);
-
-                }
-                
-            });
-            console.log("Nothing happened")
+            }
+            
         });
-
-    }
-
-    container.classList.remove("hidden");
+    });
 }
 
 function displayFullReport(reportId) {
