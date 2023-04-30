@@ -115,8 +115,16 @@
             <input type="radio" name="issue" onchange="filtersChanged()" value="Not Fixed">
             Not Fixed
             </label><br>
+            <div id="favouriteFilter" class="hidden">
+              <br>
+              <p>Following:</p>
+              <label>
+              <input type="checkbox" name="favourited" onchange="filtersChanged()" value="Favourited">
+              Show Only Problems You've Favourited
+              </label><br>
+            </div>
           </div>
-        <div class="scroll__container col-lg-4" id="viewReportsContainer" style="overflow-y: scroll; height: 92vh;"></div>
+        <div class="scroll__container col-lg-4" id="viewReportsContainer" style="overflow-y: auto; height: 92vh;"></div>
         <div id="fullReportContainer" class="col-lg-4 full-report-panel">
             <h3 id="reportTitle"></h3>
             <p id="reportDate"></p>

@@ -2,6 +2,7 @@ window.initMap = initMap;
 var markersArray = [];
 let userLat;
 let userLng;
+let currentUserID = null;
 
 var map;
 function initMap() {
@@ -22,6 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
             window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
         }
     }
+    getCurrentUserId(function(userId) {
+        if (userId !== "none") {
+            document.getElementById("favouriteFilter").classList.remove("hidden");
+            currentUserID = userId;
+        }
+    }
+    );
 });
 
 const successCallback = (position) => {
@@ -46,20 +54,29 @@ function filtersChanged() {
     filterElements = filterContainer.querySelectorAll("input[type='checkbox']");
     statusElements = filterContainer.querySelectorAll("input[type='radio']");
     for (let i = 0; i < filterElements.length; i++) {
+        favouriteFilter = null;
         const element = filterElements[i];
-        if (element.checked) {
-            if (filterString == "") {
-                filterString = "'" + element.value + "'";
-            } else {
-                filterString = filterString + ", '" + element.value + "'";
+        if (element.name !== "favourited") {
+            if (element.checked) {
+                if (filterString == "") {
+                    filterString = "'" + element.value + "'";
+                } else {
+                    filterString = filterString + ", '" + element.value + "'";
+                }
             }
+        } else {
+            favouriteFilter = element;
         }
+    
     }
     for (let i = 0; i < statusElements.length; i++) {
         const element = statusElements[i];
         if (element.checked) {
             filterString = filterString + "*'" + element.value + "'";
         }
+    }
+    if (favouriteFilter !== null && favouriteFilter.checked) {
+        filterString = filterString + "@true";
     }
     renderReports(filterString);
 }
@@ -142,10 +159,15 @@ function renderReports(filters) {
     clearMarkers();
     scrollContainer.innerHTML = "";
     container = document.getElementById("fullReportContainer");
+    favouriteFilter = "false";
+    if (filters.includes("@true") && currentUserID !== null && currentUserID !== "none") {
+        filters = filters.replace("@true", "");
+        favouriteFilter = "true";
+    }
     $.ajax({
         type: "POST",
         url: "../PHP/getreports.php",
-        data: "filters="+filters,
+        data: "filters="+filters+"&favourites="+favouriteFilter+"&user_id="+currentUserID,
         datatype: "json",
         success: function(msg){
             if (msg == "none") {
@@ -178,8 +200,6 @@ function renderReports(filters) {
 
                     lat =  parseFloat(reportObj["latitude"]);
                     lng =  parseFloat(reportObj["longitude"]);
-                    console.log(lat);
-                    console.log(lng);
 
                     // COMMENTED THIS OUT BECAUSE REPORT PANEL IS BEING RENDERED IN ELSE STATEMENT ABOVE - THIS MEANS ONLY REPORTS IN USER RADIUS ARE RENDERED WHEN FILTER IS APPLIED
                     // NOT SURE WHETHER THIS IS INTENDED OR NOT SO COMMENTED RATHER THAN DELETED
