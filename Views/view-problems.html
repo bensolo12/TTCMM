@@ -33,22 +33,22 @@
 </style>
   <nav id="navbar">
     <!-- space and framework left to make navbar collapsable if needed -->
-          <div class="">
-            <ul id="NavList"class="nav">
-              <li id="NavHome"><a  href="Index.html">Home</a></li>
-              <li id="NavReport"><a href="Report.html">Report Issue</a></li>
-              <li id="NavView"><a class="NavActive" href="view-problems.html">Report Issue</a></li>
-              <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
-              <li id="NavSignIn" style="float:right"><a href="login.html" id="NavSignIn">Sign In</a></li>
-              <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
-            </ul>
-          </div>
+    <div class="">
+      <ul id="NavList"class="nav">
+        <li id="NavHome"><a href="Index.html">Home</a></li>
+        <li id="NavReport"><a href="Report.php">Report Issue</a></li>
+        <li id="NavView"><a href="view-problems.html">View Problems</a></li>
+        <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+        <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
+        <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
+      </ul>
+    </div>
         </nav>
     <div class="row">
         <div class="col-lg-1"></div>
         <div id="filterContainer" class="col-lg-2 filter-panel">
             <h3>Filter By:</h3>
-            <select id="distance">
+            <select id="distance" class="hidden" onchange="filtersChanged()">
                 <option value="" disabled selected hidden>Sort by distance</option>
                 <option value="1">1 km</option>
                 <option value="2">2 km</option>
@@ -59,36 +59,48 @@
                 <option value="Any">Any distance</option>
             </select><br><br>
             <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Broken Traffic Lights">
-            Broken Traffic Lights
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Broken traffic lights">
+            Broken traffic lights
             </label><br>
             <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Burst Pipe">
-            Burst Pipe
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Burst pipe">
+            Burst pipe
             </label><br>
             <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Street Lights Out">
-            Street Lights Out
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Blocked drain">
+            Blocked drain
             </label><br>
             <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Exposed Cables">
-            Exposed Cables
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Broken streetlight">
+            Broken streetlight
             </label><br>
             <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Graffiti">
-            Graffiti
-            </label><br>
-            <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Blocked Drain">
-            Blocked Drain
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Exposed cables">
+            Exposed cables
             </label><br>
             <label>
             <input type="checkbox" name="issue" onchange="filtersChanged()" value="Flooding">
             Flooding
             </label><br>
             <label>
-            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Potholes">
-            Potholes
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Graffiti">
+            Graffiti
+            </label><br>
+            <label>
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Litter">
+            Litter
+            </label><br>
+            <label>
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Pothole">
+            Pothole
+            </label><br>
+            <label>
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Wrecked car">
+            Wrecked car
+            </label><br>
+            <label>
+            <input type="checkbox" name="issue" onchange="filtersChanged()" value="Other">
+            Other
             </label><br>
             <br>
             <p>Status:</p>
@@ -105,7 +117,7 @@
             Not Fixed
             </label><br>
           </div>
-        <div class="scroll__container col-lg-4" id="viewReportsContainer"></div>
+        <div class="scroll__container col-lg-4" id="viewReportsContainer" style="overflow-y: scroll; height: 92vh;"></div>
         <div id="fullReportContainer" class="col-lg-4 full-report-panel">
             <h3 id="reportTitle"></h3>
             <p id="reportDate"></p>
@@ -147,8 +159,9 @@
     </script> -->
 
     <!-- Link the javascript file to this page -->
-    
-    <!-- <div class="footer">
+    <script src="../JS/view-problems.js"></script>
+    <script src="../JS/Common.js"></script>
+    <div class="footer">
       <a href="ContactUs.html">Contact Us</a><br>
       Report a bug: CheltBugReport@email.com
       Made by TEMA TEMA inc

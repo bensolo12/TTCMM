@@ -72,8 +72,17 @@ CREATE TABLE IF NOT EXISTS favourites_table (
   FOREIGN KEY (report_id) REFERENCES report_table(report_id)
 );
 CREATE TABLE IF NOT EXISTS images_table (
-  image_location varchar(20) not null,
+  image_location varchar(100) not null,
   report_id int(5) not null,
   PRIMARY KEY (image_location),
   FOREIGN KEY (report_id) REFERENCES report_table(report_id)
 );
+CREATE TABLE IF NOT EXISTS comments_table(
+  comment_id int(4) not null,
+  user_id int(4) not null,
+  report_id int(4) not null,
+  comment_text varchar(50),
+  PRIMARY KEY (comment_id),
+  FOREIGN KEY (user_id) REFERENCES user_table(user_id),
+  FOREIGN KEY (report_id) REFERENCES report_table(report_id)
+)

@@ -1,5 +1,8 @@
 window.initMap = initMap;
 var markersArray = [];
+let userLat;
+let userLng;
+
 var map;
 function initMap() {
   map = new google.maps.Map(document.getElementById("map"), {
@@ -7,6 +10,7 @@ function initMap() {
     zoom: 13,
   });
 }
+
 document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
@@ -14,8 +18,23 @@ document.addEventListener("DOMContentLoaded", () => {
     
     if (scrollContainer) {
         renderReports("");
+
+        // If user location is available
+        if (window.navigator.geolocation) {
+            window.navigator.geolocation.getCurrentPosition(successCallback, failureCallback);
+        }
     }
 });
+
+const successCallback = (position) => {
+    userLat = position.coords.latitude;
+    userLng = position.coords.longitude;
+    document.getElementById("distance").classList.remove("hidden");
+}
+
+const failureCallback = (error) => {
+    console.log(error);
+}
 
 function clearMarkers() {
     for (var i = 0; i < markersArray.length; i++ ) {
@@ -160,6 +179,8 @@ function displayFullReport(reportId) {
                 
                 displayComments(reportId);
 
+                map.setCenter({ lat: lat, lng: lng });
+                
                 // clearMarkers();
                 // // var markerURL = ("../Images/",reportType,"Pin.png")
                 // map.setCenter({ lat: lat, lng: lng });
@@ -174,6 +195,33 @@ function displayFullReport(reportId) {
     })
 }
 
+// Calculate if a location is within the radius of another location
+// using the Haversine formula
+function isWithinRadius(lat1, lng1, lat2, lng2, radius) {
+    const earthRadiusKM = 6371;
+
+    const lat1Radians = toRadians(lat1);
+    const lat2Radians = toRadians(lat2);
+    const lng1Radians = toRadians(lng1);
+    const lng2Radians = toRadians(lng2);
+
+    const deltaLat = lat2Radians - lat1Radians;
+    const deltaLng = lng2Radians - lng1Radians;
+
+    const a = Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
+              Math.cos(lat1Radians) * Math.cos(lat2Radians) *
+              Math.sin(deltaLng / 2) * Math.sin(deltaLng / 2);
+    
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+    const distance = earthRadiusKM * c;
+
+    return distance <= radius;
+}
+
+function toRadians(value) {
+    return value * Math.PI / 180;
+}   
 
 function renderReports(filters) {
     clearMarkers();
@@ -198,12 +246,29 @@ function renderReports(filters) {
                     reportAddress = reportObj["address"];
                     reportStatus = reportObj["report_status"];
                     reportDate = reportObj["date_reported"];
+                    reportLat = reportObj["latitude"];
+                    reportLng = reportObj["longitude"];
+
+                    const distanceFilter = document.getElementById("distance");
+                    const selectedRadius = distanceFilter.options[distanceFilter.selectedIndex].value;
+
+                    if (!distanceFilter.classList.contains("hidden") && selectedRadius !== "" && selectedRadius !== "Any") {
+                        const kilometerRadius = parseFloat(selectedRadius);
+                        if (isWithinRadius(userLat, userLng, reportLat, reportLng, kilometerRadius)) {
+                            displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+                        }
+                    } else {
+                        displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+                    }
+
                     lat =  parseFloat(reportObj["latitude"]);
                     lng =  parseFloat(reportObj["longitude"]);
                     console.log(lat);
                     console.log(lng);
 
-                    displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
+                    // COMMENTED THIS OUT BECAUSE REPORT PANEL IS BEING RENDERED IN ELSE STATEMENT ABOVE - THIS MEANS ONLY REPORTS IN USER RADIUS ARE RENDERED WHEN FILTER IS APPLIED
+                    // NOT SURE WHETHER THIS IS INTENDED OR NOT SO COMMENTED RATHER THAN DELETED
+                    //displayReportPanel(scrollContainer, reportDate, reportId, reportType, reportAddress, reportStatus);
 
                     //moved marker addition to here
                     //creates a marker with a pin title and colour corosponding to the problem reportType
@@ -283,28 +348,58 @@ function displayReportPanel(scrollContainer, dateReported, id, type, address, st
     heartElement.classList.add("heart");
     heartElement.innerHTML = "&#10084;";
 
+    getCurrentUserId(function(userId) {
+        // If a user ID is returned then add the ability to favourite reports
+        if (userId !== "none") {
+            isFavourited(id, userId, function(result) {
+                if (result) {
+                    heartElement.classList.add("active");
+                }
+            });
+        
+            heartElement.addEventListener('click', function() {
+                
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    favourite(id, userId);
+                } else {
+                    unfavourite(id, userId);
+                }
+                
+            });
+            newPanel.append(heartElement);
     // TEMPORARY - for testing, MUST CHANGE THIS TO CHECK THE ACTUAL CURRENTLY LOGGED IN USER
-    userId = 1;
+    // userId = 1;
 
-    isFavourited(id, userId, function(result) {
-        if (result) {
-            heartElement.classList.add("active");
-        }
-    });
+    // isFavourited(id, userId, function(result) {
+    //     if (result) {
+    //         heartElement.classList.add("active");
+    //     }
+    // });
 
-    heartElement.addEventListener('click', function() {
+    // heartElement.addEventListener('click', function() {
 
-        this.classList.toggle('active');
-        if (this.classList.contains('active')) {
-            favourite(id, userId);
+    //     this.classList.toggle('active');
+    //     if (this.classList.contains('active')) {
+    //         favourite(id, userId);
         } else {
-            unfavourite(id, userId);
+            console.log("Something has gone wrong - could not get the currently logged in user ID");
         }
-
     });
-    newPanel.append(heartElement);
 
     scrollContainer.appendChild(newPanel)
+}
+
+function getCurrentUserId(callback) {
+    // Make an AJAX request to the getUserId PHP file to get the user ID
+    $.ajax({
+        url: "../PHP/getUserId.php",
+        datatype: "json",
+        success: function(userId) {
+          // Call the callback function with the user ID
+          callback(userId);
+        }
+    });
 }
 
 function favourite(reportId, currentUserId) {
