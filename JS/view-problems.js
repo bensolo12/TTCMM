@@ -68,6 +68,7 @@ function filtersChanged() {
 
 function displayComments(reportId){
     const container = document.getElementById("commentsContainer");
+    document.getElementById("addComment").addEventListener("click", createComment);
     if (reportId !== "" && reportId !== undefined && reportId !== null) {
         container.classList.remove("hidden");
     }
@@ -81,7 +82,6 @@ function displayComments(reportId){
                 console.log("No comments");
             } else {
                 document.getElementById("commentsSection").textContent = "Comments:";
-                document.getElementById("addcomment").addEventListener("click", createComment);
 
                 jsonComments = JSON.parse(msg);
 
@@ -122,26 +122,26 @@ function displayComments(reportId){
     })
 }
 
-function createComment(){
+function createComment(reportId){
     $('#formCreateComments').submit(function(event){
-        formData = $('#formCreateComments').serialize();
-        console.log("Before Ajax");
         event.preventDefault();
-    
+        const addCommentElement = document.getElementById("addCommentsField");
+        const commentText = addCommentElement.value;
+        const commentDate = new Date().toISOString().slice(0, 10);
+
         $.ajax({
             type: "POST",
             url: "../PHP/createComment.php",
-            data: formData,
-            success: function(msg){ 
+            data: "comment_text="+commentText+"&report_id="+reportId+"&user_id="+currentUserId+"&comment_date="+commentDate,
+            success: function(msg) {
                 $("#divMessage").html(msg);	
                 alert(msg);
                 console.log("After Ajax");
             },
             error: function(msg){ 
+                console.log("ERROR:");
                 console.log(msg);
-
             }
-            
         });
     });
 }
