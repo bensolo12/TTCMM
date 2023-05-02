@@ -14,8 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
     filterContainer = document.getElementById("filterContainer");
-    document.getElementById("addcomment").hidden = true;
-    document.getElementById("addCommentsField").hidden = true;
     if (scrollContainer) {
         renderReports("");
 
