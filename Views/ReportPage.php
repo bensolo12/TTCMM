@@ -164,8 +164,8 @@
       <ul class="nav">
         <li><a href="Index.html">Home</a></li>
         <li><a class="NavActive" href="ReportPage.php">Report Issue</a></li>
-        <li><a href="ContactUs.html">Contact Us</a></li>
         <li><a href="view-problems.html">View Problems</a></li>
+        <li><a href="ContactUs.html">Contact Us</a></li>        
         <li id="NavSignIn" style="float:right"><a class="NavActive" href="login.html" id="NavSignIn">Sign In</a></li>
         <li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>
         <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value=""
