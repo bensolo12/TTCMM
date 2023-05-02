@@ -91,8 +91,8 @@ function displayFullReport(reportId) {
 
                 role = sessionStorage.getItem('user_role');
                 if (role == "Employee"){
-                    document.getElementById("reportFake").hidden = "false";
-                    document.getElementById("assign").hidden = "false";
+                    document.write(<p><button id="assign" type="submit"></button></p>)
+                    document.write(<p><button id="reportFake" type="submit"></button></p>)
                 }
                 
                 document.getElementById("reportTitle").textContent = reportType + " at " + reportAddress;
