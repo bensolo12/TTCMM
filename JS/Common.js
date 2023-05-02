@@ -107,6 +107,7 @@ function EmployeeNav(){
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
   nav.append('<li><a href="view-problems.html">User Reports</a></li>');
   nav.append('<li><a href="createNews.html">News</a></li>');
+  nav.append('<li><a href="ReportPage.php">Create Reports</a></li>');
   nav.append('<li><a href="stats.html">Statistics</a></li>');
   nav.append('<li><a href="Contractors.html">Contractors</a></li>');
   nav.append('<li style="float:right"><a href="javascript:logout()" id="NavSignOut">Sign Out</a></li>');
