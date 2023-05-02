@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // Get the scroll container element
     scrollContainer = document.getElementById("viewReportsContainer");
     filterContainer = document.getElementById("filterContainer");
+    document.getElementById("addcomment").hidden = true;
+    document.getElementById("addCommentsField").hidden = true;
     if (scrollContainer) {
         renderReports("");
 
@@ -91,8 +93,8 @@ function displayFullReport(reportId) {
 
                 role = sessionStorage.getItem('user_role');
                 if (role == "Employee"){
-                    document.write(<p><button id="assign" type="submit"></button></p>)
-                    document.write(<p><button id="reportFake" type="submit"></button></p>)
+                    document.getElementById("reportFake").hidden = "false";
+                    document.getElementById("assign").hidden = "false";
                 }
                 
                 document.getElementById("reportTitle").textContent = reportType + " at " + reportAddress;
