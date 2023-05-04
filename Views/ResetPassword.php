@@ -52,6 +52,27 @@
     display: block;
     text-align: center;
   }
+
+  #footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 5rem;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .nav li:nth-child(5) {
+    margin-left: auto;
+  }
+
+  .nav li {
+    display: flex;
+    align-items: center;
+  }
 </style>
 
 <head>
@@ -65,12 +86,23 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
+  <nav id="navbar">
+  <!-- space and framework left to make navbar collapsable if needed -->
+      <div class="">
+        <ul id="NavList"class="nav">
+          <li id="NavHome"><a class="NavActive" href="Index.html">Home</a></li>
+          <li id="NavReport"><a href="ReportPage.php">Report Issue</a></li>
+          <li id="NavView"><a href="view-problems.html">View Problems</a></li>
+          <li id="NavContact"><a href="ContactUs.html">Contact Us</a></li>
+          <li style="float:right;display: flex; justify-content: flex-end;"><input type="text" name="Search" value=""
+            placeholder="Search"></li>
+          <li id="NavSignIn" style="float:right"><a href="login.html" id="NavSignIn">Sign In</a></li>
+        </ul>
+      </div>
+  </nav>
+
   <?php if (isset($error)) : ?>
     <p><?php echo $error; ?></p>
-  <?php endif; ?>
-
-  <?php if (isset($success)) : ?>
-    <p><?php echo $success; ?></p>
   <?php endif; ?>
 
   <?php if (isset($_GET['token'])) {
@@ -83,45 +115,66 @@
   }
   ?>
 
-  <?php if (!isset($_POST['step']) || (isset($_POST['step']) && $_POST['step'] === 'step1')) : ?>
-    <form class="mt-5" id="formResetPassword" method="POST">
-      <input type="hidden" name="step" value="step1">
+    <?php if (!isset($_POST['step']) || (isset($_POST['step']) && $_POST['step'] === 'step1')) : ?>
+      <form class="mt-5" id="formResetPassword" method="POST">
+        <input type="hidden" id="step" name="step" value="step1">
 
-      <h1>Reset Password</h1>
-      <p>You will receive an email containing instructions to reset your password.</p>
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-      <input class="mb-3" type="submit" value="Submit">
+        <h1>Reset Password</h1>
+        <p>You will receive an email containing instructions to reset your password.</p>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <input class="mb-3" type="submit" value="Submit">
 
-      <a href="login.html">Go back to log in</a>
-    </form>
-  <?php elseif (isset($_POST['step']) && $_POST['step'] === 'step2') : ?>
+        <a href="login.html">Go back to log in</a>
+      </form>
 
-    <form class="mt-5" id="formResetPassword2" method="POST">
-      <input type="hidden" name="step" value="step2">
+      <div id="success-message" style="display: none;">
+            <h1 class="mt-5">An email has been sent!</h1>
+      </div>
 
-      <h1>Reset Password</h1>
-      <p>Please enter your new password.</p>
+    <?php elseif (isset($_POST['step']) && $_POST['step'] === 'step2') : ?>
 
-      <label for="password">New password:</label>
-      <input type="password" id="password" name="password" minlength="8" required>
-      <label for="confirm_password">Confirm password:</label>
-      <input type="password" id="confirm_password" name="confirm_password" minlength="8" required>
-      <input class="mb-3" type="submit" value="Submit">
-    </form>
-  <?php endif; ?>
+      <form class="mt-5" id="formResetPassword2" method="POST">
+        <input type="hidden" id="step" name="step" value="step2">
+
+        <h1>Reset Password</h1>
+        <p>Please enter your new password.</p>
+
+        <label for="password">New password:</label>
+        <input type="password" id="password" name="password" minlength="8" required>
+        <label for="confirm_password">Confirm password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" minlength="8" required>
+        <input class="mb-3" type="submit" value="Submit">
+      </form>
+
+      <div id="success-message2" style="display: none;">
+            <h1 class="mt-5">Password reset!</h1>
+      </div>
+    <?php endif; ?>
+
+  <footer id="footer">
+      <div class="mt-1" style="width:45%;">
+        <a href="ContactUs.html">Contact Us</a><br>
+        Report a bug: CheltBugReport@email.com
+      </div>
+      <div class="mt-1" style="width:45%;">
+        Made by TEMA TEMA inc
+      </div>
+      <div class="" style="width:10%;">
+        <img src="../Images/tematemalogo.png" height="40px" width="40px">
+      </div>
+    </footer>
 </body>
 
 <script src='../JS/resetPassword.js'></script>
+<script src='../JS/resetPassFormHide.js'></script>
 </html>
 
 <?php
-
 function verifyCookie($token) {
   if (isset($_COOKIE['token']) && $_COOKIE['token'] === $token) {
       return true;
   }
   return false;
 }
-
 ?>

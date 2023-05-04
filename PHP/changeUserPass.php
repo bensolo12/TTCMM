@@ -17,8 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         $reset_url = createUrl($token);
         sendPasswordResetEmail($email, $reset_url);
-
-        $success = "Password reset email has been sent to '$email'. Please follow the instructions in the email to reset your password.";
       }
     }
   } elseif ($_POST['step'] === 'step2') {
@@ -36,11 +34,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $_COOKIE['reset_email'];
         $user = getUserByEmail($email);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-        
         updateUserPassword($user, $hashed_password);
-        setcookie('token', '', time() - 3600, "/");
 
-        $success = "Password has been reset for user with email " . $email;
+        setcookie('token', '', time() - 3600, "/");
         setcookie('reset_email', '', time() - 3600, '/');
       }
     }
