@@ -102,7 +102,8 @@
   </nav>
 
   <?php if (isset($error)) : ?>
-    <p><?php echo $error; ?></p>
+    <?php echo "lol"?>;
+    <p><?php $error; ?></p>
   <?php endif; ?>
 
   <?php if (isset($_GET['token'])) {
@@ -129,7 +130,7 @@
       </form>
 
       <div id="success-message" style="display: none;">
-            <h1 class="mt-5">An email has been sent!</h1>
+            <h3 style="text-align:center;" class="mt-5">If there is an associated account, an email containing instructions to reset your password has been sent!</h1>
       </div>
 
     <?php elseif (isset($_POST['step']) && $_POST['step'] === 'step2') : ?>
@@ -144,11 +145,14 @@
         <input type="password" id="password" name="password" minlength="8" required>
         <label for="confirm_password">Confirm password:</label>
         <input type="password" id="confirm_password" name="confirm_password" minlength="8" required>
+
+        <span class="mt-2 mb-2" id="error-message"></span>
+
         <input class="mb-3" type="submit" value="Submit">
       </form>
 
       <div id="success-message2" style="display: none;">
-            <h1 class="mt-5">Password reset!</h1>
+            <h1 style="text-align:center;" class="mt-5">Password reset!</h1>
       </div>
     <?php endif; ?>
 
@@ -168,6 +172,8 @@
 
 <script src='../JS/resetPassword.js'></script>
 <script src='../JS/resetPassFormHide.js'></script>
+<script src="../JS/Common.js"></script>
+
 </html>
 
 <?php

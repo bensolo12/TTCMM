@@ -10,11 +10,20 @@ var stepVal = document.getElementById('step').value;
       successMessage.style.display = 'block';
     }
     else{
-      const form4 = document.getElementById('formResetPassword2');
-      const successMessage = document.getElementById('success-message2');
+      const password = document.getElementById("password");
+      const confirm_password = document.getElementById("confirm_password");
+      const error_message = document.getElementById("error-message");
 
-      form4.style.display = 'none';
-      successMessage.style.display = 'block';
+      if (password.value !== confirm_password.value) {
+        error_message.textContent = "Passwords do not match"
+      }
+      else{
+        const form4 = document.getElementById('formResetPassword2');
+        const successMessage = document.getElementById('success-message2');
+
+        form4.style.display = 'none';
+        successMessage.style.display = 'block';
+      }
     }
   }
 

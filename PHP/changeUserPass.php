@@ -4,41 +4,34 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     setcookie('reset_email', $email, time() + 90000, '/');
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-      $error = "Invalid email address";
-    } else {
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $user = getUserByEmail($email);
 
-      if (!$user) {
-        $error = "User with email '$email' does not exist";
-      } else {
+      if ($user) {
         $token = generateRandomString();
         setcookie("token", $token, time() + 86400, "/");
 
         $reset_url = createUrl($token);
         sendPasswordResetEmail($email, $reset_url);
-      }
-    }
-  } elseif ($_POST['step'] === 'step2') {
+      } 
+    } 
+  } 
+  elseif ($_POST['step'] === 'step2') {
     $password = $_POST['password'];
     $confirm_password = $_POST['confirm_password'];
 
-    if (strlen($password) < 8) {
-      $error = "Password must be at least 8 characters long";
-    } elseif ($password !== $confirm_password) {
+    if ($password !== $confirm_password) {
       $error = "Passwords do not match";
     } else {
-      if (!isset($_COOKIE['token'])) {
-        $error = "Invalid or expired token";
-      } else {
-        $email = $_COOKIE['reset_email'];
+        if(isset($_COOKIE['token'])){
+          $email = $_COOKIE['reset_email'];
         $user = getUserByEmail($email);
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         updateUserPassword($user, $hashed_password);
 
         setcookie('token', '', time() - 3600, "/");
         setcookie('reset_email', '', time() - 3600, '/');
-      }
+        }
     }
   }
 }
@@ -50,8 +43,6 @@ function getUserByEmail($email) {
   $result = mysqli_query($connection, $query);
 
   if (!$result || mysqli_num_rows($result) === 0) {
-
-    echo "user not found";
     return null;
   } else {
     return mysqli_fetch_assoc($result);
@@ -87,7 +78,8 @@ function sendPasswordResetEmail($to, $reset_url) {
   $mail->addTo($toMail);
   $mail->setSubject($subject);
   $mail->addContent($content);
-  $apiKey = 'PUT-API-KEY-HERE-OR-IT-WONT-WORK-DONT-COMMIT-IT';
+  //$apiKey = 'PUT-API-KEY-HERE-OR-IT-WONT-WORK-DONT-COMMIT-IT';
+  $apiKey = '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';
   $sg = new \SendGrid($apiKey);
 
   try {
