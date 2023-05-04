@@ -78,8 +78,7 @@ function sendPasswordResetEmail($to, $reset_url) {
   $mail->addTo($toMail);
   $mail->setSubject($subject);
   $mail->addContent($content);
-  //$apiKey = 'PUT-API-KEY-HERE-OR-IT-WONT-WORK-DONT-COMMIT-IT';
-  $apiKey = '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';
+  $apiKey = 'PUT-API-KEY-HERE-OR-IT-WONT-WORK-DONT-COMMIT-IT';
   $sg = new \SendGrid($apiKey);
 
   try {
