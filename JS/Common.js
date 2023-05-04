@@ -67,6 +67,10 @@ function logout(){
 
 //adds the new navbar for citizen
 function CitizenNav(){
+
+  buttons=$("#Buttons")
+  buttons.append('<p><button id="assign" type="submit"></button></p>');
+  buttons.append('<p><button id="reportFake" type="submit"></button></p>');
   nav=$("#NavList")
   ClearBar();
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
