@@ -218,18 +218,20 @@
               type="button">Next</button>
           </div>
 
-          <div class="form-stage">
-            <h1>Issue Type</h1>
-            <label for="issueSelect">Select Issue</label>
-            <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect"
-              oninput="document.getElementById('typeValue').textContent = this.value">
-              <option>Littering</option>
-              <option>Graffiti</option>
-              <option>Pothole</option>
+        <div class="form-stage">
+          <h1>Issue Type</h1>
+          <label for="issueSelect">Dropdown List</label>
+          <select name="issueSelect" class="form-control" style="width:30%" id="issueSelect">
+              <option>Broken traffic lights</option>
+              <option>Burst pipe</option>
+              <option>Blocked drain</option>
+              <option>Broken streetlight</option>
+              <option>Exposed cables</option>
               <option>Flooding</option>
+              <option>Graffiti</option>
+              <option>Litter</option>
+              <option>Pothole</option>
               <option>Wrecked car</option>
-              <option>Live wire</option>
-              <option>Broken Streetlight</option>
               <option>Other</option>
             </select>
 

@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Create News Page</title>
+    <title>Problem Statisticcs</title>
     <link rel="stylesheet" type="text/css" href="../CSS/Style.CSS">
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 </head>
 
@@ -32,7 +33,7 @@
     }
     .mostCommon{
       width: 100%;
-      height: 50px;
+      height: 450px;
       padding: 10px;
       text-align: left;
       border: 5px solid black;
@@ -69,14 +70,25 @@
     <br>
     <br>
     <div class = 'showStats'>
-      <div class="CommonAreas">
-          Common Problem Areas
+      <div class="CommonAreas" id="problemFrequency">
+          <h4>Frequency of Problems</h4>
+
       </div>
       <div class="averageTime">
           Average Time Taken To Fix Problems
       </div>
-      <div class="mostCommon">
+      <div class="mostCommon" >
           Most Common Problem Areas
+          <div style="width:100%;">
+            <div style="float:left;width:560;" id="commonProblems">
+
+            </div>
+            <div style="float:left;width:560;" id="commonProblems">
+
+            </div>
+
+
+          </div>
       </div>
 
     <div class="footer">
@@ -86,5 +98,6 @@
       <!--<img src="../Images/tematemalogo.png" height="40px" width="40px"> -->
     </div>
     <script src="../JS/Common.js"></script>
+    <script src="../JS/Stats.js"></script>
 </body>
 </html>

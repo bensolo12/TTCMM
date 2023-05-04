@@ -3,29 +3,49 @@
     $sql = "SELECT * FROM `report_table`";
 
     $filters = $_POST["filters"];
+    $favourites = $_POST["favourites"];
+    $user_id = $_POST["user_id"];
     $statusFilter = "";
 
+    // If an asterisk is found in the filter string (representing a status filter)
     if (strpos($filters, "*") !== false) {
+        // Split the filter string by the asterisk
         $exploded = explode("*", $filters);
+        // The first part of the string is the filters
         $filters = $exploded[0];
+        // The second part of the string is the status filter
         $statusFilter = $exploded[1];
         if ($statusFilter == "'Any'") {
             $statusFilter = "";
         }
     }
 
+    // If there is a filter for problem type
     if ($filters != "") {
+        // Get all reports where the problem type is in the filter array
         $sql = $sql . " WHERE type IN ($filters)";
     }
 
+    // If there is a filter for status
     if ($statusFilter != "") {
+        // Preface string to connect to previous query
         $preface = " AND ";
+        // However, if type filters is empty then it must become WHERE because there's nothing to connect to
         if ($filters == "") {
             $preface = " WHERE ";
         }
+        // Create the string
         $sql = $sql . $preface . "report_status = $statusFilter";
     }
-    
+
+    if ($favourites === "true") {
+        $preface = " AND ";
+        if ($filters == "" && $statusFilter == "") {
+            $preface = " WHERE ";
+        }
+
+        $sql = $sql . $preface . "report_id IN (SELECT report_id FROM favourites_table WHERE user_id = $user_id)";
+    }
 
     // Get access to the code in the config.php file to access the database
     include "../PHP/dbConfig.php";
