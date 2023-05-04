@@ -67,10 +67,6 @@ function logout(){
 
 //adds the new navbar for citizen
 function CitizenNav(){
-
-  buttons=$("#Buttons")
-  buttons.append('<p><button id="assign" type="submit"></button></p>');
-  buttons.append('<p><button id="reportFake" type="submit"></button></p>');
   nav=$("#NavList")
   ClearBar();
   nav.append('<li><a class="NavActive" href="Index.html">Home</a></li>');
@@ -103,6 +99,10 @@ function ContractorNav(){
 }
 //creates navbar for the employees
 function EmployeeNav(){
+
+  buttons=$("#Buttons")
+  buttons.append('<p><button id="assign" type="submit"></button></p>');
+  buttons.append('<p><button id="reportFake" type="submit"></button></p>');
   nav=$("#NavList")
   prompt=$("#ReportPrompt")
   ClearBar();
