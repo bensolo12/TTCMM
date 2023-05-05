@@ -89,11 +89,6 @@ function displayFullReport(reportId) {
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
 
-                role = sessionStorage.getItem('user_role');
-                if (role == "Employee"){
-                    document.getElementById("reportFake").hidden = "false";
-                    document.getElementById("assign").hidden = "false";
-                }
                 
                 document.getElementById("reportTitle").textContent = reportType;
                 document.getElementById("reportDate").textContent = "Reported: " + reportDate;
