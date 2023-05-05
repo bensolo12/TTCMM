@@ -16,6 +16,7 @@
         echo "none";
     }
 
+    //$role = $_SESSION['user_role'];
     //Get the number of rows in the result of the query
     $num_row = mysqli_num_rows($res);
 
