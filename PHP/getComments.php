@@ -21,7 +21,7 @@
         }
 
         // If rows is empty afterwards then echo back "none"
-        if (count($rows) == 0) {
+        if (empty($rows)) {
             echo "none";
         // Otherwise, echo back the array of rows
         } else {

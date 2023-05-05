@@ -32,6 +32,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
     );
+    const commentBtn = document.getElementById("addComment")
+    commentBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+        createComment(reportId);
+    });
 });
 
 const successCallback = (position) => {
@@ -84,15 +89,16 @@ function filtersChanged() {
 }
 
 function displayComments(reportId){
+    const commentsContainerDiv = document.getElementById("commentsContainerDiv");
+    commentsContainerDiv.innerHTML = "";
     const container = document.getElementById("commentsContainer");
-    const commentBtn = document.getElementById("addComment")
     const formCreateComments = document.getElementById("formCreateComments");
-    commentBtn.addEventListener("click", createComment(reportId));
+    
     if (reportId !== "" && reportId !== undefined && reportId !== null) {
         container.classList.remove("hidden");
     }
     if (currentUserID !== null) {
-        createCommentForm.classList.remove("hidden");
+        formCreateComments.classList.remove("hidden");
     }
     $.ajax({
         type: "POST",
@@ -100,8 +106,14 @@ function displayComments(reportId){
         data:"report_id="+reportId,
         datatype: "json",
         success: function(msg){
+            console.log("MSG:");
+            console.log(msg);
             if (msg == "none") {
                 console.log("No comments");
+                if (currentUserID === null) {
+                    const commentsHeader = document.getElementById("commentsSection");
+                    commentsHeader.classList.add("hidden");
+                }
             } else {
                 document.getElementById("commentsSection").textContent = "Comments:";
 
@@ -139,7 +151,7 @@ function displayComments(reportId){
                     commentPanel.classList.add("comment-panel");
 
                     // Append the panel to the comments section
-                    container.appendChild(commentPanel);
+                    commentsContainerDiv.appendChild(commentPanel);
                 }
             }
         }
@@ -147,27 +159,28 @@ function displayComments(reportId){
 }
 
 function createComment(reportId){
-    $('#formCreateComments').submit(function(event){
-        event.preventDefault();
-        const addCommentElement = document.getElementById("addCommentsField");
-        const commentText = addCommentElement.value;
-        const commentDate = new Date().toISOString().slice(0, 10);
+    const addCommentElement = document.getElementById("addCommentsField");
+    const commentText = addCommentElement.value;
+    const commentDate = new Date().toISOString().slice(0, 10);
 
-        $.ajax({
-            type: "POST",
-            url: "../PHP/createComment.php",
-            data: "comment_text="+commentText+"&report_id="+reportId+"&user_id="+currentUserID+"&comment_date="+commentDate,
-            datatype: "json",
-            success: function(msg) {
-                $("#divMessage").html(msg);	
-                alert(msg);
-            },
-            error: function(msg){ 
-                console.log("ERROR:");
-                console.log(msg);
-            }
-        });
+    $.ajax({
+        type: "POST",
+        url: "../PHP/createComment.php",
+        data: "comment_text="+commentText+"&report_id="+reportId+"&user_id="+currentUserID+"&comment_date="+commentDate,
+        datatype: "json",
+        success: function(msg) {
+            $("#divMessage").html(msg);	
+            alert(msg);
+            console.log("SUCCESS");
+        },
+        error: function(msg){ 
+            console.log("ERROR:");
+            console.log(msg);
+        }
     });
+    const inputField = document.getElementById("addCommentsField");
+    inputField.value = "";
+    console.log("CREATE COMMENT END");
 }
 
 function displayFullReport(reportId) {
