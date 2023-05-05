@@ -101,8 +101,8 @@ function ContractorNav(){
 function EmployeeNav(){
 
   buttons=$("#Buttons")
-  buttons.append('<p><button id="assign" type="submit"></button></p>');
-  buttons.append('<p><button id="reportFake" type="submit"></button></p>');
+  buttons.append('<p><button id="assign" text="Assign To Contractor" type="submit"></button></p>');
+  buttons.append('<p><button id="reportFake" text="Report as Fake" type="submit"></button></p>');
   nav=$("#NavList")
   prompt=$("#ReportPrompt")
   ClearBar();
