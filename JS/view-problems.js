@@ -106,7 +106,8 @@ function displayFullReport(reportId) {
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
 
-                document.getElementById("reportTitle").textContent = reportType + " at " + reportAddress;
+                
+                document.getElementById("reportTitle").textContent = reportType;
                 document.getElementById("reportDate").textContent = "Reported: " + reportDate;
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
