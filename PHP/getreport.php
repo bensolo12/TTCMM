@@ -24,7 +24,7 @@
     //Get the row from the result of the query
     $row = mysqli_fetch_assoc($res);
     
-    //$role = $_SESSION['user_role'];
+    $role = $_SESSION["user_role"];
     //echo("role is"+$role);
     //If there's one row in the result then encode the row and echo it back
     if($num_row == 1){
