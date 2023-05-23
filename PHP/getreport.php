@@ -3,6 +3,9 @@
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
+    echo "<h3> PHP List All Session Variables</h3>";
+    foreach ($_SESSION as $key=>$val)
+    echo $key." ".$val."<br/>";
     //Get the report id from the superglobal $_POST and store it in a variable called id
     $id = $_POST["report_id"];
 
