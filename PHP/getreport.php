@@ -1,4 +1,5 @@
 <?php
+    session_start();
     //Get the report id from the superglobal $_POST and store it in a variable called id
     $id = $_POST["report_id"];
 
@@ -23,7 +24,7 @@
 
     //Get the row from the result of the query
     $row = mysqli_fetch_assoc($res);
-    session_start();
+    
     $role = $_SESSION['user_role'];
     //If there's one row in the result then encode the row and echo it back
     if($num_row == 1){
