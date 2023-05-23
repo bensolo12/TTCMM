@@ -190,7 +190,7 @@ function showEmployeeControlls(){
         success: function(msg){
                   // dependend on user role page contents are modified
             if (msg == "Employee"){
-                buttonsContainer = getElementById("buttons-container")
+                buttonsContainer = document.getElementById("buttons-container")
 
                 // Set attributes or properties for the element
                 buttonsContainer.id = 'buttons-Container';
