@@ -1,6 +1,26 @@
 var problemDict = {"Problem":"Instances","Broken traffic lights":0, "Burst pipe":0, "Blocked drain":0, "Broken streetlight":0, "Exposed cables":0, "Flooding":0, "Graffiti":0, "Litter":0, "Pothole":0, "Wrecked car":0, "Other":0};
 // Load google charts
 
+
+$.ajax({
+  type: "POST",
+  url: "../PHP/Common.php",
+  data: "phpFunction=checkLogin",
+  success: function(msg){
+			// restricts page access to specifict roles
+      if(msg != "Employee"){
+        alert("You do not have access to this page!");
+				window.location = "../Views/Index.html";
+      }
+
+  },
+  error: function(msg){
+    console.log(msg);
+  }
+});
+
+
+
 function fetch(inc){
   $.ajax({
     type:"POST",
