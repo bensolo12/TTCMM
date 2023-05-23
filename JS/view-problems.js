@@ -190,15 +190,8 @@ function showEmployeeControlls(){
         success: function(msg){
                   // dependend on user role page contents are modified
             if (msg == "Employee"){
-                var reportButton = $('<button>').text("Report as fake");
-                var assignButton = $('<button>').text("Assign to contractor");
-
-                // Append buttons to a container element
-                var container = $('<div>');
-                container.append(reportButton, assignButton);
-
-                // Append the container to a specific element on the page
-                $('#buttons-container').append(container);
+                var buttons = document.createElement("g");
+                buttons.innerHTML('<button type="button">Assign to contractor</button>');
             }
         },
         error: function(msg){
