@@ -182,7 +182,30 @@ function createComment(reportId){
     inputField.value = "";
     console.log("CREATE COMMENT END");
 }
+function showEmployeeControlls(){
+    $.ajax({
+        type: "POST",
+        url: "../PHP/Common.php",
+        data: "phpFunction=checkLogin",
+        success: function(msg){
+                  // dependend on user role page contents are modified
+            if (msg == "Employee"){
+                var reportButton = $('<button>').text("Report as fake");
+                var assignButton = $('<button>').text("Assign to contractor");
 
+                // Append buttons to a container element
+                var container = $('<div>');
+                container.append(reportButton, assignButton);
+
+                // Append the container to a specific element on the page
+                $('#buttons-container').append(container);
+            }
+        },
+        error: function(msg){
+          console.log(msg);
+        }
+      });
+}
 function displayFullReport(reportId) {
     container = document.getElementById("fullReportContainer");
 
@@ -191,11 +214,11 @@ function displayFullReport(reportId) {
         url: "../PHP/getreport.php",
         data:"report_id="+reportId,
         datatype: "json",
-        success: function(response){
-            if (response == "none") {
+        success: function(msg){
+            if (msg == "none") {
                 // Add a message saying no reported reports could be found
             } else {
-                reportObj = JSON.parse(response);
+                reportObj = JSON.parse(msg);
 
                 // container.classList.remove("hidden");
 
@@ -207,9 +230,7 @@ function displayFullReport(reportId) {
                 reportDesc = reportObj["description"];
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
-                var userRole = response.role;
-
-                console.log("user role" + userRole);
+  
 
                 
                 document.getElementById("reportTitle").textContent = reportType;

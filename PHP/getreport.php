@@ -1,9 +1,4 @@
 <?php
-    session_start();
-    ini_set('display_errors', 1);
-    ini_set('display_startup_errors', 1);
-    error_reporting(E_ALL);
-    
     //Get the report id from the superglobal $_POST and store it in a variable called id
     $id = $_POST["report_id"];
 
@@ -21,19 +16,15 @@
         echo "none";
     }
 
-    //$role = $_SESSION['user_role'];
     //Get the number of rows in the result of the query
     $num_row = mysqli_num_rows($res);
 
     //Get the row from the result of the query
     $row = mysqli_fetch_assoc($res);
     
-    $role = $_SESSION;
     //If there's one row in the result then encode the row and echo it back
     if($num_row == 1){
-        $response = array('row' => $row, 'role' => $role);
-        echo json_encode($response);
-        
+        echo json_encode($row);
     //Otherwise echo back "none"
     } else {
         echo "none";
