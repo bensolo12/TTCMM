@@ -234,7 +234,7 @@ function displayFullReport(reportId) {
                 lng = parseFloat(reportObj["longitude"]);
   
 
-                
+                showEmployeeControlls();
                 document.getElementById("reportTitle").textContent = reportType;
                 document.getElementById("reportDate").textContent = "Reported: " + reportDate;
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
@@ -356,7 +356,7 @@ function renderReports(filters) {
                         title: reportType,
                     });
                     markersArray.push(marker);
-                    showEmployeeControlls();
+                    
 
                 }
             }
