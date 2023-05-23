@@ -6,8 +6,8 @@ if($_POST['phpFunction'] == 'create')
         $newsTitle = $_POST['NewsTitle'];
 		$newsBody = $_POST['newsBody'];
 		//$image = $_SESSION['fileName'];
-        $date = date("d/m/Y");
-        $userID = 2;
+        $date = date("Y/m/d");
+        $userID = $_SESSION["user_id"];;
         
 		include "../PHP/dbConfig.php";
 		$sql = "INSERT INTO `news_table`(user_id, Title, news_date, body)".
