@@ -191,8 +191,8 @@ function displayFullReport(reportId) {
         url: "../PHP/getreport.php",
         data:"report_id="+reportId,
         datatype: "json",
-        success: function(msg){
-            if (msg == "none") {
+        success: function(response){
+            if (response == "none") {
                 // Add a message saying no reported reports could be found
             } else {
                 reportObj = JSON.parse(msg);
