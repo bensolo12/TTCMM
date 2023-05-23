@@ -28,12 +28,11 @@
     $row = mysqli_fetch_assoc($res);
     
     $role = $_SESSION["user_role"];
-    //var_dump($role);
-    //echo("role is"+$role);
     //If there's one row in the result then encode the row and echo it back
     if($num_row == 1){
-        echo json_encode($row, $role);
-        //echo json_encode($role);
+        $response = array('row' => $row, 'role' => $role);
+        echo json_encode($response);
+        
     //Otherwise echo back "none"
     } else {
         echo "none";
