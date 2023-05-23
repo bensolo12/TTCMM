@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- <script type='text/javascript' src='https://maps.google.com/maps/api/js?language=en&key=AIzaSyB61QLHLhzPTxEB9A3AJHCWwYz8caQq1Tg&libraries=places&region=GB'></script> -->
@@ -42,7 +43,7 @@
         <li id="NavSearch" style="float:right"><input type="text" name="Search" value="" placeholder="Search"></li>
       </ul>
     </div>
-        </nav>
+    </nav>
     <div class="row">
         <div class="col-lg-1"></div>
         <div id="filterContainer" class="col-lg-2 filter-panel">
@@ -140,6 +141,14 @@
             <p>Description:</p>
             <p id="reportDescription"></p>
             <div id="map" style="height: 500px; width: 100%;"></div>
+            <div id="commentsContainer" class="commentsContainer hidden">
+              <h3 id="commentsSection"></h3>
+              <form method = "post" action="formCreateComments" id = "formCreateComments" class="hidden"> 
+                <p><input id="addCommentsField" name="addCommentsField"></input></p>
+                <p><button id="addComment" type="submit">Add Comment</button></p>
+              </form>
+              <div id="commentsContainerDiv"></div>
+            </div>
         </div>
         <div class="col-lg-1"></div>
     </div>
@@ -172,7 +181,8 @@
       <a href="ContactUs.html">Contact Us</a><br>
       Report a bug: CheltBugReport@email.com
       Made by TEMA TEMA inc
-      <!--<img src="../Images/tematemalogo.png" height="40px" width="40px"> -->
+      <!-- <img src="../Images/tematemalogo.png" height="40px" width="40px"> -->
     </div>
 </body>
+<script src="../JS/view-problems.js"></script>
 </html>

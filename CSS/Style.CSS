@@ -99,6 +99,12 @@ footer div{
    padding-left: 16px;
    margin: 8px;
  }
+ .commentsContainer{
+  background-color: #f0ecec;
+  border: 2px solid #747474;
+  padding-left: 16px;
+  margin: 8px;
+}
 
  .filter-panel{
    background-color: #f0ecec;
@@ -118,4 +124,10 @@ footer div{
 
  .heart.active {
    color: red;
+ }
+
+ .comment-panel {
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.4);
+  padding: 4px;
+  margin: 4px;
  }
