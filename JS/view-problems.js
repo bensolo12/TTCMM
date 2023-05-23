@@ -190,11 +190,11 @@ function showEmployeeControlls(){
         success: function(msg){
                   // dependend on user role page contents are modified
             if (msg == "Employee"){
-                var buttonsContainer = document.createElement('div');
+                buttonsContainer = getElementById("buttons-container")
 
                 // Set attributes or properties for the element
-                buttonsContainer.id = 'buttonsContainer';
-                buttonsContainer.className = 'buttonsContainer';
+                buttonsContainer.id = 'buttons-Container';
+                buttonsContainer.className = 'buttons-Container';
 
                 // Set inner HTML or text content for the element
                 buttonsContainer.innerHTML = 'create button';
