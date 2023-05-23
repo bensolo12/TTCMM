@@ -207,7 +207,7 @@ function displayFullReport(reportId) {
                 reportDesc = reportObj["description"];
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
-                userRole = Response.role;
+                var userRole = response.role;
 
                 console.log("user role" + userRole);
 
