@@ -195,7 +195,7 @@ function displayFullReport(reportId) {
             if (response == "none") {
                 // Add a message saying no reported reports could be found
             } else {
-                reportObj = JSON.parse(msg);
+                reportObj = JSON.parse(response);
 
                 // container.classList.remove("hidden");
 
