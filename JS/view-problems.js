@@ -190,8 +190,17 @@ function showEmployeeControlls(){
         success: function(msg){
                   // dependend on user role page contents are modified
             if (msg == "Employee"){
-                var buttons = document.createElement("g");
-                buttons.innerHTML('<button type="button">Assign to contractor</button>');
+                var buttonsContainer = document.createElement('div');
+
+                // Set attributes or properties for the element
+                buttonsContainer.id = 'buttonsContainer';
+                buttonsContainer.className = 'buttonsContainer';
+
+                // Set inner HTML or text content for the element
+                buttonsContainer.innerHTML = 'create button';
+
+                // Append the element to the document or another existing element
+                document.body.appendChild(buttonsContainer);
             }
         },
         error: function(msg){
