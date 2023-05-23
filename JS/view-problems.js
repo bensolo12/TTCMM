@@ -207,7 +207,7 @@ function displayFullReport(reportId) {
                 reportDesc = reportObj["description"];
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
-                userRole = "<?php echo $user_role; ?>";
+                userRole = Response;
 
                 console.log("user role" + userRole);
 
