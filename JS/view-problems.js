@@ -232,7 +232,10 @@ function displayFullReport(reportId) {
                 //     // icon: {markerURL},
                 // });
                 // markersArray.push(marker);
-            }
+            }        
+        },
+        error: function(error) {
+            console.error(error);
         }
     })
 }
