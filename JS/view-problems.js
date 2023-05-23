@@ -241,6 +241,7 @@ function displayFullReport(reportId) {
 
                 
                 displayComments(reportId);
+                showEmployeeControlls();
 
                 map.setCenter({ lat: lat, lng: lng });
                 
