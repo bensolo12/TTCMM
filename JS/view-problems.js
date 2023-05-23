@@ -190,17 +190,19 @@ function showEmployeeControlls(){
         success: function(msg){
                   // dependend on user role page contents are modified
             if (msg == "Employee"){
-                buttonsContainer = document.getElementById("buttons-container")
+                // Get the buttons-container element
+                var buttonsContainer = document.getElementById("buttons-container");
 
-                // Set attributes or properties for the element
-                buttonsContainer.id = 'buttons-Container';
-                buttonsContainer.className = 'buttons-Container';
+                // Create buttons
+                var reportButton = document.createElement("button");
+                reportButton.innerText = "Report as fake";
 
-                // Set inner HTML or text content for the element
-                buttonsContainer.innerHTML = 'create button';
+                var assignButton = document.createElement("button");
+                assignButton.innerText = "Assign to contractor";
 
-                // Append the element to the document or another existing element
-                document.body.appendChild(buttonsContainer);
+                // Append buttons to the container
+                buttonsContainer.appendChild(reportButton);
+                buttonsContainer.appendChild(assignButton);
             }
         },
         error: function(msg){
