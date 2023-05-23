@@ -243,7 +243,7 @@ function displayFullReport(reportId) {
 
                 
                 displayComments(reportId);
-                showEmployeeControlls();
+                
 
                 map.setCenter({ lat: lat, lng: lng });
                 
@@ -356,10 +356,12 @@ function renderReports(filters) {
                         title: reportType,
                     });
                     markersArray.push(marker);
+                    showEmployeeControlls();
 
                 }
             }
         }
+        
     })
 }
 
