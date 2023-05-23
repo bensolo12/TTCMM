@@ -275,6 +275,8 @@ function renderReports(filters) {
         data: "filters="+filters+"&favourites="+favouriteFilter+"&user_id="+currentUserID,
         datatype: "json",
         success: function(msg){
+            console.log("MSG:");
+            console.log(msg);
             if (msg == "none") {
                 // Add a message saying no reported reports could be found
             } else {
