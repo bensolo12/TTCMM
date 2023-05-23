@@ -16,15 +16,18 @@
         echo "none";
     }
 
+    //$role = $_SESSION['user_role'];
+    //$role = $_SESSION['user_role'];
     //Get the number of rows in the result of the query
     $num_row = mysqli_num_rows($res);
 
     //Get the row from the result of the query
     $row = mysqli_fetch_assoc($res);
-    
+    session_start();
+    $role = $_SESSION['user_role'];
     //If there's one row in the result then encode the row and echo it back
     if($num_row == 1){
-        echo json_encode($row);
+        echo json_encode($row,$role);
     //Otherwise echo back "none"
     } else {
         echo "none";

@@ -207,12 +207,16 @@ function displayFullReport(reportId) {
                 reportDesc = reportObj["description"];
                 lat = parseFloat(reportObj["latitude"]);
                 lng = parseFloat(reportObj["longitude"]);
+                userRole = reportObj["user_role"];
+
+                console.log("user role" + userRole);
 
                 
                 document.getElementById("reportTitle").textContent = reportType;
                 document.getElementById("reportDate").textContent = "Reported: " + reportDate;
                 document.getElementById("reportStatus").textContent = "Status: " + reportStatus;
                 document.getElementById("reportDescription").textContent = reportDesc;
+
 
                 
                 displayComments(reportId);
